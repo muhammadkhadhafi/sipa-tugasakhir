@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model as BaseModel;
 class Model extends BaseModel
 {
     protected $keyType = 'string';
-    protected $incrementing = false;
+    public $incrementing = false;
 
     public static function boot()
     {

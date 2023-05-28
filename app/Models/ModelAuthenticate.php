@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class ModelAuthenticate extends Authenticatable
 {
     protected $keyType = 'string';
-    protected $incrementing = false;
+    public $incrementing = false;
 
     public static function boot()
     {

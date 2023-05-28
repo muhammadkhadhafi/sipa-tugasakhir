@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('admin/dashboard', function () {
+    return view('admin.dashboard');
+});
+
 Route::prefix('admin')->group(function () {
     include "_/admin.php";
 });
