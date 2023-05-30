@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Admin\MasterData\Mahasiswa;
+use App\Models\Admin\MasterData\Pegawai;
+
 return [
 
     /*
@@ -40,6 +43,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'mahasiswa' => [
+            'driver' => 'session',
+            'provider' => 'mahasiswa',
+        ],
     ],
 
     /*
@@ -62,7 +70,12 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => Pegawai::class,
+        ],
+
+        'mahasiswa' => [
+            'driver' => 'eloquent',
+            'model' => Mahasiswa::class,
         ],
 
         // 'users' => [

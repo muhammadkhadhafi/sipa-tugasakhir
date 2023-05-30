@@ -20,6 +20,12 @@
   <!-- Custom styles for this template-->
   <link href="/template/css/sb-admin-2.min.css" rel="stylesheet">
 
+
+  <!-- dataTables -->
+  <link href="/template/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+  {{-- My Style CSS --}}
+  <link rel="stylesheet" href="/assets/css/mystyle.css">
 </head>
 
 <body id="page-top">
@@ -94,6 +100,13 @@
 
   <!-- Custom scripts for all pages-->
   <script src="/template/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="/template/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="/template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="/template/js/demo/datatables-demo.js"></script>
 
 </body>
 

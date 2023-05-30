@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
-  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/dashboard">
     <div class="sidebar-brand-icon rotate-n-15">
       <i class="fas fa-laugh-wink"></i>
     </div>
@@ -14,7 +14,7 @@
   <!-- Nav Item - Dashboard -->
   <li class="nav-item {{ Request::is('admin/dashboard') ? 'active' : '' }}">
     <a class="nav-link" href="/admin/dashboard">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <i class="fas fa-home"></i>
       <span>Dashboard</span></a>
   </li>
 
@@ -27,17 +27,18 @@
   </div>
 
   <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item {{ Request::is('admin/master-data/pegawai*') ? 'active' : '' }}">
+  <li class="nav-item {{ Request::is('admin/master-data*') ? 'active' : '' }}">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
       aria-controls="collapseTwo">
-      <i class="fas fa-fw fa-cog"></i>
+      <i class="fas fa-users"></i>
       <span>Users</span>
     </a>
-    <div id="collapseTwo" class="collapse {{ Request::is('admin/master-data/pegawai*') ? 'show' : '' }}"
+    <div id="collapseTwo" class="collapse {{ Request::is('admin/master-data*') ? 'show' : '' }}"
       aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Users:</h6>
-        <a class="collapse-item" href="buttons.html">Mahasiswa</a>
+        <a class="collapse-item {{ Request::is('admin/master-data/mahasiswa*') ? 'active' : '' }}"
+          href="/admin/master-data/mahasiswa">Mahasiswa</a>
         <a class="collapse-item {{ Request::is('admin/master-data/pegawai*') ? 'active' : '' }}"
           href="/admin/master-data/pegawai">Pegawai</a>
       </div>
