@@ -5,7 +5,11 @@
 
   <div class="row">
     <div class="col-lg-3">
-      <img src="/assets/img/default-person.jpg" class="img-fluid" style="width: 100%">
+      @if ($pegawai->foto)
+        <img src="{{ asset('storage/' . $pegawai->foto) }}" class="img-fluid" style="width: 100%" alt="{{ $pegawai->nama }}">
+      @else
+        <img src="/assets/img/default-person.jpg" class="img-fluid" style="width: 100%" alt="{{ $pegawai->nama }}">
+      @endif
     </div>
     <div class="col-lg-9">
       <div class="card shadow mb-4">

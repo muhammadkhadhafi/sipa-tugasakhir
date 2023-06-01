@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\MasterData\Pegawai;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class PegawaiController extends Controller
 {
@@ -31,7 +32,7 @@ class PegawaiController extends Controller
             'agama' => ['required'],
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
-            'foto' => ['file', 'max:1024'],
+            'foto' => ['image', 'file', 'max:1024'],
             'is_masterdata' => 'required',
             'password' => 'required|min:5|max:255',
         ];
@@ -39,7 +40,7 @@ class PegawaiController extends Controller
         $validatedData = $request->validate($rules);
 
         if ($request->file('foto')) {
-            $validatedData['foto'] = $request->file('foto')->store('admin/pegawai');
+            $validatedData['foto'] = $request->file('foto')->store('admin/master-data/pegawai');
         }
 
         $validatedData['password'] = Hash::make($validatedData['password']);
@@ -67,6 +68,11 @@ class PegawaiController extends Controller
     {
         $rules = [
             'nama' => ['required', 'max:255'],
+            'jenis_kelamin' => 'required|',
+            'agama' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'is_masterdata' => 'required'
         ];
 
         if ($request->username != $pegawai->username) {
@@ -81,7 +87,18 @@ class PegawaiController extends Controller
             $rules['password'] = 'required|min:5|max:255';
         }
 
+        if ($request->file('foto')) {
+            $rules['foto'] = 'image|file|max:1024';
+        }
+
         $validatedData = $request->validate($rules);
+
+        if ($request->file('foto')) {
+            if ($pegawai->foto) {
+                Storage::delete($pegawai->foto);
+            }
+            $validatedData['foto'] = $request->file('foto')->store('admin/master-data/pegawai');
+        }
 
         if (isset($validatedData['password'])) {
             $validatedData['password'] = Hash::make($validatedData['password']);
@@ -94,6 +111,10 @@ class PegawaiController extends Controller
 
     public function destroy(Pegawai $pegawai)
     {
+        if ($pegawai->foto) {
+            Storage::delete($pegawai->foto);
+        }
+
         Pegawai::destroy('id', $pegawai->id);
 
         return redirect('/admin/master-data/pegawai')->with('success', 'Pegawai berhasil dihapus');

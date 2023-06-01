@@ -137,6 +137,9 @@
               <label for="foto" class="form-label">Foto</label>
               <input type="file" class="form-control @error('foto') is-invalid @enderror" id="foto"
                 name="foto">
+              @error('foto')
+                <div class="invalid-feedback">{{ $message }}</div>
+              @enderror
             </div>
           </div>
           <div class="col-lg-6">
