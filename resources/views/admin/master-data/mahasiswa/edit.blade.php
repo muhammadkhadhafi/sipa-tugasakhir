@@ -15,6 +15,7 @@
         <div class="card shadow mb-4">
           <div class="card-header d-flex justify-content-between align-items-center">
             <h6 class="m-0 font-weight-bold text-primary text-uppercase">Edit Mahasiswa</h6>
+            <button class="btn btn-primary btn-sm float-end float-right"><i class="far fa-save"></i> Simpan</button>
           </div>
           <div class="card-body">
             <div class="row">
@@ -112,6 +113,9 @@
                   <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
                   <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror"
                     name="tanggal_lahir" id="tanggal_lahir" value="{{ $mahasiswa->tanggal_lahir }}">
+                  @error('tanggal_lahir')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror
                 </div>
               </div>
               <div class="col-lg-6">
@@ -119,17 +123,15 @@
                   <label for="password" class="form-label">Password</label>
                   <input type="password" class="form-control @error('password') is-invalid @enderror" name="password"
                     id="password" placeholder="Kosongkan jika tidak ingin diubah">
+                  @error('password')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-lg-12">
-                <button class="btn btn-primary btn-sm float-end float-right"><i class="far fa-save"></i> Simpan</button>
-              </div>
-            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </form>
-  </div>
-  </div>
-  </div>
-  </div>
 @endsection

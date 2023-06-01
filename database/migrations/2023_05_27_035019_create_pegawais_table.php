@@ -16,9 +16,13 @@ return new class extends Migration
             $table->string('nama');
             $table->string('username')->unique();
             $table->string('nip')->unique();
-            $table->string('password');
             $table->string('foto')->nullable();
-            $table->string('is_admin')->default(false);
+            $table->string('jenis_kelamin');
+            $table->string('agama');
+            $table->string('tempat_lahir');
+            $table->string('tanggal_lahir');
+            $table->boolean('is_masterdata')->default(false);
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });

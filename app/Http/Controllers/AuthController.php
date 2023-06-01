@@ -15,12 +15,16 @@ class AuthController extends Controller
 
     public function loginProcess(Request $request)
     {
+        $is_mahasiswa = null;
         $userid = $request->userid;
         if ($userid) {
             $userid = str_replace(" ", "", $userid);
             $strlen = Str::length($userid);
             if ($strlen == 17) {
                 $field = 'nip';
+            } else if ($strlen == 10) {
+                $field = 'nim';
+                $is_mahasiswa = 'mahasiswa';
             } else {
                 $field = 'username';
             }
@@ -32,11 +36,19 @@ class AuthController extends Controller
         ];
 
         $remember = (isset($request->remember)) ? true : false;
-        if (Auth::attempt($credential, $remember)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/admin/dashboard');
+        if ($is_mahasiswa) {
+            if (Auth::guard('mahasiswa')->attempt($credential, $remember)) {
+                $request->session()->regenerate();
+                return redirect()->intended('/mahasiswa/dashboard');
+            }
+            return back()->with('danger', 'Login gagal, silahkan cek kembali user id dan password anda');
+        } else {
+            if (Auth::attempt($credential, $remember)) {
+                $request->session()->regenerate();
+                return redirect()->intended('/admin/dashboard');
+            }
+            return back()->with('danger', 'Login gagal, silahkan cek kembali user id dan password anda');
         }
-        return back()->with('danger', 'Login gagal, silahkan cek kembali user id dan password anda');
     }
 
     public function logout()

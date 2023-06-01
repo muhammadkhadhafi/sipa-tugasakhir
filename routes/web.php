@@ -22,10 +22,28 @@ Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'loginProcess']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('admin/dashboard', function () {
-    return view('admin.dashboard');
+Route::middleware('auth')->group(function () {
+    Route::redirect('/', 'admin/dashboard');
+
+    Route::get('admin/dashboard', function () {
+        return view('admin.dashboard');
+    });
+
+    Route::get('admin/profile', function () {
+        return view('admin.profile');
+    });
+
+    Route::prefix('admin')->group(function () {
+        include "_/admin.php";
+    });
 });
 
-Route::prefix('admin')->group(function () {
-    include "_/admin.php";
-});
+// Route::middleware('auth:mahasiswa')->group(function () {
+//     Route::get('/mahasiswa/dashboard', function () {
+//         return view('mahasiswa.dashboard');
+//     });
+
+//     Route::prefix('mahasiswa')->group(function () {
+//         include "_/mahasiswa.php";
+//     });
+// });

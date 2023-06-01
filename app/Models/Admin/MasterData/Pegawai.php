@@ -2,9 +2,10 @@
 
 namespace App\Models\Admin\MasterData;
 
+use Carbon\Carbon;
 use App\Models\ModelAuthenticate;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Pegawai extends ModelAuthenticate
 {
@@ -17,4 +18,9 @@ class Pegawai extends ModelAuthenticate
     // {
     //     $this->attributes['password'] = bcrypt($password);
     // }
+
+    public function getTanggalLahirStringAttribute()
+    {
+        return Carbon::parse($this->attributes['tanggal_lahir'])->translatedFormat('d F Y');
+    }
 }

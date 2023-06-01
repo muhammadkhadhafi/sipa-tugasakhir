@@ -87,7 +87,7 @@ class MahasiswaController extends Controller
         }
 
         if ($request->password) {
-            $validatedData['password'] = 'required|min:5|max:255';
+            $rules['password'] = 'required|min:5|max:255';
         };
 
         $validatedData = $request->validate($rules);

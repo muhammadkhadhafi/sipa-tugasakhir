@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Admin\MasterData\Pegawai;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,5 +21,17 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        Pegawai::factory(10)->create();
+
+        Pegawai::create([
+            'nama' => 'Muhammad Khadafi',
+            'username' => 'khadafi',
+            'nip' => '12345678901234567',
+            'jenis_kelamin' => 'Laki-laki',
+            'agama' => 'Islam',
+            'tempat_lahir' => 'Kendawangan',
+            'tanggal_lahir' => '2001-10-05',
+            'password' => bcrypt('password'),
+        ]);
     }
 }

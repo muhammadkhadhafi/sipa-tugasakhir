@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Admin\MasterData;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,15 @@ class PegawaiFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nama' => fake()->name(),
+            'username' => fake()->unique()->userName(),
+            'nip' => fake()->unique()->nik(),
+            'jenis_kelamin' => fake()->randomElement(['Laki-laki', 'Perempuan']),
+            'agama' => fake()->randomElement(['Islam', 'Kristen', 'Katholik', 'Hindu', 'Budha', 'Kong Hu Chu']),
+            'tempat_lahir' => fake()->city(),
+            'tanggal_lahir' => fake()->date('Y-m-d'),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10)
         ];
     }
 }

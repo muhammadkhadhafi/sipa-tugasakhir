@@ -27,10 +27,21 @@ class PegawaiController extends Controller
             'nama' => ['required', 'max:255'],
             'username' => ['required', 'unique:admin__pegawai', 'min:3', 'max:255'],
             'nip' => ['required', 'unique:admin__pegawai'],
+            'jenis_kelamin' => ['required'],
+            'agama' => ['required'],
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'foto' => ['file', 'max:1024'],
+            'is_masterdata' => 'required',
             'password' => 'required|min:5|max:255',
         ];
 
         $validatedData = $request->validate($rules);
+
+        if ($request->file('foto')) {
+            $validatedData['foto'] = $request->file('foto')->store('admin/pegawai');
+        }
+
         $validatedData['password'] = Hash::make($validatedData['password']);
 
         Pegawai::create($validatedData);
