@@ -15,10 +15,11 @@
       <div class="table-responsive">
         <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
           <thead class="bg-gradient-primary text-light text-uppercase">
-            <th>No</th>
-            <th>Aksi</th>
+            <th width="15px">No</th>
+            <th width="80px">Aksi</th>
             <th>Nama</th>
             <th>NIP</th>
+            <th>Status</th>
           </thead>
           <tbody>
             @foreach ($pegawais as $pegawai)
@@ -42,6 +43,13 @@
                 </td>
                 <td>{{ $pegawai->nama }}</td>
                 <td>{{ $pegawai->nip }}</td>
+                <td>
+                  @if ($pegawai->is_masterdata)
+                    Master Data
+                  @else
+                    Admin
+                  @endif
+                </td>
               </tr>
             @endforeach
           </tbody>

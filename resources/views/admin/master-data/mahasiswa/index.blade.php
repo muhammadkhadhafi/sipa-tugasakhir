@@ -15,8 +15,8 @@
       <div class="table-responsive">
         <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
           <thead class="bg-gradient-primary text-light text-uppercase">
-            <th>No</th>
-            <th>Aksi</th>
+            <th width="15px">No</th>
+            <th width="80px">Aksi</th>
             <th>Nama</th>
             <th>NIM</th>
           </thead>

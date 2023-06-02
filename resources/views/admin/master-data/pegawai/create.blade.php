@@ -53,7 +53,7 @@
                   <option value="Laki-laki">Laki-laki</option>
                   <option value="Perempuan">Perempuan</option>
                 @else
-                  <option disabled selected>Open this select menu</option>
+                  <option disabled selected>Pilih jenis kelamin</option>
                   <option value="Laki-laki">Laki-laki</option>
                   <option value="Perempuan">Perempuan</option>
                 @endif
@@ -78,7 +78,7 @@
                   <option value="Budha">Budha</option>
                   <option value="Kong Hu Chu">Kong Hu Chu</option>
                 @else
-                  <option selected disabled>Open this select menu</option>
+                  <option selected disabled>Pilih agama</option>
                   <option value="Islam">Islam</option>
                   <option value="Kristen">Kristen</option>
                   <option value="Katholik">Katholik</option>
@@ -136,7 +136,7 @@
             <div class="mb-3">
               <label for="foto" class="form-label">Foto</label>
               <input type="file" class="form-control @error('foto') is-invalid @enderror" id="foto"
-                name="foto">
+                name="foto" accept=".jpg, .png">
               @error('foto')
                 <div class="invalid-feedback">{{ $message }}</div>
               @enderror

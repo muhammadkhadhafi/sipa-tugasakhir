@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('guest');
 Route::post('login', [AuthController::class, 'loginProcess']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -29,9 +30,9 @@ Route::middleware('auth')->group(function () {
         return view('admin.dashboard');
     });
 
-    Route::get('admin/profile', function () {
-        return view('admin.profile');
-    });
+    Route::get('admin/profile', [ProfileController::class, 'index']);
+    Route::get('admin/profile/edit', [ProfileController::class, 'edit']);
+    Route::put('admin/profile/{pegawai}', [ProfileController::class, 'update']);
 
     Route::prefix('admin')->group(function () {
         include "_/admin.php";
@@ -39,6 +40,8 @@ Route::middleware('auth')->group(function () {
 });
 
 // Route::middleware('auth:mahasiswa')->group(function () {
+//     Route::redirect('/', 'mahasiswa/dasbhoard');
+
 //     Route::get('/mahasiswa/dashboard', function () {
 //         return view('mahasiswa.dashboard');
 //     });

@@ -45,7 +45,7 @@ class AuthController extends Controller
         } else {
             if (Auth::attempt($credential, $remember)) {
                 $request->session()->regenerate();
-                return redirect()->intended('/admin/dashboard');
+                return redirect('/admin/dashboard');
             }
             return back()->with('danger', 'Login gagal, silahkan cek kembali user id dan password anda');
         }
@@ -54,9 +54,11 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
+        Auth::guard('mahasiswa')->logout();
+
         request()->session()->invalidate();
         request()->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/');
     }
 }

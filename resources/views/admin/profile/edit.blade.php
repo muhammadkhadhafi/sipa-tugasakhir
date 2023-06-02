@@ -3,16 +3,17 @@
 @section('container')
   <h1 class="h3 mb-3">Pegawai</h1>
 
-  <form action="/admin/master-data/pegawai/{{ $pegawai->id }}" method="post" enctype="multipart/form-data">
+  <form action="/admin/profile/{{ auth()->user()->id }}" method="post" enctype="multipart/form-data">
     @csrf
     @method('put')
     <div class="row">
       <div class="col-lg-3">
-        @if ($pegawai->foto)
-          <img src="{{ asset('storage/' . $pegawai->foto) }}" alt="{{ $pegawai->nama }}" class="img-fluid"
+        @if (auth()->user()->foto)
+          <img src="{{ asset('storage/' . auth()->user()->foto) }}" alt="{{ auth()->user()->nama }}" class="img-fluid"
             style="width: 100%">
         @else
-          <img src="/assets/img/default-person.jpg" alt="{{ $pegawai->nama }}" class="img-fluid" style="width: 100%">
+          <img src="/assets/img/default-person.jpg" alt="{{ auth()->user()->nama }}" class="img-fluid"
+            style="width: 100%">
         @endif
         <input type="file" accept=".jpg, .png" value="foto" name="foto" id="foto"
           class="form-control @error('foto') is-invalid @enderror">
@@ -32,7 +33,7 @@
                 <div class="mb-3">
                   <label for="nama" class="form-label">Nama</label>
                   <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama"
-                    name="nama" value="{{ $pegawai->nama }}">
+                    name="nama" value="{{ auth()->user()->nama }}">
                   @error('nama')
                     <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
@@ -42,7 +43,7 @@
                 <div class="mb-3">
                   <label for="username" class="form-label">Username</label>
                   <input type="text" class="form-control @error('username') is-invalid @enderror" id="username"
-                    name="username" value="{{ $pegawai->username }}">
+                    name="username" value="{{ auth()->user()->username }}">
                   @error('username')
                     <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
@@ -54,7 +55,7 @@
                 <div class="mb-3">
                   <label for="nip" class="form-label">NIP</label>
                   <input type="number"" class="form-control @error('nip') is-invalid @enderror" id="nip"
-                    name="nip" value="{{ $pegawai->nip }}">
+                    name="nip" value="{{ auth()->user()->nip }}">
                   @error('nip')
                     <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
@@ -65,7 +66,8 @@
                   <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
                   <select class="custom-select @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin"
                     id="jenis_kelamin">
-                    <option selected value="{{ $pegawai->jenis_kelamin }}">{{ $pegawai->jenis_kelamin }}</option>
+                    <option selected value="{{ auth()->user()->jenis_kelamin }}">{{ auth()->user()->jenis_kelamin }}
+                    </option>
                     <option value="Laki-laki">Laki-laki</option>
                     <option value="Perempuan">Perempuan</option>
                   </select>
@@ -80,7 +82,7 @@
                 <div class="mb-3">
                   <label for="agama" class="form-label">Agama</label>
                   <select class="custom-select @error('agama') is-invalid @enderror" name="agama" id="agama">
-                    <option value="{{ $pegawai->agama }}" selected>{{ $pegawai->agama }}</option>
+                    <option value="{{ auth()->user()->agama }}" selected>{{ auth()->user()->agama }}</option>
                     <option value="Islam">Islam</option>
                     <option value="Kristen">Kristen</option>
                     <option value="Katholik">Katholik</option>
@@ -98,7 +100,7 @@
                   <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
                   <input type="text" name="tempat_lahir" id="tempat_lahir"
                     class="form-control @error('tempat_lahir') is-invalid @enderror" id="tempat_lahir"
-                    value="{{ $pegawai->tempat_lahir }}">
+                    value="{{ auth()->user()->tempat_lahir }}">
                 </div>
               </div>
             </div>
@@ -107,7 +109,7 @@
                 <div class="mb-3">
                   <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
                   <input type="date"" class="form-control @error('tanggal_lahir') is-invalid @enderror"
-                    id="tanggal_lahir" name="tanggal_lahir" value="{{ $pegawai->tanggal_lahir }}">
+                    id="tanggal_lahir" name="tanggal_lahir" value="{{ auth()->user()->tanggal_lahir }}">
                   @error('tanggal_lahir')
                     <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
@@ -118,12 +120,10 @@
                   <label for="is_masterdata" class="form-label">Status</label>
                   <select class="custom-select @error('is_masterdata') is-invalid @enderror" name="is_masterdata"
                     id="is_masterdata">
-                    @if ($pegawai->is_masterdata)
-                      <option value="{{ $pegawai->is_masterdata }}" selected>Master Data</option>
-                      <option value=0>Admin</option>
+                    @if (auth()->user()->is_masterdata)
+                      <option value="{{ auth()->user()->is_masterdata }}" selected>Master Data</option>
                     @else
                       <option value=0 selected>Admin</option>
-                      <option value=1>Master Data</option>
                     @endif
                   </select>
                   @error('is_masterdata')
