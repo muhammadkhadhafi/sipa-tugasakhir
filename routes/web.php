@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
 Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('guest');
 Route::post('login', [AuthController::class, 'loginProcess']);
@@ -39,14 +39,14 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-// Route::middleware('auth:mahasiswa')->group(function () {
-//     Route::redirect('/', 'mahasiswa/dasbhoard');
+Route::middleware('auth:mahasiswa')->group(function () {
+    Route::redirect('/', 'mahasiswa/dashboard');
 
-//     Route::get('/mahasiswa/dashboard', function () {
-//         return view('mahasiswa.dashboard');
-//     });
+    Route::get('mahasiswa/dashboard', function () {
+        return view('mahasiswa.dashboard');
+    });
 
-//     Route::prefix('mahasiswa')->group(function () {
-//         include "_/mahasiswa.php";
-//     });
-// });
+    Route::prefix('mahasiswa')->group(function () {
+        include "_/mahasiswa.php";
+    });
+});

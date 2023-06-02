@@ -39,7 +39,7 @@ class AuthController extends Controller
         if ($is_mahasiswa) {
             if (Auth::guard('mahasiswa')->attempt($credential, $remember)) {
                 $request->session()->regenerate();
-                return redirect()->intended('/mahasiswa/dashboard');
+                return redirect('/mahasiswa/dashboard');
             }
             return back()->with('danger', 'Login gagal, silahkan cek kembali user id dan password anda');
         } else {

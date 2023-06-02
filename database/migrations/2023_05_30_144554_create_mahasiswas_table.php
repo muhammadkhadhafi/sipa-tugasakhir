@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

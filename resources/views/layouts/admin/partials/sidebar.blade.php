@@ -8,8 +8,13 @@
     <div class="sidebar-brand-text mx-3">SIPA</div>
   </a>
 
+  <!-- Heading -->
+  <div class="sidebar-heading text-center">
+    Admin
+  </div>
+
   <!-- Divider -->
-  <hr class="sidebar-divider my-0">
+  <hr class="sidebar-divider mb-0 mt-1">
 
   <!-- Nav Item - Dashboard -->
   <li class="nav-item {{ Request::is('admin/dashboard') ? 'active' : '' }}">

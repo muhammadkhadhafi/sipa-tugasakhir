@@ -34,7 +34,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    @include('layouts.admin.partials.sidebar')
+    @include('layouts.mahasiswa.partials.sidebar')
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -44,7 +44,7 @@
       <div id="content">
 
         <!-- Header -->
-        @include('layouts.admin.partials.header')
+        @include('layouts.mahasiswa.partials.header')
         <!-- End of Header -->
 
         {{-- Content --}}
@@ -57,7 +57,7 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      @include('layouts.admin.partials.footer')
+      @include('layouts.mahasiswa.partials.footer')
       <!-- End of Footer -->
 
     </div>
