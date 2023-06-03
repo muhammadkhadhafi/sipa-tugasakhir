@@ -22,6 +22,11 @@ class PengajuanSuratKeteranganAktif extends Model
 
     public function getTanggalPengajuanStringAttribute()
     {
-        return Carbon::parse($this->attributes['created_at'])->translatedFormat('d F Y');
+        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y');
+    }
+
+    public function getWaktuPengajuanStringAttribute()
+    {
+        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y h:i A');
     }
 }

@@ -18,9 +18,9 @@
           <thead class="bg-gradient-primary text-light text-uppercase">
             <th width="15px">No</th>
             <th width="80px">Aksi</th>
-            <th>Tanggal Pengajuan</th>
+            <th width="160px">Tanggal Pengajuan</th>
             <th>Deskripsi</th>
-            <th>Status</th>
+            <th width="80px">Status</th>
           </thead>
           <tbody>
             @foreach ($list_pengajuan as $pengajuan)
@@ -44,7 +44,15 @@
                 </td>
                 <td>{{ $pengajuan->tanggal_pengajuan_string }}</td>
                 <td>{{ $pengajuan->deskripsi }}</td>
-                <td>{{ $pengajuan->status }}</td>
+                <td>
+                  @if ($pengajuan->status == 1)
+                    <span class="badge badge-primary p-1">Pengajuan diproses</span>
+                  @elseif($pengajuan->status == 2)
+                    <span class="badge badge-success p-1">Pengajuan selesai</span>
+                  @elseif($pengajuan->status == 3)
+                    <span class="badge badge-danger p-1">Pengajuan ditolak</span>
+                  @endif
+                </td>
               </tr>
             @endforeach
           </tbody>

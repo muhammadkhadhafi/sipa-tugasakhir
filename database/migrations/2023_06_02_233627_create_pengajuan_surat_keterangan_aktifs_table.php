@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('admin__pengajuan_surat_keterangan_aktifs', function (Blueprint $table) {
-            $table->char('id');
+            $table->char('id')->primary();
             $table->char('id_mahasiswa');
             $table->text('deskripsi');
             $table->integer('status');

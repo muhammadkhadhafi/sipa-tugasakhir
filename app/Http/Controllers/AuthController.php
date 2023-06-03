@@ -10,6 +10,10 @@ class AuthController extends Controller
 {
     public function login()
     {
+        if (Auth::guard('mahasiswa')->check()) {
+            return redirect('/');
+        }
+
         return view('auth.login');
     }
 

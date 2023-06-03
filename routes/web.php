@@ -16,36 +16,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::get('/', function () {
-//     return view('home');
+//     return view('welcome');
 // });
 
-Route::get('login', [AuthController::class, 'login'])->name('login')->middleware('guest');
-Route::post('login', [AuthController::class, 'loginProcess']);
-Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/', function () {
+    if (auth()->guard('mahasiswa')->check()) {
+        return redirect('/mahasiswa/dashboard');
+    } else {
+        return redirect('/admin/dashboard');
+    }
+});
+
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/login', [AuthController::class, 'loginProcess']);
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
-    Route::redirect('/', 'admin/dashboard');
-
-    Route::get('admin/dashboard', function () {
-        return view('admin.dashboard');
-    });
-
-    Route::get('admin/profile', [ProfileController::class, 'index']);
-    Route::get('admin/profile/edit', [ProfileController::class, 'edit']);
-    Route::put('admin/profile/{pegawai}', [ProfileController::class, 'update']);
-
     Route::prefix('admin')->group(function () {
         include "_/admin.php";
     });
 });
 
 Route::middleware('auth:mahasiswa')->group(function () {
-    Route::redirect('/', 'mahasiswa/dashboard');
-
-    Route::get('mahasiswa/dashboard', function () {
-        return view('mahasiswa.dashboard');
-    });
-
     Route::prefix('mahasiswa')->group(function () {
         include "_/mahasiswa.php";
     });

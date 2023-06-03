@@ -25,52 +25,39 @@
       <span>Dashboard</span></a>
   </li>
 
-  <hr class="sidebar-divider d-none d-md-block my-0">
-
   <li class="nav-item {{ Request::is('mahasiswa/pengajuansuratketeranganaktif*') ? 'active' : '' }}">
     <a class="nav-link" href="/mahasiswa/pengajuansuratketeranganaktif">
-      <i class="fas fa-home"></i>
+      <i class="far fa-file-alt"></i>
       <span>Pengajuan Surat Keterangan Aktif</span></a>
   </li>
 
-  <!-- Divider -->
-  <hr class="sidebar-divider d-none d-md-block my-0">
-
   <li class="nav-item {{ Request::is('mahasiswa/pengajuanlegalisir*') ? 'active' : '' }}">
     <a class="nav-link" href="/mahasiswa/pengajuanlegalisir">
-      <i class="fas fa-home"></i>
+      <i class="fas fa-marker"></i>
       <span>Pengajuan Legalisir</span></a>
   </li>
 
-  <hr class="sidebar-divider d-none d-md-block my-0">
-
   <li class="nav-item {{ Request::is('mahasiswa/tracerstudy*') ? 'active' : '' }}">
     <a class="nav-link" href="/mahasiswa/tracerstudy">
-      <i class="fas fa-home"></i>
+      <i class="fas fa-user-graduate"></i>
       <span>Tracer Study</span></a>
   </li>
 
-  <hr class="sidebar-divider d-none d-md-block my-0">
-
   <li class="nav-item {{ Request::is('mahasiswa/pengaduan*') ? 'active' : '' }}">
     <a class="nav-link" href="/mahasiswa/pengaduan">
-      <i class="fas fa-home"></i>
+      <i class="fas fa-bullhorn"></i>
       <span>Pengaduan</span></a>
   </li>
 
-  <hr class="sidebar-divider d-none d-md-block my-0">
-
   <li class="nav-item {{ Request::is('mahasiswa/pengajuanmengikutwisuda*') ? 'active' : '' }}">
     <a class="nav-link" href="/mahasiswa/pengajuanmengikutiwisuda">
-      <i class="fas fa-home"></i>
+      <i class="fas fa-graduation-cap"></i>
       <span>Pengajuan Mengikuti Wisuda</span></a>
   </li>
 
-  <hr class="sidebar-divider d-none d-md-block my-0">
-
   <li class="nav-item {{ Request::is('mahasiswa/absenpkkmb*') ? 'active' : '' }}">
     <a class="nav-link" href="/mahasiswa/absenpkkmb">
-      <i class="fas fa-home"></i>
+      <i class="fas fa-school"></i>
       <span>Absen PKKMB</span></a>
   </li>
 

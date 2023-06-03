@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Data;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Data\PengajuanSuratKeteranganAktif;
-use App\Models\Admin\MasterData\Mahasiswa;
 
 class PengajuanSuratKeteranganAktifController extends Controller
 {
@@ -14,9 +13,6 @@ class PengajuanSuratKeteranganAktifController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.pengajuansuratketeranganaktif.index', [
-            'list_pengajuan' => PengajuanSuratKeteranganAktif::where('id_mahasiswa', auth()->user()->id)->latest()->get()
-        ]);
     }
 
     /**
@@ -24,7 +20,6 @@ class PengajuanSuratKeteranganAktifController extends Controller
      */
     public function create()
     {
-        return view('mahasiswa.pengajuansuratketeranganaktif.create');
     }
 
     /**
@@ -32,32 +27,20 @@ class PengajuanSuratKeteranganAktifController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'deskripsi' => 'required',
-        ]);
-
-        $validatedData['id_mahasiswa'] = auth()->user()->id;
-        $validatedData['status'] = 1;
-
-        PengajuanSuratKeteranganAktif::create($validatedData);
-
-        return redirect('mahasiswa/pengajuansuratketeranganaktif')->with('success', 'Pengajuan berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(PengajuanSuratKeteranganAktif $pengajuanSuratKeteranganAktif)
     {
-        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(PengajuanSuratKeteranganAktif $pengajuanSuratKeteranganAktif)
     {
-        //
     }
 
     /**
