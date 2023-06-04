@@ -13,12 +13,14 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="mb-3">
-              <label for="deskripsi" class="form-label">Deskripsi Pengajuan</label>
-              <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi"
-                placeholder="Deskripsikan keperluan anda mengajukan surat keterangan aktif secara singkat dan jelas" name="deskripsi">{{ old('deskripsi') }}</textarea>
-              @error('deskripsi')
-                <div class="invalid-feedback">{{ $message }}</div>
+              <label for="deskripsi_pengajuan" class="form-label">Deskripsi Pengajuan</label>
+              @error('deskripsi_pengajuan')
+                <p class="text-danger">{{ $message }}</p>
               @enderror
+              <input id="deskripsi_pengajuan" type="hidden" name="deskripsi_pengajuan">
+              <trix-editor input="deskripsi_pengajuan">Deskripsikan keperluan anda mengajukan surat keterangan aktif dalam
+                kalimat
+                yang singkat dan jelas.</trix-editor>
             </div>
           </div>
         </div>

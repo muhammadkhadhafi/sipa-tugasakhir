@@ -32,9 +32,8 @@ class PengajuanSuratKeteranganAktifController extends Controller
      */
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
-            'deskripsi' => 'required',
+            'deskripsi_pengajuan' => 'required',
         ]);
 
         $validatedData['id_mahasiswa'] = auth()->user()->id;
@@ -58,27 +57,35 @@ class PengajuanSuratKeteranganAktifController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PengajuanSuratKeteranganAktif $pengajuanSuratKeteranganAktif)
+    public function edit(PengajuanSuratKeteranganAktif $pengajuansuratketeranganaktif)
     {
 
         return view('mahasiswa.pengajuansuratketeranganaktif.edit', [
-            'pengajuan' => $pengajuanSuratKeteranganAktif
+            'pengajuan' => $pengajuansuratketeranganaktif
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, PengajuanSuratKeteranganAktif $pengajuansuratketeranganaktif)
     {
-        //
+        $validatedData = $request->validate([
+            'deskripsi_pengajuan' => 'required',
+        ]);
+
+        PengajuanSuratKeteranganAktif::where('id', $pengajuansuratketeranganaktif->id)->update($validatedData);
+
+        return redirect('mahasiswa/pengajuansuratketeranganaktif')->with('success', 'Pengajuan berhasil diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(PengajuanSuratKeteranganAktif $pengajuansuratketeranganaktif)
     {
-        //
+        PengajuanSuratKeteranganAktif::destroy('id', $pengajuansuratketeranganaktif->id);
+
+        return redirect('mahasiswa/pengajuansuratketeranganaktif')->with('success', 'Pengajuan berhasil dihapus');
     }
 }

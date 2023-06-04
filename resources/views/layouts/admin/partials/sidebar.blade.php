@@ -61,18 +61,21 @@
   </div>
 
   <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item">
+  <li class="nav-item {{ Request::is('admin/pengajuansuratketeranganaktif*') ? 'active' : '' }}">
     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
       aria-controls="collapsePages">
-      <i class="fas fa-fw fa-folder"></i>
+      <i class="fas fa-file"></i>
       <span>Pengajuan Surat Keterangan Aktif</span>
     </a>
-    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div id="collapsePages" class="collapse {{ Request::is('admin/pengajuansuratketeranganaktif*') ? 'show' : '' }}"
+      aria-labelledby="headingPages" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Pengajuan:</h6>
-        <a class="collapse-item" href="#">Pengajuan Baru</a>
-        <a class="collapse-item" href="#">Pengajuan Proses</a>
-        <a class="collapse-item" href="#">Pengajuan Selesai</a>
+        <a class="collapse-item {{ Request::is('admin/pengajuansuratketeranganaktif/pengajuanbaru*') ? 'active' : '' }}"
+          href="/admin/pengajuansuratketeranganaktif/pengajuanbaru">Pengajuan
+          Baru</a>
+        <a class="collapse-item {{ Request::is('admin/pengajuansuratketeranganaktif/pengajuanselesai*') ? 'active' : '' }}"
+          href="/admin/pengajuansuratketeranganaktif/pengajuanselesai">Pengajuan Selesai</a>
       </div>
     </div>
   </li>

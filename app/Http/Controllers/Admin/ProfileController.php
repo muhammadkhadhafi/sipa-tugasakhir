@@ -38,7 +38,6 @@ class ProfileController extends Controller
             'agama' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
-            'is_masterdata' => 'required'
         ];
 
         if ($request->username != $pegawai->username) {

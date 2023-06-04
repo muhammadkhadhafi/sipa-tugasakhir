@@ -117,24 +117,6 @@
               </div>
               <div class="col-lg-6">
                 <div class="mb-3">
-                  <label for="is_masterdata" class="form-label">Status</label>
-                  <select class="custom-select @error('is_masterdata') is-invalid @enderror" name="is_masterdata"
-                    id="is_masterdata">
-                    @if (auth()->user()->is_masterdata)
-                      <option value="{{ auth()->user()->is_masterdata }}" selected>Master Data</option>
-                    @else
-                      <option value=0 selected>Admin</option>
-                    @endif
-                  </select>
-                  @error('is_masterdata')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="mb-3">
                   <label for="password" class="form-label">Password</label>
                   <input type="password" class="form-control @error('password') is-invalid @enderror" id="password"
                     name="password" placeholder="Kosongkan jika tidak ingin diubah">

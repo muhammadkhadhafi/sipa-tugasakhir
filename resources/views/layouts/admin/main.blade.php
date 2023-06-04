@@ -20,12 +20,21 @@
   <!-- Custom styles for this template-->
   <link href="/template/css/sb-admin-2.min.css" rel="stylesheet">
 
-
   <!-- dataTables -->
   <link href="/template/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
   {{-- My Style CSS --}}
   <link rel="stylesheet" href="/assets/css/mystyle.css">
+
+  {{-- Trix Editor --}}
+  <link rel="stylesheet" type="text/css" href="/assets/css/trix.css">
+  <script type="text/javascript" src="/assets/js/trix.js"></script>
+
+  <style>
+    trix-toolbar [data-trix-button-group="file-tools"] {
+      display: none;
+    }
+  </style>
 </head>
 
 <body id="page-top">
@@ -108,6 +117,12 @@
   <!-- Page level custom scripts -->
   <script src="/template/js/demo/datatables-demo.js"></script>
 
+  {{-- Trix Editor --}}
+  <script>
+    document.addEventListener('trix-file-accept', function(e) {
+      e.preventDefault();
+    })
+  </script>
 </body>
 
 </html>

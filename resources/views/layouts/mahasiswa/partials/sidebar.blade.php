@@ -27,7 +27,7 @@
 
   <li class="nav-item {{ Request::is('mahasiswa/pengajuansuratketeranganaktif*') ? 'active' : '' }}">
     <a class="nav-link" href="/mahasiswa/pengajuansuratketeranganaktif">
-      <i class="far fa-file-alt"></i>
+      <i class="fas fa-file"></i>
       <span>Pengajuan Surat Keterangan Aktif</span></a>
   </li>
 

@@ -14,7 +14,7 @@
         @else
           <img src="/assets/img/default-person.jpg" alt="{{ $pegawai->nama }}" class="img-fluid" style="width: 100%">
         @endif
-        <input type="file" accept=".jpg, .png" value="foto" name="foto" id="foto"
+        <input type="file" accept=".jpg, .png" name="foto" id="foto"
           class="form-control @error('foto') is-invalid @enderror">
         @error('foto')
           <div class="invalid-feedback">{{ $message }}</div>

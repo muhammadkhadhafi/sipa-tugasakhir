@@ -5,21 +5,21 @@
 
   <div class="card shadow mb-4">
     <div class="card-header d-flex justify-content-between align-items-center">
-      <h6 class="m-0 font-weight-bold text-primary text-uppercase">Tambah Pengajuan</h6>
+      <h6 class="m-0 font-weight-bold text-primary text-uppercase">Edit Pengajuan</h6>
     </div>
     <div class="card-body">
-      <form action="/mahasiswa/pengajuansuratketeranganaktif" method="post">
+      <form action="/mahasiswa/pengajuansuratketeranganaktif/{{ $pengajuan->id }}" method="post">
         @csrf
         @method('put')
         <div class="row">
           <div class="col-lg-12">
             <div class="mb-3">
-              <label for="deskripsi" class="form-label">Deskripsi Pengajuan</label>
-              <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi"
-                placeholder="Deskripsikan keperluan anda mengajukan surat keterangan aktif secara singkat dan jelas" name="deskripsi">{{ old('deskripsi', $pengajuan->deskripsi) }}</textarea>
-              @error('deskripsi')
-                <div class="invalid-feedback">{{ $message }}</div>
+              <label for="deskripsi_pengajuan" class="form-label">Deskripsi Pengajuan</label>
+              @error('deskripsi_pengajuan')
+                <p class="text-danger">{{ $message }}</p>
               @enderror
+              <input id="deskripsi_pengajuan" type="hidden" name="deskripsi_pengajuan">
+              <trix-editor input="deskripsi_pengajuan">{!! $pengajuan->deskripsi_pengajuan !!}</trix-editor>
             </div>
           </div>
         </div>

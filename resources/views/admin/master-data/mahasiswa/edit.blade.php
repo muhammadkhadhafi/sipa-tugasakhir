@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-lg-3">
         <img src="/assets/img/default-person.jpg" alt="{{ $mahasiswa->nama }}" class="img-fluid" style="width: 100%">
-        <input type="file" value="foto" name="foto" id="foto" class="form-control">
+        <input type="file" name="foto" id="foto" class="form-control">
       </div>
       <div class="col-lg-9">
         <div class="card shadow mb-4">

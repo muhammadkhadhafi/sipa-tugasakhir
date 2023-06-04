@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('admin__pengajuan_surat_keterangan_aktifs', function (Blueprint $table) {
             $table->char('id')->primary();
             $table->char('id_mahasiswa');
-            $table->text('deskripsi');
+            $table->text('deskripsi_pengajuan');
             $table->integer('status');
-            $table->text('pesan_admin')->nullable();
+            $table->text('deskripsi_pengajuan_ditolak')->nullable();
             $table->string('surat_keterangan_aktif')->nullable();
             $table->timestamps();
         });

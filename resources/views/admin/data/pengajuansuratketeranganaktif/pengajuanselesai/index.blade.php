@@ -1,26 +1,26 @@
-@extends('layouts.mahasiswa.main')
+@extends('layouts.admin.main')
 
 @section('container')
-  <h1 class="h3 mb-3">Pengajuan Surat Keterangan Aktif</h1>
+  <h1 class="h3 mb-3">
+    Pengajuan Surat Keterangan Aktif</h1>
 
   @include('layouts.utils.notif')
 
   <div class="card shadow m-0">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Pengajuan Surat Keterangan Aktif</h6>
-      <a href="/mahasiswa/pengajuansuratketeranganaktif/create" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i>
-        Tambah
-        Pengajuan</a>
     </div>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
           <thead class="bg-gradient-primary text-light text-uppercase">
             <th width="15px">No</th>
-            <th width="80px">Aksi</th>
+            <th width="120px">Aksi</th>
             <th width="160px">Tanggal Pengajuan</th>
-            <th>Deskripsi</th>
-            <th width="80px">Status</th>
+            <th>NIM</th>
+            <th>Nama</th>
+            <th>Program Studi</th>
+            <th>Status</th>
           </thead>
           <tbody>
             @foreach ($list_pengajuan as $pengajuan)
@@ -28,22 +28,14 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>
                   <div class="btn-group">
-                    @include('layouts.utils.info', [
-                        'url' => url('mahasiswa/pengajuansuratketeranganaktif'),
-                        'id' => $pengajuan->id,
-                    ])
-                    @include('layouts.utils.edit', [
-                        'url' => url('mahasiswa/pengajuansuratketeranganaktif'),
-                        'id' => $pengajuan->id,
-                    ])
-                    @include('layouts.utils.delete', [
-                        'url' => url('mahasiswa/pengajuansuratketeranganaktif'),
-                        'id' => $pengajuan->id,
-                    ])
+                    <a href="/admin/pengajuansuratketeranganaktif/pengajuanselesai/{{ $pengajuan->id }}"
+                      class="btn btn-sm btn-primary"><i class="fas fa-info"></i> Detail Pengajuan</a>
                   </div>
                 </td>
                 <td>{{ $pengajuan->tanggal_pengajuan_string }}</td>
-                <td>{!! $pengajuan->deskripsi_pengajuan !!}</td>
+                <td>{{ $pengajuan->mahasiswa->nim }}</td>
+                <td>{{ $pengajuan->mahasiswa->nama }}</td>
+                <td>{{ $pengajuan->mahasiswa->program_studi }}</td>
                 <td>
                   @if ($pengajuan->status == 1)
                     <span class="badge badge-primary p-1">Pengajuan diproses</span>

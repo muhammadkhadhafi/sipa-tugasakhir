@@ -42,7 +42,7 @@
           </div>
           <div class="row mb-1">
             <div class="col-md-4">Tempat, Tanggal Lahir</div>
-            <div class="col-md-8">{{ auth()->user()->tempat_lahir }}, {{ auth()->user()->tanggal_lahir }}</div>
+            <div class="col-md-8">{{ auth()->user()->tempat_lahir }}, {{ auth()->user()->tanggal_lahir_string }}</div>
           </div>
           <div class="row mb-1">
             <div class="col-md-4">Status</div>
