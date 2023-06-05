@@ -21,7 +21,7 @@
         <dt>Status Pengajuan</dt>
         <dd>
           @if ($pengajuan->status == 1)
-            <span class="badge badge-primary p-1">Pengajuan diproses</span>
+            <span class="badge badge-secondary p-1">Pengajuan baru</span>
           @elseif($pengajuan->status == 2)
             <span class="badge badge-success p-1">Pengajuan selesai</span>
           @elseif($pengajuan->status == 3)

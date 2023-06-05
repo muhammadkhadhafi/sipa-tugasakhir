@@ -43,12 +43,6 @@
       <span>Tracer Study</span></a>
   </li>
 
-  <li class="nav-item {{ Request::is('mahasiswa/pengaduan*') ? 'active' : '' }}">
-    <a class="nav-link" href="/mahasiswa/pengaduan">
-      <i class="fas fa-bullhorn"></i>
-      <span>Pengaduan</span></a>
-  </li>
-
   <li class="nav-item {{ Request::is('mahasiswa/pengajuanmengikutwisuda*') ? 'active' : '' }}">
     <a class="nav-link" href="/mahasiswa/pengajuanmengikutiwisuda">
       <i class="fas fa-graduation-cap"></i>
@@ -59,6 +53,12 @@
     <a class="nav-link" href="/mahasiswa/absenpkkmb">
       <i class="fas fa-school"></i>
       <span>Absen PKKMB</span></a>
+  </li>
+
+  <li class="nav-item {{ Request::is('mahasiswa/pengaduan*') ? 'active' : '' }}">
+    <a class="nav-link" href="/mahasiswa/pengaduan">
+      <i class="fas fa-bullhorn"></i>
+      <span>Pengaduan</span></a>
   </li>
 
   <!-- Divider -->

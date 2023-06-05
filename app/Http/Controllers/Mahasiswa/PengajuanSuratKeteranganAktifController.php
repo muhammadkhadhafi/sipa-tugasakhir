@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Mahasiswa;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Admin\Data\PengajuanSuratKeteranganAktif;
 
 class PengajuanSuratKeteranganAktifController extends Controller
@@ -84,6 +85,9 @@ class PengajuanSuratKeteranganAktifController extends Controller
      */
     public function destroy(PengajuanSuratKeteranganAktif $pengajuansuratketeranganaktif)
     {
+        if ($pengajuansuratketeranganaktif->surat_keterangan_aktif) {
+            Storage::delete($pengajuansuratketeranganaktif->surat_keterangan_aktif);
+        }
         PengajuanSuratKeteranganAktif::destroy('id', $pengajuansuratketeranganaktif->id);
 
         return redirect('mahasiswa/pengajuansuratketeranganaktif')->with('success', 'Pengajuan berhasil dihapus');

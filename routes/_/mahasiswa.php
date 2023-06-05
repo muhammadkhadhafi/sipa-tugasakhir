@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Mahasiswa\PengaduanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Mahasiswa\PengajuanSuratKeteranganAktifController;
 
@@ -8,3 +9,4 @@ Route::get('/dashboard', function () {
 });
 
 Route::resource('pengajuansuratketeranganaktif', PengajuanSuratKeteranganAktifController::class);
+Route::resource('pengaduan', PengaduanController::class);

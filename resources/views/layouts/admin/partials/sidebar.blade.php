@@ -80,6 +80,25 @@
     </div>
   </li>
 
+  <li class="nav-item {{ Request::is('admin/pengaduan*') ? 'active' : '' }}">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+      aria-controls="collapsePages">
+      <i class="fas fa-bullhorn"></i>
+      <span>Pengaduan</span>
+    </a>
+    <div id="collapsePages" class="collapse {{ Request::is('admin/pengaduan*') ? 'show' : '' }}"
+      aria-labelledby="headingPages" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Pengajuan:</h6>
+        <a class="collapse-item {{ Request::is('admin/pengaduan/pengajuanbaru*') ? 'active' : '' }}"
+          href="/admin/pengaduan/pengajuanbaru">Pengajuan
+          Baru</a>
+        <a class="collapse-item {{ Request::is('admin/pengaduan/pengajuanselesai*') ? 'active' : '' }}"
+          href="/admin/pengaduan/pengajuanselesai">Pengajuan Selesai</a>
+      </div>
+    </div>
+  </li>
+
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
 
