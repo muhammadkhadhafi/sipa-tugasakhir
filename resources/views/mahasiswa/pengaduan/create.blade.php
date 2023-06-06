@@ -16,7 +16,7 @@
               <label for="judul_pengaduan" class="form-label">Judul Pengaduan</label>
               <input type="text" name="judul_pengaduan" id="judul_pengaduan"
                 class="form-control @error('judul_pengaduan') is-invalid @enderror">
-              @error('judul_penguduan')
+              @error('judul_pengaduan')
                 <div class="invalid-feedback">{{ $message }}</div>
               @enderror
             </div>
@@ -26,12 +26,11 @@
           <div class="col-lg-12">
             <div class="mb-3">
               <label for="deskripsi_pengaduan" class="form-label">Deskripsi Pengaduan</label>
+              <input id="deskripsi_pengaduan" type="hidden" name="deskripsi_pengaduan">
+              <trix-editor input="deskripsi_pengaduan"></trix-editor>
               @error('deskripsi_pengaduan')
                 <p class="text-danger">{{ $message }}</p>
               @enderror
-              <input id="deskripsi_pengaduan" type="hidden" name="deskripsi_pengaduan">
-              <trix-editor input="deskripsi_pengaduan">Deskripsikan pengaduan anda dalam kalimat yang singkat dan jelas.
-              </trix-editor>
             </div>
           </div>
         </div>
@@ -41,11 +40,18 @@
               <label for="" class="form-label">File Bukti Pengaduan</label>
               <div class="row">
                 <div class="col-lg-6">
-                  <input type="text" name="nama_bukti_pengaduan" id="nama_bukti_pengaduan" class="form-control"
-                    placeholder="Nama bukti">
+                  <input type="text" name="nama_bukti_pengaduan" id="nama_bukti_pengaduan"
+                    class="form-control @error('nama_bukti_pengaduan') is-invalid @enderror" placeholder="Nama bukti">
+                  @error('nama_bukti_pengaduan')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror
                 </div>
                 <div class="col-lg-6">
-                  <input type="file" name="file_bukti_pengaduan" id="file_bukti_pengaduan" class="form-control">
+                  <input type="file" name="file_bukti_pengaduan" id="file_bukti_pengaduan"
+                    class="form-control @error('file_bukti_pengaduan') is-invalid @enderror">
+                  @error('file_bukti_pengaduan')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror
                 </div>
               </div>
             </div>

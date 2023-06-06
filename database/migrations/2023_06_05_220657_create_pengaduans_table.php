@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nama_bukti_pengaduan')->nullable();
             $table->string('file_bukti_pengaduan')->nullable();
             $table->integer('status');
-            $table->integer('deskripsi_tindak_lanjut')->nullable();
+            $table->text('deskripsi_tindak_lanjut')->nullable();
             $table->timestamps();
         });
     }

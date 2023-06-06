@@ -61,7 +61,7 @@
             @csrf
             @method('put')
             <div class="form-group">
-              <label for="deskripsi_pengajuan_ditolak" class="form-label">Tolak Pengajuan</label>
+              <label for="deskripsi_pengajuan_ditolak" class="form-label">Deskripsi Tolak Pengajuan</label>
               <input type="hidden" name="deskripsi_pengajuan_ditolak" id="deskripsi_pengajuan_ditolak">
               <trix-editor input="deskripsi_pengajuan_ditolak">Deskripsikan pesan atau alasan menolak pengajuan ini dalam
                 kalimat yang

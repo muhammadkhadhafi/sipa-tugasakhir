@@ -14,13 +14,13 @@
           <div class="col-lg-12">
             <div class="mb-3">
               <label for="deskripsi_pengajuan" class="form-label">Deskripsi Pengajuan</label>
-              @error('deskripsi_pengajuan')
-                <p class="text-danger">{{ $message }}</p>
-              @enderror
               <input id="deskripsi_pengajuan" type="hidden" name="deskripsi_pengajuan">
               <trix-editor input="deskripsi_pengajuan">Deskripsikan keperluan anda mengajukan surat keterangan aktif dalam
                 kalimat
                 yang singkat dan jelas.</trix-editor>
+              @error('deskripsi_pengajuan')
+                <p class="text-danger">{{ $message }}</p>
+              @enderror
             </div>
           </div>
         </div>

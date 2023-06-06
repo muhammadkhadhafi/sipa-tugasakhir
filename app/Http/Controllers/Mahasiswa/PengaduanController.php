@@ -32,16 +32,20 @@ class PengaduanController extends Controller
      */
     public function store(Request $request, Pengaduan $pengaduan)
     {
-        $pengaduan['judul_pengaduan'] = $request['judul_pengaduan'];
-        $pengaduan['deskripsi_pengaduan'] = $request['deskripsi_pengaduan'];
-        $pengaduan['nama_bukti_pengaduan'] = $request['nama_bukti_pengaduan'];
-        $pengaduan['status'] = 1;
-        $pengaduan['id_mahasiswa'] = auth()->user()->id;
-        if ($request->file('file_bukti_pengaduan')) {
-            $pengaduan['file_bukti_pengaduan'] = $request->file('file_bukti_pengaduan')->store('admin/data/pengaduan');
-        }
-        $pengaduan->save();
+        $validatedData = $request->validate([
+            'judul_pengaduan' => 'required|max:255',
+            'deskripsi_pengaduan' => 'required',
+            'nama_bukti_pengaduan' => 'required|max:255',
+            'file_bukti_pengaduan' => 'file|max:5000'
+        ]);
 
+        $validatedData['status'] = 1;
+        $validatedData['id_mahasiswa'] = auth()->user()->id;
+        if ($request->file('file_bukti_pengaduan')) {
+            $validatedData['file_bukti_pengaduan'] = $request->file('file_bukti_pengaduan')->store('admin/data/pengaduan');
+        }
+
+        Pengaduan::create($validatedData);
         return redirect('mahasiswa/pengaduan')->with('success', 'Pengaduan berhasil ditambahkan');
     }
 
@@ -70,16 +74,21 @@ class PengaduanController extends Controller
      */
     public function update(Request $request, Pengaduan $pengaduan)
     {
-        $pengaduan['judul_pengaduan'] = $request['judul_pengaduan'];
-        $pengaduan['deskripsi_pengaduan'] = $request['deskripsi_pengaduan'];
-        $pengaduan['nama_bukti_pengaduan'] = $request['nama_bukti_pengaduan'];
+        $validatedData = $request->validate([
+            'judul_pengaduan' => 'required|max:255',
+            'deskripsi_pengaduan' => 'required',
+            'nama_bukti_pengaduan' => 'required|max:255',
+            'file_bukti_pengaduan' => 'file|max:5000'
+        ]);
+
         if ($request->file('file_bukti_pengaduan')) {
             if ($pengaduan->file_bukti_pengaduan) {
                 Storage::delete($pengaduan->file_bukti_pengaduan);
             }
-            $pengaduan['file_bukti_pengaduan'] = $request->file('file_bukti_pengaduan')->store('admin/data/pengaduan');
+            $validatedData['file_bukti_pengaduan'] = $request->file('file_bukti_pengaduan')->store('admin/data/pengaduan');
         }
-        $pengaduan->save();
+
+        Pengaduan::where('id', $pengaduan->id)->update($validatedData);
 
         return redirect('mahasiswa/pengaduan')->with('success', 'Pengaduan berhasil diubah');
     }

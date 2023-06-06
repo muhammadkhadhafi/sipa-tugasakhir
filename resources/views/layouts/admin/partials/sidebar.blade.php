@@ -62,12 +62,13 @@
 
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item {{ Request::is('admin/pengajuansuratketeranganaktif*') ? 'active' : '' }}">
-    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-      aria-controls="collapsePages">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePengajuanSuratKeteranganAktif"
+      aria-expanded="true" aria-controls="collapsePengajuanSuratKeteranganAktif">
       <i class="fas fa-file"></i>
       <span>Pengajuan Surat Keterangan Aktif</span>
     </a>
-    <div id="collapsePages" class="collapse {{ Request::is('admin/pengajuansuratketeranganaktif*') ? 'show' : '' }}"
+    <div id="collapsePengajuanSuratKeteranganAktif"
+      class="collapse {{ Request::is('admin/pengajuansuratketeranganaktif*') ? 'show' : '' }}"
       aria-labelledby="headingPages" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Pengajuan:</h6>
@@ -81,20 +82,20 @@
   </li>
 
   <li class="nav-item {{ Request::is('admin/pengaduan*') ? 'active' : '' }}">
-    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-      aria-controls="collapsePages">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePengaduan" aria-expanded="true"
+      aria-controls="collapsePengaduan">
       <i class="fas fa-bullhorn"></i>
       <span>Pengaduan</span>
     </a>
-    <div id="collapsePages" class="collapse {{ Request::is('admin/pengaduan*') ? 'show' : '' }}"
+    <div id="collapsePengaduan" class="collapse {{ Request::is('admin/pengaduan*') ? 'show' : '' }}"
       aria-labelledby="headingPages" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Pengajuan:</h6>
-        <a class="collapse-item {{ Request::is('admin/pengaduan/pengajuanbaru*') ? 'active' : '' }}"
-          href="/admin/pengaduan/pengajuanbaru">Pengajuan
+        <h6 class="collapse-header">Pengaduan:</h6>
+        <a class="collapse-item {{ Request::is('admin/pengaduan/pengaduanbaru*') ? 'active' : '' }}"
+          href="/admin/pengaduan/pengaduanbaru">Pengaduan
           Baru</a>
-        <a class="collapse-item {{ Request::is('admin/pengaduan/pengajuanselesai*') ? 'active' : '' }}"
-          href="/admin/pengaduan/pengajuanselesai">Pengajuan Selesai</a>
+        <a class="collapse-item {{ Request::is('admin/pengaduan/pengaduanselesai*') ? 'active' : '' }}"
+          href="/admin/pengaduan/pengaduanselesai">Pengaduan Selesai</a>
       </div>
     </div>
   </li>

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\Data\Pengaduan\PengaduanBaruController;
+use App\Http\Controllers\Admin\Data\Pengaduan\PengaduanSelesaiController;
 use App\Http\Controllers\Admin\Data\PengajuanSuratKeteranganAktif\PengajuanBaruController;
 use App\Http\Controllers\Admin\Data\PengajuanSuratKeteranganAktif\PengajuanSelesaiController;
 use Illuminate\Support\Facades\Route;
@@ -28,4 +30,13 @@ Route::resource('/pengajuansuratketeranganaktif/pengajuanselesai', PengajuanSele
 Route::put('/pengajuansuratketeranganaktif/pengajuanselesai/prosesulang/{pengajuanselesai}', [PengajuanSelesaiController::class, 'prosesUlang']);
 Route::put('pengajuansuratketeranganaktif/pengajuanselesai/uploadulang/{pengajuanselesai}', [PengajuanSelesaiController::class, 'uploadUlang']);
 Route::put('pengajuansuratketeranganaktif/pengajuanselesai/ubahdeskripsipengajuanditolak/{pengajuanselesai}', [PengajuanSelesaiController::class, 'ubahDeskripsiPengajuanDitolak']);
+// End
+
+// Pengaduan
+Route::resource('/pengaduan/pengaduanbaru', PengaduanBaruController::class)->except(['create', 'store', 'edit', 'update', 'destroy']);
+Route::put('/pengaduan/pengaduanbaru/deskripsitindaklanjut/{pengaduanbaru}', [PengaduanBaruController::class, 'deskripsiTindakLanjut']);
+
+Route::resource('/pengaduan/pengaduanselesai', PengaduanSelesaiController::class)->except(['create', 'store', 'edit', 'update', 'destroy']);
+Route::put('/pengaduan/pengaduanselesai/ubahdeskripsitindaklanjut/{pengaduanselesai}', [PengaduanSelesaiController::class, 'ubahDeskripsiTindakLanjut']);
+Route::put('pengaduan/pengaduanselesai/prosesulang/{pengaduanselesai}', [PengaduanSelesaiController::class, 'prosesUlang']);
 // End

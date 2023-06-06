@@ -3,13 +3,15 @@
 namespace App\Models\Admin\Data;
 
 use App\Models\Admin\MasterData\Mahasiswa;
+use App\Models\Model;
 use Carbon\Carbon;
-use App\Models\Model as ModelsModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Pengaduan extends ModelsModel
+class Pengaduan extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
 
     protected $table = 'admin__pengaduan';
 
