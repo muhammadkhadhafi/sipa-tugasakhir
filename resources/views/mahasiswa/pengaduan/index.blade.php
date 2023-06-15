@@ -8,7 +8,8 @@
   <div class="card shadow m-0">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Pengaduan</h6>
-      <a href="/mahasiswa/pengaduan/create" class="btn btn-sm btn-primary px-3"><i class="fas fa-plus"></i></a>
+      <a href="/mahasiswa/pengaduan/create" class="btn btn-sm btn-primary px-3"><i class="fas fa-plus"></i> Tambah
+        Pengaduan</a>
     </div>
     <div class="card-body">
       <div class="table-responsive">

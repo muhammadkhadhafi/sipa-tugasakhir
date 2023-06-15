@@ -31,22 +31,10 @@
       <span>Pengajuan Surat Keterangan Aktif</span></a>
   </li>
 
-  <li class="nav-item {{ Request::is('mahasiswa/pengajuanlegalisir*') ? 'active' : '' }}">
-    <a class="nav-link" href="/mahasiswa/pengajuanlegalisir">
-      <i class="fas fa-marker"></i>
-      <span>Pengajuan Legalisir</span></a>
-  </li>
-
-  <li class="nav-item {{ Request::is('mahasiswa/tracerstudy*') ? 'active' : '' }}">
-    <a class="nav-link" href="/mahasiswa/tracerstudy">
-      <i class="fas fa-user-graduate"></i>
-      <span>Tracer Study</span></a>
-  </li>
-
-  <li class="nav-item {{ Request::is('mahasiswa/pengajuanmengikutwisuda*') ? 'active' : '' }}">
-    <a class="nav-link" href="/mahasiswa/pengajuanmengikutiwisuda">
-      <i class="fas fa-graduation-cap"></i>
-      <span>Pengajuan Mengikuti Wisuda</span></a>
+  <li class="nav-item {{ Request::is('mahasiswa/pembayaran*') ? 'active' : '' }}">
+    <a class="nav-link" href="/mahasiswa/pembayaran">
+      <i class="fas fa-credit-card"></i>
+      <span>Pembayaran</span></a>
   </li>
 
   <li class="nav-item {{ Request::is('mahasiswa/absenpkkmb*') ? 'active' : '' }}">

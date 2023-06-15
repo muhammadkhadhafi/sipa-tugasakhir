@@ -81,6 +81,24 @@
     </div>
   </li>
 
+  <li class="nav-item {{ Request::is('admin/pembayaran*') ? 'active' : '' }}">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePembayaran" aria-expanded="true"
+      aria-controls="collapsePembayaran">
+      <i class="fas fa-credit-card"></i>
+      <span>Pembayaran</span>
+    </a>
+    <div id="collapsePembayaran" class="collapse {{ Request::is('admin/pembayaran*') ? 'show' : '' }}"
+      aria-labelledby="headingPages" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Pembayaran:</h6>
+        <a class="collapse-item {{ Request::is('admin/pembayaran/pembayaranmasuk*') ? 'active' : '' }}"
+          href="/admin/pembayaran/pembayaranmasuk">Pembayaran Masuk</a>
+        <a class="collapse-item {{ Request::is('admin/pembayaran/kategoripembayaran*') ? 'active' : '' }}"
+          href="/admin/pembayaran/kategoripembayaran">Kategori Pembayaran</a>
+      </div>
+    </div>
+  </li>
+
   <li class="nav-item {{ Request::is('admin/pengaduan*') ? 'active' : '' }}">
     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePengaduan" aria-expanded="true"
       aria-controls="collapsePengaduan">

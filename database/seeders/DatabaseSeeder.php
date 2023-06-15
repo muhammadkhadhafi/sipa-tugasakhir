@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Admin\Data\KategoriPembayaran;
 use App\Models\Admin\MasterData\Mahasiswa;
 use App\Models\Admin\MasterData\Pegawai;
-use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Mahasiswa::create([
-            'nama' => 'Muhammad Khadafi',
+            'nama' => 'Khadafi Mahasiswa',
             'nim' => '3042020026',
             'program_studi' => 'Teknologi Informasi',
             'jenis_kelamin' => 'Laki-laki',
@@ -56,6 +56,16 @@ class DatabaseSeeder extends Seeder
             'tempat_lahir' => 'Kendawangan',
             'tanggal_lahir' => '2001-10-05',
             'password' => bcrypt('password')
+        ]);
+
+        KategoriPembayaran::create([
+            'kategori_pembayaran' => 'Sewa Toga',
+            'harga' => 100000
+        ]);
+
+        KategoriPembayaran::create([
+            'kategori_pembayaran' => 'Foto',
+            'harga' => 50000
         ]);
     }
 }

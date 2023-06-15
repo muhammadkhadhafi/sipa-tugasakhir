@@ -8,7 +8,7 @@
 
   <div class="card shadow m-0">
     <div class="card-header justify-content-between d-flex align-items-center">
-      <h6 class="m-0 font-weight-bold text-primary text-uppercase">Pengajuan Surat Keterangan Aktif</h6>
+      <h6 class="m-0 font-weight-bold text-primary text-uppercase">Pengajuan Selesai</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">

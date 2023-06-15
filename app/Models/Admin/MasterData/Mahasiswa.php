@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin\MasterData;
 
+use App\Models\Admin\Data\Pembayaran;
 use App\Models\Admin\Data\PengajuanSuratKeteranganAktif;
 use Illuminate\Support\Carbon;
 use App\Models\ModelAuthenticate;
@@ -22,5 +23,10 @@ class Mahasiswa extends ModelAuthenticate
     public function pengajuanSuratKeteranganAktif()
     {
         return $this->hasMany(PengajuanSuratKeteranganAktif::class);
+    }
+
+    public function pembayaran()
+    {
+        return $this->hasMany(Pembayaran::class);
     }
 }

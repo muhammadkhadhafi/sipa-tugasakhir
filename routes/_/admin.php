@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\Data\Pembayaran\KategoriPembayaranController;
+use App\Http\Controllers\Admin\Data\Pembayaran\PembayaranMasukController;
 use App\Http\Controllers\Admin\Data\Pengaduan\PengaduanBaruController;
 use App\Http\Controllers\Admin\Data\Pengaduan\PengaduanSelesaiController;
 use App\Http\Controllers\Admin\Data\PengajuanSuratKeteranganAktif\PengajuanBaruController;
@@ -39,4 +41,10 @@ Route::put('/pengaduan/pengaduanbaru/deskripsitindaklanjut/{pengaduanbaru}', [Pe
 Route::resource('/pengaduan/pengaduanselesai', PengaduanSelesaiController::class)->except(['create', 'store', 'edit', 'update', 'destroy']);
 Route::put('/pengaduan/pengaduanselesai/ubahdeskripsitindaklanjut/{pengaduanselesai}', [PengaduanSelesaiController::class, 'ubahDeskripsiTindakLanjut']);
 Route::put('pengaduan/pengaduanselesai/prosesulang/{pengaduanselesai}', [PengaduanSelesaiController::class, 'prosesUlang']);
+// End
+
+// Pembayaran
+Route::resource('pembayaran/kategoripembayaran', KategoriPembayaranController::class);
+Route::get('pembayaran/pembayaranmasuk', [PembayaranMasukController::class, 'index']);
+Route::get('pembayaran/pembayaranmasuk/{pembayaran}', [PembayaranMasukController::class, 'show']);
 // End
