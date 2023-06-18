@@ -26,35 +26,6 @@
   <!-- Divider -->
   <hr class="sidebar-divider">
 
-  @can('masterdata')
-    <!-- Heading -->
-    <div class="sidebar-heading">
-      Master Data
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ Request::is('admin/master-data*') ? 'active' : '' }}">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-        aria-controls="collapseTwo">
-        <i class="fas fa-users"></i>
-        <span>Users</span>
-      </a>
-      <div id="collapseTwo" class="collapse {{ Request::is('admin/master-data*') ? 'show' : '' }}"
-        aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">Users:</h6>
-          <a class="collapse-item {{ Request::is('admin/master-data/mahasiswa*') ? 'active' : '' }}"
-            href="/admin/master-data/mahasiswa">Mahasiswa</a>
-          <a class="collapse-item {{ Request::is('admin/master-data/pegawai*') ? 'active' : '' }}"
-            href="/admin/master-data/pegawai">Pegawai</a>
-        </div>
-      </div>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-  @endcan
-
   <!-- Heading -->
   <div class="sidebar-heading">
     Data
@@ -65,7 +36,7 @@
     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePengajuanSuratKeteranganAktif"
       aria-expanded="true" aria-controls="collapsePengajuanSuratKeteranganAktif">
       <i class="fas fa-file"></i>
-      <span>Pengajuan Surat Keterangan Aktif</span>
+      <span>Surat Keterangan Aktif</span>
     </a>
     <div id="collapsePengajuanSuratKeteranganAktif"
       class="collapse {{ Request::is('admin/pengajuansuratketeranganaktif*') ? 'show' : '' }}"
@@ -120,6 +91,36 @@
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
+
+  @can('masterdata')
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      Master Data
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item {{ Request::is('admin/master-data*') ? 'active' : '' }}">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+        aria-controls="collapseTwo">
+        <i class="fas fa-users"></i>
+        <span>Users</span>
+      </a>
+      <div id="collapseTwo" class="collapse {{ Request::is('admin/master-data*') ? 'show' : '' }}"
+        aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Users:</h6>
+          <a class="collapse-item {{ Request::is('admin/master-data/mahasiswa*') ? 'active' : '' }}"
+            href="/admin/master-data/mahasiswa">Mahasiswa</a>
+          <a class="collapse-item {{ Request::is('admin/master-data/pegawai*') ? 'active' : '' }}"
+            href="/admin/master-data/pegawai">Pegawai</a>
+        </div>
+      </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+  @endcan
+
 
   <!-- Sidebar Toggler (Sidebar) -->
   <div class="text-center d-none d-md-inline">

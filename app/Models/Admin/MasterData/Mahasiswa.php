@@ -12,8 +12,9 @@ class Mahasiswa extends ModelAuthenticate
 {
     use HasFactory;
 
-    protected $table = 'admin__mahasiswa';
-    protected $guarded = ['id'];
+    protected $table = 'admin__ms__mahasiswa';
+
+    protected $guarded = ['uuid'];
 
     public function getTanggalLahirStringAttribute()
     {

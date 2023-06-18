@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin\MasterData\Mahasiswa;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -22,7 +24,7 @@ class AuthController extends Controller
         $is_mahasiswa = null;
         $userid = $request->userid;
         if ($userid) {
-            $userid = str_replace(" ", "", $userid);
+            $userid = str_replace(' ', '', $userid);
             $strlen = Str::length($userid);
             if ($strlen == 17) {
                 $field = 'nip';
@@ -34,10 +36,18 @@ class AuthController extends Controller
             }
         }
 
-        $credential = [
-            $field => $request->userid,
-            'password' => $request->password
-        ];
+        if ($is_mahasiswa) {
+            $nim = $userid;
+            $credential = [
+                $field => Str::substr($nim, 0, 3) . ' ' . Str::substr($nim, 3, 4) . ' ' . Str::substr($nim, 7),
+                'password' => $request->password
+            ];
+        } else {
+            $credential = [
+                $field => $request->userid,
+                'password' => $request->password
+            ];
+        }
 
         $remember = (isset($request->remember)) ? true : false;
         if ($is_mahasiswa) {
@@ -64,5 +74,16 @@ class AuthController extends Controller
         request()->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function gantiPassword()
+    {
+        $list_mahasiswa = Mahasiswa::all();
+        foreach ($list_mahasiswa as $mahasiswa) {
+            $passwordBaru = $mahasiswa->nim;
+            $passwordReplace = str_replace(' ', '', $passwordBaru);
+            $passwordHash = Hash::make($passwordReplace);
+            $mahasiswa->where('id', $mahasiswa->id)->update(['password' => $passwordHash]);
+        }
     }
 }

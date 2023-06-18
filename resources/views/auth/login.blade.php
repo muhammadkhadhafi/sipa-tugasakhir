@@ -19,6 +19,13 @@
 
   <!-- Custom styles for this template-->
   <link href="/template/css/sb-admin-2.min.css" rel="stylesheet">
+  <style>
+    .bg-login-khadafi {
+      background: url("https://source.unsplash.com/4rDCa5hBlCs/600x800");
+      background-position: center;
+      background-size: cover;
+    }
+  </style>
 
 </head>
 
@@ -35,7 +42,7 @@
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+              <div class="col-lg-6 d-none d-lg-block bg-login-khadafi"></div>
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
@@ -68,6 +75,13 @@
                     </div>
                     <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
                   </form>
+                  {{-- Button Ubah Password Massal --}}
+                  {{-- <form action="/gantipassword" method="post">
+                    @csrf
+                    <button type="submit" class="btn btn-sm btn-danger mt-3"><i class="fas fa-trash"></i> Ubah semua
+                      password</button>
+                  </form> --}}
+                  {{-- End --}}
                   <br><br><br><br><br><br>
                   <div class="text-left">
                     <span class="small">Copyright &copy; 2023 POLITAP. All rights reserved.</span>

@@ -36,8 +36,8 @@ class MahasiswaController extends Controller
             'nama' => ['required', 'max:255'],
             'nim' => ['required', 'unique:admin__mahasiswa'],
             'program_studi' => ['required'],
-            'jenis_kelamin' => 'required',
-            'agama' => 'required',
+            // 'jenis_kelamin' => 'required',
+            // 'agama' => 'required',
             'tempat_lahir' => 'required|max:255',
             'tanggal_lahir' => 'required',
             'password' => 'required|min:5|max:255'

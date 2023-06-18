@@ -24,7 +24,7 @@
           <div class="col-lg-6">
             <div class="mb-3">
               <label for="nim" class="form-label">NIM</label>
-              <input type="number" class="form-control @error('nim') is-invalid @enderror" id="nim" name="nim"
+              <input type="text" class="form-control @error('nim') is-invalid @enderror" id="nim" name="nim"
                 value="{{ old('nim') }}">
               @error('nim')
                 <div class="invalid-feedback">{{ $message }}</div>
