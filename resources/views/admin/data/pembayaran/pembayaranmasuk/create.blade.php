@@ -37,7 +37,7 @@
         </div>
         <div class="row">
           <div class="col-lg-12">
-            <button class="btn btn-primary btn-sm float-end float-right"><i class="far fa-save"></i> Simpan</button>
+            <button class="btn btn-primary btn-sm float-end float-right"><i class="far fa-save fa-sm"></i> Simpan</button>
           </div>
         </div>
       </form>

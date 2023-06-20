@@ -5,12 +5,12 @@
 
   @include('layouts.utils.notif')
 
-  <div class="card shadow m-0">
+  <div class="card shadow m-0 mb-4">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Kategori Pembayaran</h6>
       <a href="{{ url('admin/pembayaran/kategoripembayaran/create') }}" class="btn btn-sm btn-primary"><i
-          class="fas fa-plus"></i>
-        Tambah Kategori Pembayaran</a>
+          class="fas fa-plus fa-sm"></i>
+        Tambah Kategori</a>
     </div>
     <div class="card-body">
       <div class="table-responsive">

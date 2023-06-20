@@ -47,7 +47,7 @@
                   @enderror
                 </div>
                 <div class="col-lg-6">
-                  <input type="file" name="file_bukti_pengaduan" id="file_bukti_pengaduan"
+                  <input type="file" name="file_bukti_pengaduan" id="file_bukti_pengaduan" accept=".pdf"
                     class="form-control @error('file_bukti_pengaduan') is-invalid @enderror">
                   @error('file_bukti_pengaduan')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -59,7 +59,7 @@
         </div>
         <div class="row">
           <div class="col-lg-12">
-            <button class="btn btn-primary btn-sm float-end float-right"><i class="far fa-save"></i> Simpan</button>
+            <button class="btn btn-primary btn-sm float-end float-right"><i class="far fa-save fa-sm"></i> Simpan</button>
           </div>
         </div>
       </form>

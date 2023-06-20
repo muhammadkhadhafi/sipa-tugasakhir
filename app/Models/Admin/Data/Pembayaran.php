@@ -12,7 +12,6 @@ class Pembayaran extends Model
     use HasFactory;
 
     protected $table = 'admin__pembayaran__pembayarans';
-
     protected $guarded = ['id'];
 
     public function mahasiswa()

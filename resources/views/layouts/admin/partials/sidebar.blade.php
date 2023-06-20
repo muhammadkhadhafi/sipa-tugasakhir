@@ -48,6 +48,8 @@
           Baru</a>
         <a class="collapse-item {{ Request::is('admin/pengajuansuratketeranganaktif/pengajuanselesai*') ? 'active' : '' }}"
           href="/admin/pengajuansuratketeranganaktif/pengajuanselesai">Pengajuan Selesai</a>
+        <a class="collapse-item {{ Request::is('admin/pengajuansuratketeranganaktif/catatan*') ? 'active' : '' }}"
+          href="/admin/pengajuansuratketeranganaktif/catatanditampilkan">Catatan Ditampilkan</a>
       </div>
     </div>
   </li>

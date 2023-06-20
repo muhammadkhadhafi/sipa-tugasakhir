@@ -5,10 +5,10 @@
 
   @include('layouts.utils.notif')
 
-  <div class="card shadow m-0">
+  <div class="card shadow m-0 mb-4">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Pengaduan</h6>
-      <a href="/mahasiswa/pengaduan/create" class="btn btn-sm btn-primary px-3"><i class="fas fa-plus"></i> Tambah
+      <a href="/mahasiswa/pengaduan/create" class="btn btn-sm btn-primary px-3"><i class="fas fa-plus fa-sm"></i> Tambah
         Pengaduan</a>
     </div>
     <div class="card-body">
@@ -16,7 +16,7 @@
         <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
           <thead class="bg-gradient-primary text-light text-uppercase">
             <th width="15px">No</th>
-            <th width="80px">Aksi</th>
+            <th width="120px">Aksi</th>
             <th width="160px">Tanggal</th>
             <th>Judul Pengaduan</th>
             <th width="80px">Status</th>
@@ -27,18 +27,23 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>
                   <div class="btn-group">
-                    @include('layouts.utils.info', [
-                        'url' => url('mahasiswa/pengaduan'),
-                        'id' => $pengaduan->id,
-                    ])
-                    @include('layouts.utils.edit', [
-                        'url' => url('mahasiswa/pengaduan'),
-                        'id' => $pengaduan->id,
-                    ])
-                    @include('layouts.utils.delete', [
-                        'url' => url('mahasiswa/pengaduan'),
-                        'id' => $pengaduan->id,
-                    ])
+                    @if ($pengaduan->status == 1)
+                      @include('layouts.utils.info', [
+                          'url' => url('mahasiswa/pengaduan'),
+                          'id' => $pengaduan->id,
+                      ])
+                      @include('layouts.utils.edit', [
+                          'url' => url('mahasiswa/pengaduan'),
+                          'id' => $pengaduan->id,
+                      ])
+                      @include('layouts.utils.delete', [
+                          'url' => url('mahasiswa/pengaduan'),
+                          'id' => $pengaduan->id,
+                      ])
+                    @else
+                      <a href="{{ url('mahasiswa/pengaduan/' . $pengaduan->id) }}" class="btn btn-sm btn-primary"><i
+                          class="fas fa-info fa-xs"></i> Detail Pengaduan</a>
+                    @endif
                   </div>
                 </td>
                 <td>{{ $pengaduan->tanggal_pengaduan_string }}</td>

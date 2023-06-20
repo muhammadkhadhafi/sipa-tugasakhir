@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Admin\Data\CatatanPengajuanSuratKeteranganAktif;
 use App\Models\Admin\Data\KategoriPembayaran;
-use App\Models\Admin\MasterData\Mahasiswa;
 use App\Models\Admin\MasterData\Pegawai;
 use Illuminate\Database\Seeder;
 
@@ -36,28 +36,6 @@ class DatabaseSeeder extends Seeder
             'is_masterdata' => true
         ]);
 
-        Mahasiswa::create([
-            'nama' => 'Khadafi Mahasiswa',
-            'nim' => '3042020026',
-            'program_studi' => 'Teknologi Informasi',
-            'jenis_kelamin' => 'Laki-laki',
-            'agama' => 'Islam',
-            'tempat_lahir' => 'Kendawangan',
-            'tanggal_lahir' => '2001-10-05',
-            'password' => bcrypt('password')
-        ]);
-
-        Mahasiswa::create([
-            'nama' => 'Fathur Rahman',
-            'nim' => '3042020013',
-            'program_studi' => 'Teknologi Informasi',
-            'jenis_kelamin' => 'Laki-laki',
-            'agama' => 'Islam',
-            'tempat_lahir' => 'Kendawangan',
-            'tanggal_lahir' => '2001-10-05',
-            'password' => bcrypt('password')
-        ]);
-
         KategoriPembayaran::create([
             'kategori_pembayaran' => 'Sewa Toga',
             'harga' => 100000
@@ -66,6 +44,10 @@ class DatabaseSeeder extends Seeder
         KategoriPembayaran::create([
             'kategori_pembayaran' => 'Foto',
             'harga' => 50000
+        ]);
+
+        CatatanPengajuanSuratKeteranganAktif::create([
+            'kontak_admin' => 'Bu Irul +62 878-2765-0024',
         ]);
     }
 }

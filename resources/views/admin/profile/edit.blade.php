@@ -25,7 +25,7 @@
         <div class="card shadow mb-4">
           <div class="card-header d-flex justify-content-between align-items-center">
             <h6 class="m-0 font-weight-bold text-primary text-uppercase">Edit Pegawai</h6>
-            <button class="btn btn-primary btn-sm float-end float-right"><i class="far fa-save"></i> Simpan</button>
+            <button class="btn btn-primary btn-sm float-end float-right"><i class="far fa-save fa-sm"></i> Simpan</button>
           </div>
           <div class="card-body">
             <div class="row">

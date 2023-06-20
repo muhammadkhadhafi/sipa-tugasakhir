@@ -26,8 +26,8 @@ class PegawaiController extends Controller
     {
         $rules = [
             'nama' => ['required', 'max:255'],
-            'username' => ['required', 'unique:admin__pegawai', 'min:3', 'max:255'],
-            'nip' => ['required', 'unique:admin__pegawai'],
+            'username' => ['required', 'unique:admin__ms__pegawai', 'min:3', 'max:255'],
+            'nip' => ['required', 'unique:admin__ms__pegawai'],
             'jenis_kelamin' => ['required'],
             'agama' => ['required'],
             'tempat_lahir' => 'required',
@@ -47,7 +47,7 @@ class PegawaiController extends Controller
 
         Pegawai::create($validatedData);
 
-        return redirect('/admin/master-data/pegawai')->with('success', 'Pegawai berhasil ditambahkan');
+        return redirect('/admin/master-data/pegawai')->with('success', 'Pegawai berhasil disimpan');
     }
 
     public function show(Pegawai $pegawai)
@@ -76,11 +76,11 @@ class PegawaiController extends Controller
         ];
 
         if ($request->username != $pegawai->username) {
-            $rules['username'] = ['required', 'unique:admin__pegawai', 'min:3', 'max:255'];
+            $rules['username'] = ['required', 'unique:admin__ms__pegawai', 'min:3', 'max:255'];
         };
 
         if ($pegawai->nip != $request->nip) {
-            $rules['nip'] = ['required', 'unique:admin__pegawai'];
+            $rules['nip'] = ['required', 'unique:admin__ms__pegawai'];
         };
 
         if ($request->password) {
@@ -106,7 +106,7 @@ class PegawaiController extends Controller
 
         Pegawai::where('id', $pegawai->id)->update($validatedData);
 
-        return redirect('/admin/master-data/pegawai')->with('success', 'Pegawai berhasil diubah');
+        return redirect('/admin/master-data/pegawai')->with('success', 'Pegawai berhasil disimpan');
     }
 
     public function destroy(Pegawai $pegawai)

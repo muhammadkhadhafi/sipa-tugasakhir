@@ -5,10 +5,10 @@
 
   @include('layouts.utils.notif')
 
-  <div class="card shadow m-0">
+  <div class="card shadow m-0 mb-4">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Pembayaran</h6>
-      <a href="/mahasiswa/pembayaran/create" class="btn btn-sm btn-primary px-3"><i class="fas fa-plus"></i> Tambah
+      <a href="/mahasiswa/pembayaran/create" class="btn btn-sm btn-primary px-3"><i class="fas fa-plus fa-sm"></i> Tambah
         Pembayaran</a>
     </div>
     <div class="card-body">
@@ -29,18 +29,18 @@
                   <div class="btn-group">
                     @if ($pembayaran->status == 'Unpaid')
                       <a href="{{ url('mahasiswa/pembayaran/' . $pembayaran->id) }}" class="btn btn-sm btn-primary"><i
-                          class="fas fa-info"></i> Detail</a>
+                          class="fas fa-info fa-xs"></i> Detail</a>
                       <form action="{{ url('mahasiswa/pembayaran/' . $pembayaran->id) }}" method="post"
                         onclick="return confirm('Yakin ingin menghapus pembayaran ini?')">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-sm btn-danger" style="border-radius: 0 3px 3px 0"><i
-                            class="far fa-trash-alt"></i>
+                            class="far fa-trash-alt fa-xs"></i>
                           Hapus</button>
                       </form>
                     @else
                       <a href="{{ url('mahasiswa/pembayaran/' . $pembayaran->id) }}" class="btn btn-sm btn-primary"><i
-                          class="fas fa-info"></i> Detail Pembayaran</a>
+                          class="fas fa-info fa-xs"></i> Detail Pembayaran</a>
                     @endif
                   </div>
                 </td>

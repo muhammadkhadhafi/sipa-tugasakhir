@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('admin__pembayaran__pembayarans', function (Blueprint $table) {
-            $table->char('id')->primary();
-            $table->char('id_mahasiswa');
-            $table->char('id_kategoripembayaran');
+            $table->char('id', 36)->primary();
+            $table->char('id_mahasiswa', 36);
+            $table->char('id_kategoripembayaran', 36);
             $table->enum('status', ['Unpaid', 'Paid']);
             $table->string('snap_token')->nullable();
             $table->timestamps();

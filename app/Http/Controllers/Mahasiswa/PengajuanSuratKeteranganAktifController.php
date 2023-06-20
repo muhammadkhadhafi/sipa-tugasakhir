@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Admin\Data\PengajuanSuratKeteranganAktif;
+use App\Models\Admin\Data\CatatanPengajuanSuratKeteranganAktif;
+
 
 class PengajuanSuratKeteranganAktifController extends Controller
 {
@@ -14,7 +16,6 @@ class PengajuanSuratKeteranganAktifController extends Controller
      */
     public function index()
     {
-
         return view('mahasiswa.pengajuansuratketeranganaktif.index', [
             'list_pengajuan' => PengajuanSuratKeteranganAktif::where('id_mahasiswa', auth()->user()->id)->latest()->get()
         ]);
@@ -33,7 +34,12 @@ class PengajuanSuratKeteranganAktifController extends Controller
      */
     public function store(Request $request)
     {
+        $kontak_admin = CatatanPengajuanSuratKeteranganAktif::first()->kontak_admin;
         $validatedData = $request->validate([
+            'semester' => 'required',
+            'no_hp' => 'required',
+            'nama_orang_tua' => 'required',
+            'pekerjaan_orang_tua' => 'required',
             'deskripsi_pengajuan' => 'required',
         ]);
 
@@ -42,7 +48,7 @@ class PengajuanSuratKeteranganAktifController extends Controller
 
         PengajuanSuratKeteranganAktif::create($validatedData);
 
-        return redirect('mahasiswa/pengajuansuratketeranganaktif')->with('success', 'Pengajuan berhasil ditambahkan');
+        return redirect('mahasiswa/pengajuansuratketeranganaktif')->with('success', 'Pengajuan berhasil disimpan, segera konfirmasi ke: ' . $kontak_admin);
     }
 
     /**
@@ -51,7 +57,8 @@ class PengajuanSuratKeteranganAktifController extends Controller
     public function show(PengajuanSuratKeteranganAktif $pengajuansuratketeranganaktif)
     {
         return view('mahasiswa.pengajuansuratketeranganaktif.show', [
-            'pengajuan' => $pengajuansuratketeranganaktif
+            'pengajuan' => $pengajuansuratketeranganaktif,
+            'kontak_admin' => CatatanPengajuanSuratKeteranganAktif::first()->kontak_admin
         ]);
     }
 
@@ -71,13 +78,19 @@ class PengajuanSuratKeteranganAktifController extends Controller
      */
     public function update(Request $request, PengajuanSuratKeteranganAktif $pengajuansuratketeranganaktif)
     {
+        $kontak_admin = CatatanPengajuanSuratKeteranganAktif::first()->kontak_admin;
+
         $validatedData = $request->validate([
+            'semester' => 'required',
+            'no_hp' => 'required',
+            'nama_orang_tua' => 'required',
+            'pekerjaan_orang_tua' => 'required',
             'deskripsi_pengajuan' => 'required',
         ]);
 
         PengajuanSuratKeteranganAktif::where('id', $pengajuansuratketeranganaktif->id)->update($validatedData);
 
-        return redirect('mahasiswa/pengajuansuratketeranganaktif')->with('success', 'Pengajuan berhasil diubah');
+        return redirect('mahasiswa/pengajuansuratketeranganaktif')->with('success', 'Pengajuan berhasil disimpan, segera konfirmasi ke: ' . $kontak_admin);
     }
 
     /**

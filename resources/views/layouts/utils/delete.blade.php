@@ -3,5 +3,5 @@
   @csrf
   @method('delete')
   <button type="submit" class="btn btn-sm btn-danger" style="width: 36px; border-radius: 0 3px 3px 0"><i
-      class="far fa-trash-alt"></i></button>
+      class="far fa-trash-alt fa-xs"></i></button>
 </form>

@@ -46,7 +46,7 @@ class PengaduanController extends Controller
         }
 
         Pengaduan::create($validatedData);
-        return redirect('mahasiswa/pengaduan')->with('success', 'Pengaduan berhasil ditambahkan');
+        return redirect('mahasiswa/pengaduan')->with('success', 'Pengaduan berhasil disimpan');
     }
 
     /**
@@ -90,7 +90,7 @@ class PengaduanController extends Controller
 
         Pengaduan::where('id', $pengaduan->id)->update($validatedData);
 
-        return redirect('mahasiswa/pengaduan')->with('success', 'Pengaduan berhasil diubah');
+        return redirect('mahasiswa/pengaduan')->with('success', 'Pengaduan berhasil disimpan');
     }
 
     /**

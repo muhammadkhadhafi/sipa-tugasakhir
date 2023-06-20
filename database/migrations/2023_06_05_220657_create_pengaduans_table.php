@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('admin__pengaduan', function (Blueprint $table) {
-            $table->char('id')->primary();
-            $table->char('id_mahasiswa');
+            $table->char('id', 36)->primary();
+            $table->char('id_mahasiswa', 36);
             $table->string('judul_pengaduan')->nullable();
             $table->text('deskripsi_pengaduan')->nullable();
             $table->string('nama_bukti_pengaduan')->nullable();

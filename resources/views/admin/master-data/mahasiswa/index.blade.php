@@ -5,7 +5,7 @@
 
   @include('layouts.utils.notif')
 
-  <div class="card shadow m-0">
+  <div class="card shadow m-0 mb-4">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Mahasiswa</h6>
     </div>
@@ -15,8 +15,10 @@
           <thead class="bg-gradient-primary text-light text-uppercase">
             <th width="15px">No</th>
             <th width="50px">Aksi</th>
-            <th>Nama</th>
             <th>NIM</th>
+            <th>Nama</th>
+            <th>Program Studi</th>
+            <th>Angkatan</th>
           </thead>
           <tbody>
             @foreach ($mahasiswas as $mahasiswa)
@@ -24,12 +26,14 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>
                   <div class="btn-group">
-                    <a href="{{ url('admin/master-data/mahasiswa' . $mahasiswa->id) }}" class="btn btn-sm btn-primary"><i
-                        class="fas fa-info"></i> Detail</a>
+                    <a href="{{ url('admin/master-data/mahasiswa/' . $mahasiswa->id) }}" class="btn btn-sm btn-primary"><i
+                        class="fas fa-info fa-xs"></i> Detail</a>
                   </div>
                 </td>
-                <td>{{ $mahasiswa->nama }}</td>
                 <td>{{ $mahasiswa->nim }}</td>
+                <td>{{ $mahasiswa->nama }}</td>
+                <td>{{ $mahasiswa->prodi->nama }}</td>
+                <td>{{ $mahasiswa->nama }}</td>
               </tr>
             @endforeach
           </tbody>

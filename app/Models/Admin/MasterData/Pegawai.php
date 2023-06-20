@@ -11,7 +11,7 @@ class Pegawai extends ModelAuthenticate
 {
     use HasFactory;
 
-    protected $table = 'admin__pegawai';
+    protected $table = 'admin__ms__pegawai';
     protected $guarded = ['id'];
 
     // public function setPassword($password)

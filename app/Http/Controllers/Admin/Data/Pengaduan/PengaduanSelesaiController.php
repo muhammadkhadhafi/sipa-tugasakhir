@@ -30,7 +30,7 @@ class PengaduanSelesaiController extends Controller
 
         Pengaduan::where('id', $pengaduanselesai->id)->update($validatedData);
 
-        return back()->with('success', 'Deskripsi tindak lanjut berhasil diubah');
+        return back()->with('success', 'Deskripsi tindak lanjut berhasil disimpan');
     }
 
     public function prosesUlang(Pengaduan $pengaduanselesai)
@@ -39,6 +39,6 @@ class PengaduanSelesaiController extends Controller
         $pengaduanselesai['status'] = 1;
         $pengaduanselesai->save();
 
-        return redirect('/admin/pengaduan/pengaduanselesai')->with('success', 'Pengaduan diproses ulang');
+        return redirect('/admin/pengaduan/pengaduanselesai')->with('success', 'Pengaduan berhasil diproses ulang');
     }
 }

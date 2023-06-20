@@ -40,7 +40,7 @@ class PengajuanSelesaiController extends Controller
 
         $pengajuanselesai->save();
 
-        return redirect('/admin/pengajuansuratketeranganaktif/pengajuanselesai')->with('success', 'Pengajuan diproses ulang');
+        return redirect('/admin/pengajuansuratketeranganaktif/pengajuanselesai')->with('success', 'Pengajuan berhasil diproses ulang');
     }
 
     public function uploadUlang(Request $request, PengajuanSuratKeteranganAktif $pengajuanselesai)
@@ -58,7 +58,7 @@ class PengajuanSelesaiController extends Controller
 
         PengajuanSuratKeteranganAktif::where('id', $pengajuanselesai->id)->update($validatedData);
 
-        return back()->with('success', 'Surat berhasil disimpan ulang');
+        return back()->with('success', 'Surat berhasil disimpan');
     }
 
     public function ubahDeskripsiPengajuanDitolak(PengajuanSuratKeteranganAktif $pengajuanselesai, Request $request)
@@ -69,6 +69,6 @@ class PengajuanSelesaiController extends Controller
 
         PengajuanSuratKeteranganAktif::where('id', $pengajuanselesai->id)->update($validatedData);
 
-        return back()->with('success', 'Deskripsi pengajuan ditolak berhasil diubah');
+        return back()->with('success', 'Deskripsi pengajuan ditolak berhasil disimpan');
     }
 }

@@ -5,7 +5,7 @@
 
   @include('layouts.utils.notif')
 
-  <div class="card shadow m-0">
+  <div class="card shadow m-0 mb-4">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Pembayaran Masuk</h6>
     </div>

@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Data\Pembayaran\KategoriPembayaranController;
 use App\Http\Controllers\Admin\Data\Pembayaran\PembayaranMasukController;
 use App\Http\Controllers\Admin\Data\Pengaduan\PengaduanBaruController;
 use App\Http\Controllers\Admin\Data\Pengaduan\PengaduanSelesaiController;
+use App\Http\Controllers\Admin\Data\PengajuanSuratKeteranganAktif\CatatanDitampilkanController;
 use App\Http\Controllers\Admin\Data\PengajuanSuratKeteranganAktif\PengajuanBaruController;
 use App\Http\Controllers\Admin\Data\PengajuanSuratKeteranganAktif\PengajuanSelesaiController;
 use Illuminate\Support\Facades\Route;
@@ -27,11 +28,15 @@ Route::resource('/master-data/mahasiswa', MahasiswaController::class)->middlewar
 Route::resource('/pengajuansuratketeranganaktif/pengajuanbaru', PengajuanBaruController::class)->except(['store', 'create', 'edit', 'update', 'destroy']);
 Route::put('/pengajuansuratketeranganaktif/pengajuanbaru/uploadsurat/{pengajuanbaru}', [PengajuanBaruController::class, 'uploadSurat']);
 Route::put('/pengajuansuratketeranganaktif/pengajuanbaru/tolakpengajuan/{pengajuanbaru}', [PengajuanBaruController::class, 'tolakPengajuan']);
+Route::post('/pengajuansuratketeranganaktif/pengajuanbaru/downloadsurat/{downloadsurat}', [PengajuanBaruController::class, 'downloadSurat']);
 
 Route::resource('/pengajuansuratketeranganaktif/pengajuanselesai', PengajuanSelesaiController::class)->except(['store', 'create', 'edit', 'update', 'destroy']);
 Route::put('/pengajuansuratketeranganaktif/pengajuanselesai/prosesulang/{pengajuanselesai}', [PengajuanSelesaiController::class, 'prosesUlang']);
 Route::put('pengajuansuratketeranganaktif/pengajuanselesai/uploadulang/{pengajuanselesai}', [PengajuanSelesaiController::class, 'uploadUlang']);
 Route::put('pengajuansuratketeranganaktif/pengajuanselesai/ubahdeskripsipengajuanditolak/{pengajuanselesai}', [PengajuanSelesaiController::class, 'ubahDeskripsiPengajuanDitolak']);
+
+Route::get('/pengajuansuratketeranganaktif/catatanditampilkan', [CatatanDitampilkanController::class, 'index']);
+Route::post('/pengajuansuratketeranganaktif/catatanditampilkan', [CatatanDitampilkanController::class, 'update']);
 // End
 
 // Pengaduan

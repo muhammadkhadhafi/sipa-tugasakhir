@@ -3,7 +3,7 @@
 @section('container')
   <h1 class="h3 mb-3">Pengaduan</h1>
 
-  <div class="card shadow m-0">
+  <div class="card shadow m-0 mb-4">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Detail Pengaduan</h6>
     </div>
@@ -36,7 +36,7 @@
               @if ($pengaduan->file_bukti_pengaduan)
                 <a href="" target="popup"
                   onclick="window.open('{{ asset('storage/' . $pengaduan->file_bukti_pengaduan) }}','popup','width=800,height=600'); return false;"
-                  class="btn btn-sm btn-primary c-btn"><i class="fas fa-eye"></i> Lihat</a>
+                  class="btn btn-sm btn-primary c-btn"><i class="fas fa-eye fa-sm"></i> Lihat</a>
               @else
                 Tidak/belum ada bukti
               @endif
@@ -68,7 +68,8 @@
         </div>
         <div class="row">
           <div class="col-lg-12">
-            <button type="submit" class="btn btn-sm btn-primary float-right"><i class="far fa-save"></i> Simpan</button>
+            <button type="submit" class="btn btn-sm btn-primary float-right"><i class="far fa-save fa-sm"></i>
+              Simpan</button>
           </div>
         </div>
       </form>

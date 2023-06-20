@@ -85,7 +85,8 @@
                   <br><br><br><br><br><br>
                   <div class="text-left">
                     <span class="small">Copyright &copy; 2023 POLITAP. All rights reserved.</span>
-                    <a href="" class="small text-info">Muhammad Khadafi</a>
+                    <a href="https://github.com/muhammadkhadhafi?tab=repositories" target="_blank"
+                      class="small text-info">Muhammad Khadafi</a>
                   </div>
                 </div>
               </div>

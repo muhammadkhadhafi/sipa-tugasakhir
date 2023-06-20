@@ -3,7 +3,7 @@
 @section('container')
   <h1 class="h3 mb-3">Pengaduan</h1>
 
-  <div class="card shadow m-0">
+  <div class="card shadow m-0 mb-4">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Detail Pengaduan</h6>
     </div>
@@ -15,8 +15,8 @@
             <dd>{{ $pengaduan->judul_pengaduan }}</dd>
             <dt>Pelapor</dt>
             <dd>{{ $pengaduan->mahasiswa->nama }}</dd>
-            <dt>Waktu Pengaduan</dt>
-            <dd>{{ $pengaduan->waktu_pengaduan_string }}</dd>
+            <dt>Tanggal Pengaduan</dt>
+            <dd>{{ $pengaduan->tanggal_pengaduan_string }}</dd>
             <dt>Status Pengaduan</dt>
             <dd>
               @if ($pengaduan->status == 1)

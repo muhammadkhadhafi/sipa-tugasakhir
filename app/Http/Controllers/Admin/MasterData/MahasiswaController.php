@@ -45,7 +45,7 @@ class MahasiswaController extends Controller
 
         $validatedData['password'] = Hash::make($validatedData['password']);
         Mahasiswa::create($validatedData);
-        return redirect('/admin/master-data/mahasiswa')->with('success', 'Mahasiswa berhasil ditambahkan');
+        return redirect('/admin/master-data/mahasiswa')->with('success', 'Mahasiswa berhasil disimpan');
     }
 
     /**
@@ -97,7 +97,7 @@ class MahasiswaController extends Controller
         };
 
         Mahasiswa::where('id', $mahasiswa->id)->update($validatedData);
-        return redirect('/admin/master-data/mahasiswa')->with('success', 'Mahasiswa berhasil diubah');
+        return redirect('/admin/master-data/mahasiswa')->with('success', 'Mahasiswa berhasil disimpan');
     }
 
     /**

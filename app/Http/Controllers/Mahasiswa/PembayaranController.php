@@ -60,7 +60,7 @@ class PembayaranController extends Controller
         $snapToken = \Midtrans\Snap::getSnapToken($params);
         $pembayaran->snap_token = $snapToken;
         $pembayaran->save();
-        return redirect('mahasiswa/pembayaran')->with('success', 'Pembayaran berhasil ditambahkan, silahkan lunasi pembayaran sebelum waktu pembayaran habis');
+        return redirect('mahasiswa/pembayaran')->with('success', 'Pembayaran berhasil disimpan, silahkan lunasi pembayaran sebelum waktu pembayaran habis');
     }
 
     /**

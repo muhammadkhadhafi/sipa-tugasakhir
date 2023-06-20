@@ -11,9 +11,8 @@ class Pengaduan extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
-
     protected $table = 'admin__pengaduan';
+    protected $guarded = ['id'];
 
     public function mahasiswa()
     {

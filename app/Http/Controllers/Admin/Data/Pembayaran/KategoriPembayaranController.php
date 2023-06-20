@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin\Data\Pembayaran;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Data\KategoriPembayaran;
-use App\Models\Admin\Data\Pembayaran;
 use Illuminate\Http\Request;
 
 class KategoriPembayaranController extends Controller
@@ -39,7 +38,7 @@ class KategoriPembayaranController extends Controller
 
         KategoriPembayaran::create($validatedData);
 
-        return redirect('admin/pembayaran/kategoripembayaran')->with('success', 'Kategori pembayaran berhasil ditambahkan');
+        return redirect('admin/pembayaran/kategoripembayaran')->with('success', 'Kategori pembayaran berhasil disimpan');
     }
 
     /**
@@ -79,7 +78,7 @@ class KategoriPembayaranController extends Controller
 
         $kategoripembayaran->where('id', $kategoripembayaran->id)->update($validatedData);
 
-        return redirect('admin/pembayaran/kategoripembayaran')->with('success', 'Kategori pembayaran berhasil diubah');
+        return redirect('admin/pembayaran/kategoripembayaran')->with('success', 'Kategori pembayaran berhasil disimpan');
     }
 
     /**

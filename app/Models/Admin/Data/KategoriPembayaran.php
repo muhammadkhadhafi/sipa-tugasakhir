@@ -11,8 +11,8 @@ class KategoriPembayaran extends Model
     use HasFactory;
 
     protected $table = 'admin__pembayaran__kategori_pembayarans';
-
     protected $guarded = ['id'];
+
 
     public function getTanggalDitambahkanStringAttribute()
     {

@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admin__pembayaran__kategori_pembayarans', function (Blueprint $table) {
+        Schema::create('admin__catatan_pengajuan_surat_keterangan_aktifs', function (Blueprint $table) {
             $table->char('id', 36)->primary();
-            $table->string('kategori_pembayaran');
-            $table->BigInteger('harga');
+            $table->text('kontak_admin');
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admin__pembayaran__kategori_pembayarans');
+        Schema::dropIfExists('admin__catatan_pengajuan_surat_keterangan_aktifs');
     }
 };

@@ -3,7 +3,7 @@
 @section('container')
   <h1 class="h3 mb-3">Pembayaran</h1>
 
-  <div class="card shadow m-0">
+  <div class="card shadow m-0 mb-4">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Detail Kategori Pembayaran</h6>
     </div>

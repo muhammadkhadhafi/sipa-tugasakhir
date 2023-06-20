@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admin__pegawai', function (Blueprint $table) {
-            $table->char('id', 36);
+        Schema::create('admin__ms__pegawai', function (Blueprint $table) {
+            $table->char('id', 36)->primary();
             $table->string('nama');
             $table->string('username')->unique();
             $table->string('nip')->unique();
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admin__pegawai');
+        Schema::dropIfExists('admin__ms__pegawai');
     }
 };

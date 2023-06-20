@@ -1,12 +1,11 @@
 @extends('layouts.admin.main')
 
 @section('container')
-  <h1 class="h3 mb-3">
-    Pengajuan Surat Keterangan Aktif</h1>
+  <h1 class="h3 mb-3">Surat Keterangan Aktif</h1>
 
   @include('layouts.utils.notif')
 
-  <div class="card shadow m-0">
+  <div class="card shadow m-0 mb-4">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Pengajuan Selesai</h6>
     </div>
@@ -29,13 +28,13 @@
                 <td>
                   <div class="btn-group">
                     <a href="/admin/pengajuansuratketeranganaktif/pengajuanselesai/{{ $pengajuan->id }}"
-                      class="btn btn-sm btn-primary"><i class="fas fa-info"></i> Detail Pengajuan</a>
+                      class="btn btn-sm btn-primary"><i class="fas fa-info fa-xs"></i> Detail Pengajuan</a>
                   </div>
                 </td>
                 <td>{{ $pengajuan->tanggal_pengajuan_string }}</td>
                 <td>{{ $pengajuan->mahasiswa->nim }}</td>
                 <td>{{ $pengajuan->mahasiswa->nama }}</td>
-                <td>{{ $pengajuan->mahasiswa->program_studi }}</td>
+                <td>{{ $pengajuan->mahasiswa->prodi->nama }}</td>
                 <td>
                   @if ($pengajuan->status == 1)
                     <span class="badge badge-primary p-1">Pengajuan diproses</span>

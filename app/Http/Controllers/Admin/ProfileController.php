@@ -41,11 +41,11 @@ class ProfileController extends Controller
         ];
 
         if ($request->username != $pegawai->username) {
-            $rules['username'] = ['required', 'unique:admin__pegawai', 'min:3', 'max:255'];
+            $rules['username'] = ['required', 'unique:admin__ms__pegawai', 'min:3', 'max:255'];
         };
 
         if ($pegawai->nip != $request->nip) {
-            $rules['nip'] = ['required', 'unique:admin__pegawai'];
+            $rules['nip'] = ['required', 'unique:admin__ms__pegawai'];
         };
 
         if ($request->password) {
@@ -71,6 +71,6 @@ class ProfileController extends Controller
 
         Pegawai::where('id', $pegawai->id)->update($validatedData);
 
-        return redirect('/admin/profile')->with('success', 'Profile berhasil diperbaharui');
+        return redirect('/admin/profile')->with('success', 'Profil berhasil diperbarui');
     }
 }

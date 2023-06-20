@@ -12,7 +12,6 @@ class PengajuanSuratKeteranganAktif extends Model
     use HasFactory;
 
     protected $table = 'admin__pengajuan_surat_keterangan_aktifs';
-
     protected $guarded = ['id'];
 
     public function mahasiswa()
@@ -25,8 +24,8 @@ class PengajuanSuratKeteranganAktif extends Model
         return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y');
     }
 
-    public function getWaktuPengajuanStringAttribute()
+    public function getTanggalSuratStringAttribute()
     {
-        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y h:i A');
+        return Carbon::parse($this->attributes['created_at'])->translatedFormat('d F Y');
     }
 }

@@ -5,7 +5,7 @@
 
   @include('layouts.utils.notif')
 
-  <div class="card shadow m-0">
+  <div class="card shadow m-0 mb-4">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Pengaduan Baru</h6>
     </div>
@@ -27,13 +27,13 @@
                 <td>
                   <div class="btn-group">
                     <a href="/admin/pengaduan/pengaduanbaru/{{ $pengaduan->id }}" class="btn btn-sm btn-primary"><i
-                        class="fas fa-info"></i> Detail Pengaduan</a>
+                        class="fas fa-info fa-xs"></i> Detail Pengaduan</a>
                   </div>
                 </td>
                 <td>{{ $pengaduan->tanggal_pengaduan_string }}</td>
                 <td>{{ $pengaduan->mahasiswa->nim }}</td>
                 <td>{{ $pengaduan->mahasiswa->nama }}</td>
-                <td>{{ $pengaduan->mahasiswa->program_studi }}</td>
+                <td>{{ $pengaduan->mahasiswa->prodi->nama }}</td>
               </tr>
             @endforeach
           </tbody>

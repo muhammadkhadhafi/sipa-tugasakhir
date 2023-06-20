@@ -5,14 +5,14 @@
 
   @include('layouts.utils.notif')
 
-  <div class="card shadow m-0">
+  <div class="card shadow m-0 mb-4">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Detail Pengaduan</h6>
       <form action="/admin/pengaduan/pengaduanselesai/prosesulang/{{ $pengaduan->id }}" method="post"
         onclick="return confirm('Yakin ingin proses ulang pengaduan ini?')">
         @csrf
         @method('put')
-        <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-redo-alt"></i> Proses Ulang</button>
+        <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-redo-alt fa-sm"></i> Proses Ulang</button>
       </form>
     </div>
     <div class="card-body">
@@ -76,7 +76,8 @@
         </div>
         <div class="row">
           <div class="col-lg-12">
-            <button type="submit" class="btn btn-sm btn-primary float-right"><i class="far fa-save"></i> Simpan</button>
+            <button type="submit" class="btn btn-sm btn-primary float-right"><i class="far fa-save fa-sm"></i>
+              Simpan</button>
           </div>
         </div>
       </form>

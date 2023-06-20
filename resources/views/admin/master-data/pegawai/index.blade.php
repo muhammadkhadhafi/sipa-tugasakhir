@@ -5,10 +5,10 @@
 
   @include('layouts.utils.notif')
 
-  <div class="card shadow m-0">
+  <div class="card shadow m-0 mb-4">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Pegawai</h6>
-      <a href="/admin/master-data/pegawai/create" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> Tambah
+      <a href="/admin/master-data/pegawai/create" class="btn btn-sm btn-primary"><i class="fas fa-plus fa-sm"></i> Tambah
         Pegawai</a>
     </div>
     <div class="card-body">
