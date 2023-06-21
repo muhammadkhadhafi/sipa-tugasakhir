@@ -15,7 +15,7 @@
           <img src="/assets/img/default-person.jpg" alt="{{ $pegawai->nama }}" class="img-fluid" style="width: 100%">
         @endif
         <input type="file" accept=".jpg, .png" name="foto" id="foto"
-          class="form-control @error('foto') is-invalid @enderror">
+          class="form-control @error('foto') is-invalid @enderror" style="border-radius: 0;">
         @error('foto')
           <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -65,9 +65,9 @@
                   <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
                   <select class="custom-select @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin"
                     id="jenis_kelamin">
-                    <option selected value="{{ $pegawai->jenis_kelamin }}">{{ $pegawai->jenis_kelamin }}</option>
-                    <option value="Laki-laki">Laki-laki</option>
-                    <option value="Perempuan">Perempuan</option>
+                    <option selected value="{{ $pegawai->jenis_kelamin }}">{{ $pegawai->jenisKelaminString }}</option>
+                    <option value=1>Laki-laki</option>
+                    <option value=2>Perempuan</option>
                   </select>
                   @error('jenis_kelamin')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -80,13 +80,13 @@
                 <div class="mb-3">
                   <label for="agama" class="form-label">Agama</label>
                   <select class="custom-select @error('agama') is-invalid @enderror" name="agama" id="agama">
-                    <option value="{{ $pegawai->agama }}" selected>{{ $pegawai->agama }}</option>
-                    <option value="Islam">Islam</option>
-                    <option value="Kristen">Kristen</option>
-                    <option value="Katholik">Katholik</option>
-                    <option value="Hindu">Hindu</option>
-                    <option value="Budha">Budha</option>
-                    <option value="Kong Hu Chu">Kong Hu Chu</option>
+                    <option value="{{ $pegawai->agama }}" selected>{{ $pegawai->agamaString }}</option>
+                    <option value=1>Islam</option>
+                    <option value=2>Kristen</option>
+                    <option value=3>Katholik</option>
+                    <option value=4>Hindu</option>
+                    <option value=5>Budha</option>
+                    <option value=6>Kong Hu Chu</option>
                   </select>
                   @error('agama')
                     <div class="invalid-feedback">{{ $message }}</div>

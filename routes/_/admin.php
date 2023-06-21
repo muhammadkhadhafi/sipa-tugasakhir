@@ -22,7 +22,7 @@ Route::get('/profile/edit', [ProfileController::class, 'edit']);
 Route::put('/profile/{pegawai}', [ProfileController::class, 'update']);
 
 Route::resource('/master-data/pegawai', PegawaiController::class)->middleware('can:masterdata');
-Route::resource('/master-data/mahasiswa', MahasiswaController::class)->middleware('can:masterdata');
+Route::resource('/master-data/mahasiswa', MahasiswaController::class)->middleware('can:masterdata')->except(['create', 'store', 'destroy']);
 
 // Pengajuan Surat Keterangan Aktif
 Route::resource('/pengajuansuratketeranganaktif/pengajuanbaru', PengajuanBaruController::class)->except(['store', 'create', 'edit', 'update', 'destroy']);

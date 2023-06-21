@@ -17,8 +17,8 @@
           <thead class="bg-gradient-primary text-light text-uppercase">
             <th width="15px">No</th>
             <th width="80px">Aksi</th>
-            <th>Nama</th>
             <th>NIP</th>
+            <th>Nama</th>
             <th>Status</th>
           </thead>
           <tbody>
@@ -41,8 +41,8 @@
                     ])
                   </div>
                 </td>
-                <td>{{ $pegawai->nama }}</td>
                 <td>{{ $pegawai->nip }}</td>
+                <td>{{ $pegawai->nama }}</td>
                 <td>
                   @if ($pegawai->is_masterdata)
                     Master Data

@@ -49,13 +49,14 @@
               <select class="custom-select @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin"
                 id="jenis_kelamin">
                 @if (old('jenis_kelamin'))
-                  <option selected value="{{ old('jenis_kelamin') }}">{{ old('jenis_kelamin') }}</option>
-                  <option value="Laki-laki">Laki-laki</option>
-                  <option value="Perempuan">Perempuan</option>
+                  <option selected value="{{ old('jenis_kelamin') }}">
+                    {{ old('jenis_kelamin') == 1 ? 'Laki-laki' : 'Perempuan' }}</option>
+                  <option value=1>Laki-laki</option>
+                  <option value=2>Perempuan</option>
                 @else
                   <option disabled selected>Pilih jenis kelamin</option>
-                  <option value="Laki-laki">Laki-laki</option>
-                  <option value="Perempuan">Perempuan</option>
+                  <option value=1>Laki-laki</option>
+                  <option value=2>Perempuan</option>
                 @endif
               </select>
               @error('jenis_kelamin')
@@ -70,21 +71,35 @@
               <label for="agama" class="form-label">Agama</label>
               <select class="custom-select @error('agama') is-invalid @enderror" name="agama" id="agama">
                 @if (old('agama'))
-                  <option value="{{ old('agama') }}" selected>{{ old('agama') }}</option>
-                  <option value="Islam">Islam</option>
-                  <option value="Kristen">Kristen</option>
-                  <option value="Katholik">Katholik</option>
-                  <option value="Hindu">Hindu</option>
-                  <option value="Budha">Budha</option>
-                  <option value="Kong Hu Chu">Kong Hu Chu</option>
+                  <option value="{{ old('agama') }}" selected>
+                    @if (old('agama') == 1)
+                      Islam
+                    @elseif (old('agama') == 2)
+                      Kristen
+                    @elseif (old('agama') == 3)
+                      Katholik
+                    @elseif (old('agama') == 4)
+                      Hindu
+                    @elseif (old('agama') == 5)
+                      Budha
+                    @elseif (old('agama') == 6)
+                      Kong Hu Chu
+                    @endif
+                  </option>
+                  <option value=1>Islam</option>
+                  <option value=2>Kristen</option>
+                  <option value=3>Katholik</option>
+                  <option value=4>Hindu</option>
+                  <option value=5>Budha</option>
+                  <option value=6>Kong Hu Chu</option>
                 @else
                   <option selected disabled>Pilih agama</option>
-                  <option value="Islam">Islam</option>
-                  <option value="Kristen">Kristen</option>
-                  <option value="Katholik">Katholik</option>
-                  <option value="Hindu">Hindu</option>
-                  <option value="Budha">Budha</option>
-                  <option value="Kong Hu Chu">Kong Hu Chu</option>
+                  <option value=1>Islam</option>
+                  <option value=2>Kristen</option>
+                  <option value=3>Katholik</option>
+                  <option value=4>Hindu</option>
+                  <option value=5>Budha</option>
+                  <option value=6>Kong Hu Chu</option>
                 @endif
               </select>
               @error('agama')
@@ -135,8 +150,8 @@
           <div class="col-lg-6">
             <div class="mb-3">
               <label for="foto" class="form-label">Foto</label>
-              <input type="file" class="form-control @error('foto') is-invalid @enderror" id="foto"
-                name="foto" accept=".jpg, .png">
+              <input type="file" class="form-control @error('foto') is-invalid @enderror" id="foto" name="foto"
+                accept=".jpg, .png">
               @error('foto')
                 <div class="invalid-feedback">{{ $message }}</div>
               @enderror

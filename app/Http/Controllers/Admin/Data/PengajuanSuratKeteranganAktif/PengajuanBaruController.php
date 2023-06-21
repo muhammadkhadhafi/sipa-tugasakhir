@@ -131,6 +131,6 @@ class PengajuanBaruController extends Controller
         ]);
         $phpWord->saveAs($outputPath);
 
-        return Response::download($outputPath, 'Surat Keterangan Aktif.docx')->deleteFileAfterSend(true);
+        return Response::download($outputPath, 'SKA - ' . $downloadsurat->mahasiswa->nama . '.docx')->deleteFileAfterSend(true);
     }
 }

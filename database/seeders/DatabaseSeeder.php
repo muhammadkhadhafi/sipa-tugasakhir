@@ -28,8 +28,8 @@ class DatabaseSeeder extends Seeder
             'nama' => 'Muhammad Khadafi',
             'username' => 'khadafi',
             'nip' => '12345678901234567',
-            'jenis_kelamin' => 'Laki-laki',
-            'agama' => 'Islam',
+            'jenis_kelamin' => 1,
+            'agama' => 1,
             'tempat_lahir' => 'Kendawangan',
             'tanggal_lahir' => '2001-10-05',
             'password' => bcrypt('password'),
@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         CatatanPengajuanSuratKeteranganAktif::create([
-            'kontak_admin' => 'Bu Irul +62 878-2765-0024',
+            'kontak_admin' => 'Ibu Irul/ +62 878-2765-0024',
         ]);
     }
 }

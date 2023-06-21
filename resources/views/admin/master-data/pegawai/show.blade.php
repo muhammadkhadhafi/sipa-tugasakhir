@@ -33,11 +33,11 @@
           </div>
           <div class="row mb-1">
             <div class="col-md-4">Jenis Kelamin</div>
-            <div class="col-md-8">{{ $pegawai->jenis_kelamin }}</div>
+            <div class="col-md-8">{{ $pegawai->jenisKelaminString }}</div>
           </div>
           <div class="row mb-1">
             <div class="col-md-4">Agama</div>
-            <div class="col-md-8">{{ $pegawai->agama }}</div>
+            <div class="col-md-8">{{ $pegawai->agamaString }}</div>
           </div>
           <div class="row mb-1">
             <div class="col-md-4">Tempat, Tanggal Lahir</div>

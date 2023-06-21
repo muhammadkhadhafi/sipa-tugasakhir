@@ -25,19 +25,39 @@
           </div>
           <div class="row mb-1">
             <div class="col-md-4">Jenis Kelamin</div>
-            <div class="col-md-8">{{ $mahasiswa->jenis_kelamin }}</div>
+            <div class="col-md-8">{{ $mahasiswa->jenisKelaminString }}</div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-md-4">Jurusan</div>
+            <div class="col-md-8">{{ $mahasiswa->prodi->jurusan->nama }}</div>
           </div>
           <div class="row mb-1">
             <div class="col-md-4">Program Studi</div>
-            <div class="col-md-8">{{ $mahasiswa->program_studi }}</div>
+            <div class="col-md-8">{{ $mahasiswa->prodi->program }} {{ $mahasiswa->prodi->nama }}</div>
           </div>
           <div class="row mb-1">
             <div class="col-md-4">Agama</div>
-            <div class="col-md-8">{{ $mahasiswa->agama }}</div>
+            <div class="col-md-8">{{ $mahasiswa->agamaString }}</div>
           </div>
           <div class="row mb-1">
             <div class="col-md-4">Tempat, Tanggal Lahir</div>
             <div class="col-md-8">{{ $mahasiswa->tempat_lahir }}, {{ $mahasiswa->tanggal_lahir_string }}</div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-md-4">Angkatan</div>
+            <div class="col-md-8">{{ $mahasiswa->angkatan }}</div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-md-4">NIK</div>
+            <div class="col-md-8">{{ $mahasiswa->nik }}</div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-md-4">Email</div>
+            <div class="col-md-8">{{ $mahasiswa->email }}</div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-md-4">Alamat</div>
+            <div class="col-md-8">{{ $mahasiswa->alamat }}</div>
           </div>
         </div>
       </div>

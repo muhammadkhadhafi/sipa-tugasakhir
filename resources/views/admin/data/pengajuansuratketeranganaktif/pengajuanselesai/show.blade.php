@@ -100,7 +100,7 @@
                   @csrf
                   @method('put')
                   <div class="form-group">
-                    <label for="deskripsi_pengajuan_ditolak" class="form-label">Ubah Deskripsi Pengajuan Ditolak</label>
+                    <label for="deskripsi_pengajuan_ditolak" class="form-label">Edit Deskripsi Pengajuan Ditolak</label>
                     <input type="hidden" name="deskripsi_pengajuan_ditolak" id="deskripsi_pengajuan_ditolak">
                     <trix-editor input="deskripsi_pengajuan_ditolak">{!! $pengajuan->deskripsi_pengajuan_ditolak !!}</trix-editor>
                     @error('deskripsi_pengajuan_ditolak')

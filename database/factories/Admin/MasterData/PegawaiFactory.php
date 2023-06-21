@@ -21,8 +21,8 @@ class PegawaiFactory extends Factory
             'nama' => fake()->name(),
             'username' => fake()->unique()->userName(),
             'nip' => fake()->unique()->nik(),
-            'jenis_kelamin' => fake()->randomElement(['Laki-laki', 'Perempuan']),
-            'agama' => fake()->randomElement(['Islam', 'Kristen', 'Katholik', 'Hindu', 'Budha', 'Kong Hu Chu']),
+            'jenis_kelamin' => mt_rand(1, 2),
+            'agama' => mt_rand(1, 6),
             'tempat_lahir' => fake()->city(),
             'tanggal_lahir' => fake()->date('Y-m-d'),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

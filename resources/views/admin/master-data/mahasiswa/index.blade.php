@@ -15,10 +15,9 @@
           <thead class="bg-gradient-primary text-light text-uppercase">
             <th width="15px">No</th>
             <th width="50px">Aksi</th>
-            <th>NIM</th>
+            <th width="80px">NIM</th>
             <th>Nama</th>
             <th>Program Studi</th>
-            <th>Angkatan</th>
           </thead>
           <tbody>
             @foreach ($mahasiswas as $mahasiswa)
@@ -32,8 +31,7 @@
                 </td>
                 <td>{{ $mahasiswa->nim }}</td>
                 <td>{{ $mahasiswa->nama }}</td>
-                <td>{{ $mahasiswa->prodi->nama }}</td>
-                <td>{{ $mahasiswa->nama }}</td>
+                <td>{{ $mahasiswa->prodi->program }} {{ $mahasiswa->prodi->nama }}</td>
               </tr>
             @endforeach
           </tbody>
