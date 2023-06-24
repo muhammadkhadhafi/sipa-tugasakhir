@@ -10,7 +10,7 @@ class CatatanController extends Controller
 {
     public function index()
     {
-        return view('admin.data.pengajuansuratketeranganaktif.catatan.index', [
+        return view('admin.data.suratketeranganaktif.catatan.index', [
             'catatan' => SuratKeteranganAktifCatatan::first()
         ]);
     }

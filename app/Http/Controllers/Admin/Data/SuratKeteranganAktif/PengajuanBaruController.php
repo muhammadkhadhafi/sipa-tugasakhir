@@ -16,7 +16,7 @@ class PengajuanBaruController extends Controller
      */
     public function index()
     {
-        return view('admin.data.pengajuansuratketeranganaktif.pengajuanbaru.index', [
+        return view('admin.data.suratketeranganaktif.pengajuanbaru.index', [
             'list_pengajuan' => SuratKeteranganAktifPengajuan::where('status', 1)->latest()->get()
         ]);
     }
@@ -26,7 +26,7 @@ class PengajuanBaruController extends Controller
      */
     public function show(SuratKeteranganAktifPengajuan $pengajuanbaru)
     {
-        return view('admin.data.pengajuansuratketeranganaktif.pengajuanbaru.show', [
+        return view('admin.data.suratketeranganaktif.pengajuanbaru.show', [
             'pengajuan' => $pengajuanbaru
         ]);
     }

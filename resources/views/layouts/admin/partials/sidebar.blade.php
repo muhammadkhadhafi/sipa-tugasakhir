@@ -58,16 +58,18 @@
     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePembayaran" aria-expanded="true"
       aria-controls="collapsePembayaran">
       <i class="fas fa-credit-card"></i>
-      <span>Pembayaran</span>
+      <span>Wisuda</span>
     </a>
     <div id="collapsePembayaran" class="collapse {{ Request::is('admin/pembayaran*') ? 'show' : '' }}"
       aria-labelledby="headingPages" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Pembayaran:</h6>
+        <h6 class="collapse-header">Wisuda:</h6>
         <a class="collapse-item {{ Request::is('admin/pembayaran/pembayaranmasuk*') ? 'active' : '' }}"
-          href="/admin/pembayaran/pembayaranmasuk">Pembayaran Masuk</a>
+          href="/admin/pembayaran/pembayaranmasuk">Pendaftaran</a>
         <a class="collapse-item {{ Request::is('admin/pembayaran/kategoripembayaran*') ? 'active' : '' }}"
-          href="/admin/pembayaran/kategoripembayaran">Kategori Pembayaran</a>
+          href="/admin/pembayaran/kategoripembayaran">Pembayaran Masuk</a>
+        <a class="collapse-item {{ Request::is('admin/pembayaran/kategoripembayaran*') ? 'active' : '' }}"
+          href="/admin/pembayaran/kategoripembayaran">Atur Harga Daftar Wisuda</a>
       </div>
     </div>
   </li>
