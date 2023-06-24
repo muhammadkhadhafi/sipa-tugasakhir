@@ -4,9 +4,9 @@ use App\Http\Controllers\Admin\Data\Pembayaran\KategoriPembayaranController;
 use App\Http\Controllers\Admin\Data\Pembayaran\PembayaranMasukController;
 use App\Http\Controllers\Admin\Data\Pengaduan\PengaduanBaruController;
 use App\Http\Controllers\Admin\Data\Pengaduan\PengaduanSelesaiController;
-use App\Http\Controllers\Admin\Data\PengajuanSuratKeteranganAktif\CatatanDitampilkanController;
-use App\Http\Controllers\Admin\Data\PengajuanSuratKeteranganAktif\PengajuanBaruController;
-use App\Http\Controllers\Admin\Data\PengajuanSuratKeteranganAktif\PengajuanSelesaiController;
+use App\Http\Controllers\Admin\Data\SuratKeteranganAktif\CatatanController;
+use App\Http\Controllers\Admin\Data\SuratKeteranganAktif\PengajuanBaruController;
+use App\Http\Controllers\Admin\Data\SuratKeteranganAktif\PengajuanSelesaiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\MasterData\PegawaiController;
@@ -25,18 +25,18 @@ Route::resource('/master-data/pegawai', PegawaiController::class)->middleware('c
 Route::resource('/master-data/mahasiswa', MahasiswaController::class)->middleware('can:masterdata')->except(['create', 'store', 'destroy']);
 
 // Pengajuan Surat Keterangan Aktif
-Route::resource('/pengajuansuratketeranganaktif/pengajuanbaru', PengajuanBaruController::class)->except(['store', 'create', 'edit', 'update', 'destroy']);
-Route::put('/pengajuansuratketeranganaktif/pengajuanbaru/uploadsurat/{pengajuanbaru}', [PengajuanBaruController::class, 'uploadSurat']);
-Route::put('/pengajuansuratketeranganaktif/pengajuanbaru/tolakpengajuan/{pengajuanbaru}', [PengajuanBaruController::class, 'tolakPengajuan']);
-Route::post('/pengajuansuratketeranganaktif/pengajuanbaru/downloadsurat/{downloadsurat}', [PengajuanBaruController::class, 'downloadSurat']);
+Route::resource('suratketeranganaktif/pengajuanbaru', PengajuanBaruController::class)->except(['store', 'create', 'edit', 'update', 'destroy']);
+Route::put('suratketeranganaktif/pengajuanbaru/uploadsurat/{pengajuanbaru}', [PengajuanBaruController::class, 'uploadSurat']);
+Route::put('suratketeranganaktif/pengajuanbaru/tolakpengajuan/{pengajuanbaru}', [PengajuanBaruController::class, 'tolakPengajuan']);
+Route::post('suratketeranganaktif/pengajuanbaru/downloadsurat/{downloadsurat}', [PengajuanBaruController::class, 'downloadSurat']);
 
-Route::resource('/pengajuansuratketeranganaktif/pengajuanselesai', PengajuanSelesaiController::class)->except(['store', 'create', 'edit', 'update', 'destroy']);
-Route::put('/pengajuansuratketeranganaktif/pengajuanselesai/prosesulang/{pengajuanselesai}', [PengajuanSelesaiController::class, 'prosesUlang']);
-Route::put('pengajuansuratketeranganaktif/pengajuanselesai/uploadulang/{pengajuanselesai}', [PengajuanSelesaiController::class, 'uploadUlang']);
-Route::put('pengajuansuratketeranganaktif/pengajuanselesai/ubahdeskripsipengajuanditolak/{pengajuanselesai}', [PengajuanSelesaiController::class, 'ubahDeskripsiPengajuanDitolak']);
+Route::resource('/suratketeranganaktif/pengajuanselesai', PengajuanSelesaiController::class)->except(['store', 'create', 'edit', 'update', 'destroy']);
+Route::put('/suratketeranganaktif/pengajuanselesai/prosesulang/{pengajuanselesai}', [PengajuanSelesaiController::class, 'prosesUlang']);
+Route::put('suratketeranganaktif/pengajuanselesai/uploadulang/{pengajuanselesai}', [PengajuanSelesaiController::class, 'uploadUlang']);
+Route::put('suratketeranganaktif/pengajuanselesai/editdeskripsipengajuanditolak/{pengajuanselesai}', [PengajuanSelesaiController::class, 'editDeskripsiPengajuanDitolak']);
 
-Route::get('/pengajuansuratketeranganaktif/catatanditampilkan', [CatatanDitampilkanController::class, 'index']);
-Route::post('/pengajuansuratketeranganaktif/catatanditampilkan', [CatatanDitampilkanController::class, 'update']);
+Route::get('/suratketeranganaktif/catatan', [CatatanController::class, 'index']);
+Route::post('/suratketeranganaktif/catatan', [CatatanController::class, 'update']);
 // End
 
 // Pengaduan
@@ -44,7 +44,7 @@ Route::resource('/pengaduan/pengaduanbaru', PengaduanBaruController::class)->exc
 Route::put('/pengaduan/pengaduanbaru/deskripsitindaklanjut/{pengaduanbaru}', [PengaduanBaruController::class, 'deskripsiTindakLanjut']);
 
 Route::resource('/pengaduan/pengaduanselesai', PengaduanSelesaiController::class)->except(['create', 'store', 'edit', 'update', 'destroy']);
-Route::put('/pengaduan/pengaduanselesai/ubahdeskripsitindaklanjut/{pengaduanselesai}', [PengaduanSelesaiController::class, 'ubahDeskripsiTindakLanjut']);
+Route::put('/pengaduan/pengaduanselesai/editdeskripsitindaklanjut/{pengaduanselesai}', [PengaduanSelesaiController::class, 'editDeskripsiTindakLanjut']);
 Route::put('pengaduan/pengaduanselesai/prosesulang/{pengaduanselesai}', [PengaduanSelesaiController::class, 'prosesUlang']);
 // End
 

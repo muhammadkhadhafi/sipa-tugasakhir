@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Data\PengajuanSuratKeteranganAktif;
+namespace App\Http\Controllers\Admin\Data\SuratKeteranganAktif;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Data\PengajuanSuratKeteranganAktif;
+use App\Models\Admin\Data\SuratKeteranganAktifPengajuan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
@@ -17,21 +17,21 @@ class PengajuanBaruController extends Controller
     public function index()
     {
         return view('admin.data.pengajuansuratketeranganaktif.pengajuanbaru.index', [
-            'list_pengajuan' => PengajuanSuratKeteranganAktif::where('status', 1)->latest()->get()
+            'list_pengajuan' => SuratKeteranganAktifPengajuan::where('status', 1)->latest()->get()
         ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(PengajuanSuratKeteranganAktif $pengajuanbaru)
+    public function show(SuratKeteranganAktifPengajuan $pengajuanbaru)
     {
         return view('admin.data.pengajuansuratketeranganaktif.pengajuanbaru.show', [
             'pengajuan' => $pengajuanbaru
         ]);
     }
 
-    public function uploadSurat(Request $request, PengajuanSuratKeteranganAktif $pengajuanbaru)
+    public function uploadSurat(Request $request, SuratKeteranganAktifPengajuan $pengajuanbaru)
     {
         $validatedData = $request->validate([
             'surat_keterangan_aktif' => ['required', 'file', 'max:512']
@@ -43,15 +43,15 @@ class PengajuanBaruController extends Controller
                 Storage::delete($pengajuanbaru->surat_keterangan_aktif);
             }
 
-            $validatedData['surat_keterangan_aktif'] = $request->file('surat_keterangan_aktif')->store('admin/data/pengajuansuratketeranganaktif');
+            $validatedData['surat_keterangan_aktif'] = $request->file('surat_keterangan_aktif')->store('admin/data/suratketeranganaktif');
         }
 
-        PengajuanSuratKeteranganAktif::where('id', $pengajuanbaru->id)->update($validatedData);
+        SuratKeteranganAktifPengajuan::where('id', $pengajuanbaru->id)->update($validatedData);
 
-        return redirect('/admin/pengajuansuratketeranganaktif/pengajuanbaru')->with('success', 'Surat berhasil disimpan');
+        return redirect('/admin/suratketeranganaktif/pengajuanbaru')->with('success', 'Surat berhasil disimpan');
     }
 
-    public function tolakPengajuan(Request $request, PengajuanSuratKeteranganAktif $pengajuanbaru)
+    public function tolakPengajuan(Request $request, SuratKeteranganAktifPengajuan $pengajuanbaru)
     {
         $validatedData = $request->validate([
             'deskripsi_pengajuan_ditolak' => ['required']
@@ -59,12 +59,12 @@ class PengajuanBaruController extends Controller
 
         $validatedData['status'] = 3;
 
-        PengajuanSuratKeteranganAktif::where('id', $pengajuanbaru->id)->update($validatedData);
+        SuratKeteranganAktifPengajuan::where('id', $pengajuanbaru->id)->update($validatedData);
 
-        return redirect('/admin/pengajuansuratketeranganaktif/pengajuanbaru')->with('success', 'Pengajuan berhasil ditolak');
+        return redirect('/admin/suratketeranganaktif/pengajuanbaru')->with('success', 'Pengajuan berhasil ditolak');
     }
 
-    public function downloadSurat(PengajuanSuratKeteranganAktif $downloadsurat)
+    public function downloadSurat(SuratKeteranganAktifPengajuan $downloadsurat)
     {
         $templatePath = public_path('assets/document/sk_aktif_template.docx');
         $outputPath = public_path('assets/document/suratketeranganaktif.docx');

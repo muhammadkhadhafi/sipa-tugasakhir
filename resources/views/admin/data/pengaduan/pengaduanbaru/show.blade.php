@@ -18,7 +18,7 @@
                 <dt>NIM</dt>
                 <dd>{{ $pengaduan->mahasiswa->nim }}</dd>
                 <dt>Program Studi</dt>
-                <dd>{{ $pengaduan->mahasiswa->program_studi }}</dd>
+                <dd>{{ $pengaduan->mahasiswa->prodi->nama }}</dd>
                 <dt>Judul Pengaduan</dt>
                 <dd>{{ $pengaduan->judul_pengaduan }}</dd>
                 <dt>Waktu Pengaduan</dt>
@@ -39,6 +39,7 @@
                     <a href="" target="popup"
                       onclick="window.open('{{ asset('storage/' . $pengaduan->file_bukti_pengaduan) }}','popup','width=800,height=600'); return false;"
                       class="btn btn-sm btn-primary c-btn"><i class="fas fa-eye fa-sm"></i> Lihat</a>
+                    {{ $pengaduan->nama_bukti_pengaduan }}
                   @else
                     Tidak/belum ada bukti
                   @endif

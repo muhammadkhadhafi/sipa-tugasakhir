@@ -15,8 +15,8 @@
             <dd>{{ $pengaduan->judul_pengaduan }}</dd>
             <dt>Pelapor</dt>
             <dd>{{ $pengaduan->mahasiswa->nama }}</dd>
-            <dt>Tanggal Pengaduan</dt>
-            <dd>{{ $pengaduan->tanggal_pengaduan_string }}</dd>
+            <dt>Waktu Pengaduan</dt>
+            <dd>{{ $pengaduan->waktu_pengaduan_string }}</dd>
             <dt>Status Pengaduan</dt>
             <dd>
               @if ($pengaduan->status == 1)
@@ -32,7 +32,8 @@
               @if ($pengaduan->file_bukti_pengaduan)
                 <a href="" target="popup"
                   onclick="window.open('{{ asset('storage/' . $pengaduan->file_bukti_pengaduan) }}','popup','width=800,height=600'); return false;"
-                  class="btn btn-sm btn-primary c-btn"><i class="fas fa-eye"></i> Lihat</a>
+                  class="btn btn-sm btn-primary c-btn"><i class="fas fa-eye fa-sm"></i> Lihat</a>
+                {{ $pengaduan->nama_bukti_pengaduan }}
               @else
                 Tidak/belum ada bukti
               @endif

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admin__pengajuan_surat_keterangan_aktifs', function (Blueprint $table) {
+        Schema::create('admin__surat_keterangan_aktif__pengajuans', function (Blueprint $table) {
             $table->char('id', 36)->primary();
             $table->char('id_mahasiswa', 36);
             $table->integer('semester');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admin__pengajuan_surat_keterangan_aktifs');
+        Schema::dropIfExists('admin__surat_keterangan_aktif__pengajuans');
     }
 };

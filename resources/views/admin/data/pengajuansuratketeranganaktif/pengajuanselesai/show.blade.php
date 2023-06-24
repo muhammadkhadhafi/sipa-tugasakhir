@@ -10,8 +10,8 @@
       <div class="card shadow m-0 mb-4">
         <div class="card-header justify-content-between d-flex align-items-center">
           <h6 class="m-0 font-weight-bold text-primary text-uppercase">Detail Pengajuan Surat Keterangan Aktif</h6>
-          <form action="/admin/pengajuansuratketeranganaktif/pengajuanselesai/prosesulang/{{ $pengajuan->id }}"
-            method="post" onclick="return confirm('Yakin ingin proses ulang pengajuan ini?')">
+          <form action="/admin/suratketeranganaktif/pengajuanselesai/prosesulang/{{ $pengajuan->id }}" method="post"
+            onclick="return confirm('Yakin ingin proses ulang pengajuan ini?')">
             @csrf
             @method('put')
             <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-redo-alt fa-sm"></i> Proses
@@ -95,7 +95,7 @@
             <div class="row">
               <div class="col-lg-12">
                 <form
-                  action="/admin/pengajuansuratketeranganaktif/pengajuanselesai/ubahdeskripsipengajuanditolak/{{ $pengajuan->id }}"
+                  action="/admin/suratketeranganaktif/pengajuanselesai/editdeskripsipengajuanditolak/{{ $pengajuan->id }}"
                   method="post">
                   @csrf
                   @method('put')
@@ -117,7 +117,7 @@
           @if ($pengajuan->surat_keterangan_aktif)
             <div class="row">
               <div class="col-lg-12">
-                <form action="/admin/pengajuansuratketeranganaktif/pengajuanselesai/uploadulang/{{ $pengajuan->id }}"
+                <form action="/admin/suratketeranganaktif/pengajuanselesai/uploadulang/{{ $pengajuan->id }}"
                   method="post" enctype="multipart/form-data">
                   @csrf
                   @method('put')

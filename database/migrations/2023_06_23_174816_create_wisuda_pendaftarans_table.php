@@ -11,15 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admin__pengaduans', function (Blueprint $table) {
+        Schema::create('admin__wisuda__pendaftarans', function (Blueprint $table) {
             $table->char('id', 36)->primary();
             $table->char('id_mahasiswa', 36);
-            $table->string('judul_pengaduan')->nullable();
-            $table->text('deskripsi_pengaduan')->nullable();
-            $table->string('nama_bukti_pengaduan')->nullable();
-            $table->string('file_bukti_pengaduan')->nullable();
-            $table->integer('status');
-            $table->text('deskripsi_tindak_lanjut')->nullable();
+            $table->string('berkas_wisuda');
             $table->timestamps();
         });
     }
@@ -29,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admin__pengaduans');
+        Schema::dropIfExists('admin__wisuda__pendaftarans');
     }
 };

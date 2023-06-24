@@ -1,7 +1,7 @@
 @extends('layouts.mahasiswa.main')
 
 @section('container')
-  <h1 class="h3 mb-3">Pengajuan Surat Keterangan Aktif</h1>
+  <h1 class="h3 mb-3">Surat Keterangan Aktif</h1>
 
   @include('layouts.utils.notif')
 

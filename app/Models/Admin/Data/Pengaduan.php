@@ -11,7 +11,7 @@ class Pengaduan extends Model
 {
     use HasFactory;
 
-    protected $table = 'admin__pengaduan';
+    protected $table = 'admin__pengaduans';
     protected $guarded = ['id'];
 
     public function mahasiswa()
@@ -26,6 +26,6 @@ class Pengaduan extends Model
 
     public function getWaktuPengaduanStringAttribute()
     {
-        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y h:i A');
+        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y h:i');
     }
 }

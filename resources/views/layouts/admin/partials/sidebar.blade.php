@@ -32,24 +32,24 @@
   </div>
 
   <!-- Nav Item - Pages Collapse Menu -->
-  <li class="nav-item {{ Request::is('admin/pengajuansuratketeranganaktif*') ? 'active' : '' }}">
-    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePengajuanSuratKeteranganAktif"
-      aria-expanded="true" aria-controls="collapsePengajuanSuratKeteranganAktif">
+  <li class="nav-item {{ Request::is('admin/suratketeranganaktif*') ? 'active' : '' }}">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseSuratKeteranganAktif"
+      aria-expanded="true" aria-controls="collapseSuratKeteranganAktif">
       <i class="fas fa-file"></i>
       <span>Surat Keterangan Aktif</span>
     </a>
-    <div id="collapsePengajuanSuratKeteranganAktif"
-      class="collapse {{ Request::is('admin/pengajuansuratketeranganaktif*') ? 'show' : '' }}"
-      aria-labelledby="headingPages" data-parent="#accordionSidebar">
+    <div id="collapseSuratKeteranganAktif"
+      class="collapse {{ Request::is('admin/suratketeranganaktif*') ? 'show' : '' }}" aria-labelledby="headingPages"
+      data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Pengajuan:</h6>
-        <a class="collapse-item {{ Request::is('admin/pengajuansuratketeranganaktif/pengajuanbaru*') ? 'active' : '' }}"
-          href="/admin/pengajuansuratketeranganaktif/pengajuanbaru">Pengajuan
+        <a class="collapse-item {{ Request::is('admin/suratketeranganaktif/pengajuanbaru*') ? 'active' : '' }}"
+          href="/admin/suratketeranganaktif/pengajuanbaru">Pengajuan
           Baru</a>
-        <a class="collapse-item {{ Request::is('admin/pengajuansuratketeranganaktif/pengajuanselesai*') ? 'active' : '' }}"
-          href="/admin/pengajuansuratketeranganaktif/pengajuanselesai">Pengajuan Selesai</a>
-        <a class="collapse-item {{ Request::is('admin/pengajuansuratketeranganaktif/catatan*') ? 'active' : '' }}"
-          href="/admin/pengajuansuratketeranganaktif/catatanditampilkan">Catatan Ditampilkan</a>
+        <a class="collapse-item {{ Request::is('admin/suratketeranganaktif/pengajuanselesai*') ? 'active' : '' }}"
+          href="/admin/suratketeranganaktif/pengajuanselesai">Pengajuan Selesai</a>
+        <a class="collapse-item {{ Request::is('admin/suratketeranganaktif/catatan*') ? 'active' : '' }}"
+          href="/admin/suratketeranganaktif/catatan">Catatan</a>
       </div>
     </div>
   </li>

@@ -12,7 +12,7 @@
         <div class="card-header d-flex justify-content-between align-items-center">
           <h6 class="m-0 font-weight-bold text-primary text-uppercase">Data Mahasiswa</h6>
           <a href="/admin/master-data/mahasiswa/{{ $mahasiswa->id }}/edit" class="btn btn-sm btn-warning"><i
-              class="fas fa-pencil-alt"></i> Edit</a>
+              class="fas fa-pencil-alt fa-sm"></i> Edit</a>
         </div>
         <div class="card-body">
           <div class="row mb-1">

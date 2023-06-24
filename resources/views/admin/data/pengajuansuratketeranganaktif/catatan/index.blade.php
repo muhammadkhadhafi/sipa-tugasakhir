@@ -9,7 +9,7 @@
     <div class="col-lg-7">
       <div class="card shadow m-0 mb-4">
         <div class="card-header justify-content-between d-flex align-items-center">
-          <h6 class="m-0 font-weight-bold text-primary text-uppercase">Catatan Ditampilkan</h6>
+          <h6 class="m-0 font-weight-bold text-primary text-uppercase">Catatan</h6>
         </div>
         <div class="card-body">
           <dl>
@@ -28,7 +28,7 @@
         <div class="card-body">
           <div class="row mb-2">
             <div class="col-lg-12">
-              <form action="{{ url('admin/pengajuansuratketeranganaktif/catatanditampilkan') }}" method="post">
+              <form action="{{ url('admin/suratketeranganaktif/catatan') }}" method="post">
                 @csrf
                 <div class="form-group">
                   <label for="kontak_admin" class="form-label">Kontak Admin</label>

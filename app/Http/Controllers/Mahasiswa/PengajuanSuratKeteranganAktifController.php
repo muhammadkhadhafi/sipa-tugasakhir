@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Mahasiswa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Admin\Data\PengajuanSuratKeteranganAktif;
-use App\Models\Admin\Data\CatatanPengajuanSuratKeteranganAktif;
-
+use App\Models\Admin\Data\SuratKeteranganAktifCatatan;
+use App\Models\Admin\Data\SuratKeteranganAktifPengajuan;
 
 class PengajuanSuratKeteranganAktifController extends Controller
 {
@@ -17,7 +16,7 @@ class PengajuanSuratKeteranganAktifController extends Controller
     public function index()
     {
         return view('mahasiswa.pengajuansuratketeranganaktif.index', [
-            'list_pengajuan' => PengajuanSuratKeteranganAktif::where('id_mahasiswa', auth()->user()->id)->latest()->get()
+            'list_pengajuan' => SuratKeteranganAktifPengajuan::where('id_mahasiswa', auth()->user()->id)->latest()->get()
         ]);
     }
 
@@ -34,7 +33,7 @@ class PengajuanSuratKeteranganAktifController extends Controller
      */
     public function store(Request $request)
     {
-        $kontak_admin = CatatanPengajuanSuratKeteranganAktif::first()->kontak_admin;
+        $kontak_admin = SuratKeteranganAktifCatatan::first()->kontak_admin;
         $validatedData = $request->validate([
             'semester' => 'required',
             'no_hp' => 'required',
@@ -46,7 +45,7 @@ class PengajuanSuratKeteranganAktifController extends Controller
         $validatedData['id_mahasiswa'] = auth()->user()->id;
         $validatedData['status'] = 1;
 
-        PengajuanSuratKeteranganAktif::create($validatedData);
+        SuratKeteranganAktifPengajuan::create($validatedData);
 
         return redirect('mahasiswa/pengajuansuratketeranganaktif')->with('success', 'Pengajuan berhasil disimpan, segera konfirmasi ke: ' . $kontak_admin);
     }
@@ -54,18 +53,18 @@ class PengajuanSuratKeteranganAktifController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(PengajuanSuratKeteranganAktif $pengajuansuratketeranganaktif)
+    public function show(SuratKeteranganAktifPengajuan $pengajuansuratketeranganaktif)
     {
         return view('mahasiswa.pengajuansuratketeranganaktif.show', [
             'pengajuan' => $pengajuansuratketeranganaktif,
-            'kontak_admin' => CatatanPengajuanSuratKeteranganAktif::first()->kontak_admin
+            'kontak_admin' => SuratKeteranganAktifCatatan::first()->kontak_admin
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PengajuanSuratKeteranganAktif $pengajuansuratketeranganaktif)
+    public function edit(SuratKeteranganAktifPengajuan $pengajuansuratketeranganaktif)
     {
 
         return view('mahasiswa.pengajuansuratketeranganaktif.edit', [
@@ -76,9 +75,9 @@ class PengajuanSuratKeteranganAktifController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, PengajuanSuratKeteranganAktif $pengajuansuratketeranganaktif)
+    public function update(Request $request, SuratKeteranganAktifPengajuan $pengajuansuratketeranganaktif)
     {
-        $kontak_admin = CatatanPengajuanSuratKeteranganAktif::first()->kontak_admin;
+        $kontak_admin = SuratKeteranganAktifCatatan::first()->kontak_admin;
 
         $validatedData = $request->validate([
             'semester' => 'required',
@@ -88,7 +87,7 @@ class PengajuanSuratKeteranganAktifController extends Controller
             'deskripsi_pengajuan' => 'required',
         ]);
 
-        PengajuanSuratKeteranganAktif::where('id', $pengajuansuratketeranganaktif->id)->update($validatedData);
+        SuratKeteranganAktifPengajuan::where('id', $pengajuansuratketeranganaktif->id)->update($validatedData);
 
         return redirect('mahasiswa/pengajuansuratketeranganaktif')->with('success', 'Pengajuan berhasil disimpan, segera konfirmasi ke: ' . $kontak_admin);
     }
@@ -96,12 +95,12 @@ class PengajuanSuratKeteranganAktifController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PengajuanSuratKeteranganAktif $pengajuansuratketeranganaktif)
+    public function destroy(SuratKeteranganAktifPengajuan $pengajuansuratketeranganaktif)
     {
         if ($pengajuansuratketeranganaktif->surat_keterangan_aktif) {
             Storage::delete($pengajuansuratketeranganaktif->surat_keterangan_aktif);
         }
-        PengajuanSuratKeteranganAktif::destroy('id', $pengajuansuratketeranganaktif->id);
+        SuratKeteranganAktifPengajuan::destroy('id', $pengajuansuratketeranganaktif->id);
 
         return redirect('mahasiswa/pengajuansuratketeranganaktif')->with('success', 'Pengajuan berhasil dihapus');
     }

@@ -26,7 +26,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>
                   <div class="btn-group">
-                    <a href="/admin/pengajuansuratketeranganaktif/pengajuanbaru/{{ $pengajuan->id }}"
+                    <a href="/admin/suratketeranganaktif/pengajuanbaru/{{ $pengajuan->id }}"
                       class="btn btn-sm btn-primary"><i class="fas fa-info fa-xs"></i> Detail Pengajuan</a>
                   </div>
                 </td>

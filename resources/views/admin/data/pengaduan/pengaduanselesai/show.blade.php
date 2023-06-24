@@ -65,10 +65,10 @@
     <div class="col-lg-5">
       <div class="card shadow mb-4">
         <div class="card-header d-flex align-items center">
-          <h6 class="m-0 font-weight-bold text-primary text-uppercase">Edit Tindak Lanjut</h6>
+          <h6 class="m-0 font-weight-bold text-primary text-uppercase">Tindak Lanjut</h6>
         </div>
         <div class="card-body">
-          <form action="/admin/pengaduan/pengaduanselesai/ubahdeskripsitindaklanjut/{{ $pengaduan->id }}" method="post">
+          <form action="/admin/pengaduan/pengaduanselesai/editdeskripsitindaklanjut/{{ $pengaduan->id }}" method="post">
             @csrf
             @method('put')
             <div class="row">

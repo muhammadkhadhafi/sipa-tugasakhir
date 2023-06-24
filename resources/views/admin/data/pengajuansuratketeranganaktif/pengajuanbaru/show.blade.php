@@ -68,8 +68,7 @@
         <div class="card-body">
           <div class="row mb-2">
             <div class="col-lg-12">
-              <form
-                action="{{ url('admin/pengajuansuratketeranganaktif/pengajuanbaru/downloadsurat/' . $pengajuan->id) }}"
+              <form action="{{ url('admin/suratketeranganaktif/pengajuanbaru/downloadsurat/' . $pengajuan->id) }}"
                 method="post" class="d-flex">
                 @csrf
                 <button type="submit" class="btn btn-sm btn-primary flex-fill" style="border-radius: 0"><i
@@ -81,8 +80,8 @@
           <hr>
           <div class="row">
             <div class="col-lg-12">
-              <form action="/admin/pengajuansuratketeranganaktif/pengajuanbaru/uploadsurat/{{ $pengajuan->id }}"
-                method="post" enctype="multipart/form-data">
+              <form action="/admin/suratketeranganaktif/pengajuanbaru/uploadsurat/{{ $pengajuan->id }}" method="post"
+                enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="form-group">
@@ -110,7 +109,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col-lg-12">
-              <form action="/admin/pengajuansuratketeranganaktif/pengajuanbaru/tolakpengajuan/{{ $pengajuan->id }}"
+              <form action="/admin/suratketeranganaktif/pengajuanbaru/tolakpengajuan/{{ $pengajuan->id }}"
                 method="post">
                 @csrf
                 @method('put')

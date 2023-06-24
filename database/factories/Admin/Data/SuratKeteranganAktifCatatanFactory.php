@@ -5,9 +5,9 @@ namespace Database\Factories\Admin\Data;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Admin\Data\PengajuanSuratKeteranganAktif>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Admin\Data\SuratKeteranganAktifCatatan>
  */
-class PengajuanSuratKeteranganAktifFactory extends Factory
+class SuratKeteranganAktifCatatanFactory extends Factory
 {
     /**
      * Define the model's default state.

@@ -7,11 +7,11 @@ use App\Models\Model;
 use App\Models\Admin\MasterData\Mahasiswa;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class PengajuanSuratKeteranganAktif extends Model
+class SuratKeteranganAktifPengajuan extends Model
 {
     use HasFactory;
 
-    protected $table = 'admin__pengajuan_surat_keterangan_aktifs';
+    protected $table = 'admin__surat_keterangan_aktif__pengajuans';
     protected $guarded = ['id'];
 
     public function mahasiswa()

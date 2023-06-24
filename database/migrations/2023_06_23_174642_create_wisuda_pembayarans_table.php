@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admin__catatan_pengajuan_surat_keterangan_aktifs', function (Blueprint $table) {
+        Schema::create('admin__wisuda__pembayarans', function (Blueprint $table) {
             $table->char('id', 36)->primary();
-            $table->text('kontak_admin');
+            $table->char('id_mahasiswa', 36);
+            $table->bigInteger('total_dibayar');
+            $table->boolean('status')->default(false);
+            $table->string('snap_token')->nullable();
+            $table->timestamp('dibayar')->nullable();
             $table->timestamps();
         });
     }
@@ -23,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admin__catatan_pengajuan_surat_keterangan_aktifs');
+        Schema::dropIfExists('admin__wisuda__pembayarans');
     }
 };

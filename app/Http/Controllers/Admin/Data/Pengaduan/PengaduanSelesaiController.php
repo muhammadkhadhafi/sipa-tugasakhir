@@ -22,7 +22,7 @@ class PengaduanSelesaiController extends Controller
         ]);
     }
 
-    public function ubahDeskripsiTindakLanjut(Request $request, Pengaduan $pengaduanselesai)
+    public function editDeskripsiTindakLanjut(Request $request, Pengaduan $pengaduanselesai)
     {
         $validatedData = $request->validate([
             'deskripsi_tindak_lanjut' => 'required'

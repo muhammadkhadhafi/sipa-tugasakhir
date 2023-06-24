@@ -6,6 +6,9 @@ namespace Database\Seeders;
 
 use App\Models\Admin\Data\CatatanPengajuanSuratKeteranganAktif;
 use App\Models\Admin\Data\KategoriPembayaran;
+use App\Models\Admin\Data\SuratKeteranganAktifCatatan;
+use App\Models\Admin\Data\WisudaKategoriPembayaran;
+use App\Models\Admin\Data\WisudaSetHarga;
 use App\Models\Admin\MasterData\Pegawai;
 use Illuminate\Database\Seeder;
 
@@ -22,7 +25,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        Pegawai::factory(10)->create();
+        Pegawai::factory(5)->create();
 
         Pegawai::create([
             'nama' => 'Muhammad Khadafi',
@@ -46,8 +49,12 @@ class DatabaseSeeder extends Seeder
             'harga' => 50000
         ]);
 
-        CatatanPengajuanSuratKeteranganAktif::create([
+        SuratKeteranganAktifCatatan::create([
             'kontak_admin' => 'Ibu Irul/ +62 878-2765-0024',
+        ]);
+
+        WisudaSetHarga::create([
+            'harga' => 400000
         ]);
     }
 }

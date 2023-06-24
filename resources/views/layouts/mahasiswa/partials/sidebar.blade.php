@@ -31,16 +31,16 @@
       <span>Surat Keterangan Aktif</span></a>
   </li>
 
-  <li class="nav-item {{ Request::is('mahasiswa/pembayaran*') ? 'active' : '' }}">
-    <a class="nav-link" href="/mahasiswa/pembayaran">
-      <i class="fas fa-credit-card"></i>
-      <span>Pembayaran</span></a>
-  </li>
-
   <li class="nav-item {{ Request::is('mahasiswa/absenpkkmb*') ? 'active' : '' }}">
     <a class="nav-link" href="/mahasiswa/absenpkkmb">
       <i class="fas fa-school"></i>
       <span>Absen PKKMB</span></a>
+  </li>
+
+  <li class="nav-item {{ Request::is('mahasiswa/pendaftaranwisuda*') ? 'active' : '' }}">
+    <a class="nav-link" href="/mahasiswa/pendaftaranwisuda">
+      <i class="fas fa-credit-card"></i>
+      <span>Pendaftaran Wisuda</span></a>
   </li>
 
   <li class="nav-item {{ Request::is('mahasiswa/pengaduan*') ? 'active' : '' }}">

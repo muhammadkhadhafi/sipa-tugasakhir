@@ -34,7 +34,7 @@
                 <td>{{ $pengaduan->tanggal_pengaduan_string }}</td>
                 <td>{{ $pengaduan->mahasiswa->nim }}</td>
                 <td>{{ $pengaduan->mahasiswa->nama }}</td>
-                <td>{{ $pengaduan->mahasiswa->program_studi }}</td>
+                <td>{{ $pengaduan->mahasiswa->prodi->nama }}</td>
                 <td>
                   @if ($pengaduan->status == 1)
                     <span class="badge badge-secondary p-1">Pengaduan baru</span>
