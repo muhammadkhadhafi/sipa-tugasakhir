@@ -33,7 +33,7 @@
             @elseif ($pengajuan->semester == 7)
               <dd>VII (Tujuh)</dd>
             @elseif ($pengajuan->semester == 8)
-              <dd>VIII (Delapang)</dd>
+              <dd>VIII (Delapan)</dd>
             @endif
             <dt>No Hp</dt>
             <dd>{{ $pengajuan->no_hp }}</dd>

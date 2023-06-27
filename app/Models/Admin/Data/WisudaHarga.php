@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Model;
 use Carbon\Carbon;
 
-class WisudaSetHarga extends Model
+class WisudaHarga extends Model
 {
     use HasFactory;
 
-    protected $table = 'admin__wisuda__set_hargas';
+    protected $table = 'admin__wisuda__hargas';
     protected $guarded = ['id'];
 
     public function getUpdateHargaStringAttribute()

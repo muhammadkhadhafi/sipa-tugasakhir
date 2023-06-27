@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admin__wisuda__set_hargas', function (Blueprint $table) {
+        Schema::create('admin__wisuda__hargas', function (Blueprint $table) {
             $table->char('id', 36)->primary();
             $table->bigInteger('harga');
             $table->timestamps();
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admin__wisuda__set_hargas');
+        Schema::dropIfExists('admin__wisuda__hargas');
     }
 };

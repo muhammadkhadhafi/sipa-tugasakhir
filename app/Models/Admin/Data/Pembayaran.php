@@ -31,6 +31,6 @@ class Pembayaran extends Model
 
     public function getWaktuDitambahkanStringAttribute()
     {
-        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y h:i A');
+        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y H:i');
     }
 }

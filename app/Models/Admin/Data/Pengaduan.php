@@ -26,6 +26,6 @@ class Pengaduan extends Model
 
     public function getWaktuPengaduanStringAttribute()
     {
-        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y h:i');
+        return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y H:i');
     }
 }

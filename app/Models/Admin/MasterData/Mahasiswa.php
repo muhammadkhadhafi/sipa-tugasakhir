@@ -4,6 +4,7 @@ namespace App\Models\Admin\MasterData;
 
 use App\Models\Admin\Data\Pembayaran;
 use App\Models\Admin\Data\PengajuanSuratKeteranganAktif;
+use App\Models\Admin\Data\WisudaPendaftaran;
 use Illuminate\Support\Carbon;
 use App\Models\ModelAuthenticate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -28,6 +29,11 @@ class Mahasiswa extends ModelAuthenticate
     public function prodi()
     {
         return $this->belongsTo(Prodi::class, 'id_prodi');
+    }
+
+    public function wisudaPendaftaran()
+    {
+        return $this->hasOne(WisudaPendaftaran::class, 'id_mahasiswa');
     }
 
     public function getTanggalLahirStringAttribute()

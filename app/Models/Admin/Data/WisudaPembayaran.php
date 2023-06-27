@@ -2,7 +2,6 @@
 
 namespace App\Models\Admin\Data;
 
-use App\Models\Admin\MasterData\Mahasiswa;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Model;
 use Carbon\Carbon;
@@ -14,21 +13,26 @@ class WisudaPembayaran extends Model
     protected $table = 'admin__wisuda__pembayarans';
     protected $guarded = ['id'];
 
-    public function mahasiswa()
+    public function pendaftaran()
     {
-        return $this->belongsTo(Mahasiswa::class, 'id_mahasiswa');
+        return $this->belongsTo(WisudaPendaftaran::class, 'id_pendaftaran');
     }
 
-    public function getTanggalPembayaranStringAttribute()
+    public function getWaktuPembayaranStringAttribute()
     {
-        return Carbon::parse($this->attribute['created_at'])->translatedFormat('d F Y');
+        return Carbon::parse($this->attributes['created_at'])->translatedFormat('d F Y H:i');
+    }
+
+    public function getWaktuDibayarStringAttribute()
+    {
+        return Carbon::parse($this->attributes['waktu_dibayar'])->translatedFormat('d F Y H:i');
     }
 
     public function getStatusPembayaranStringAttribute()
     {
-        if (!$this->attribute['status']) {
+        if ($this->attributes['status'] == 1) {
             return 'Belum dibayar';
-        } else {
+        } elseif ($this->attributes['status'] == 2) {
             return 'Dibayar';
         }
     }

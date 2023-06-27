@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('admin__wisuda__pendaftarans', function (Blueprint $table) {
             $table->char('id', 36)->primary();
             $table->char('id_mahasiswa', 36);
-            $table->string('berkas_wisuda');
+            $table->string('berkas_pendaftaran_wisuda');
+            $table->integer('status');
+            $table->text('deskripsi_pendaftaran_ditolak')->nullable();
             $table->timestamps();
         });
     }

@@ -39,7 +39,7 @@
 
   <li class="nav-item {{ Request::is('mahasiswa/pendaftaranwisuda*') ? 'active' : '' }}">
     <a class="nav-link" href="/mahasiswa/pendaftaranwisuda">
-      <i class="fas fa-credit-card"></i>
+      <i class="fas fa-graduation-cap"></i>
       <span>Pendaftaran Wisuda</span></a>
   </li>
 

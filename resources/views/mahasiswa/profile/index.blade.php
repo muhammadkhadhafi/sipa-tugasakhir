@@ -13,7 +13,7 @@
       <div class="card shadow mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
           <h6 class="m-0 font-weight-bold text-primary text-uppercase">Data Mahasiswa</h6>
-          <a href="/mahasiswa/profile/edit" class="btn btn-sm btn-warning"><i class="fas fa-pencil-alt fa-sm"></i>
+          <a href="/mahasiswa/profile/edit" class="btn btn-sm btn-primary"><i class="fas fa-pencil-alt fa-sm"></i>
             Edit</a>
         </div>
         <div class="card-body">

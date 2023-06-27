@@ -4,11 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Admin\Data\CatatanPengajuanSuratKeteranganAktif;
 use App\Models\Admin\Data\KategoriPembayaran;
 use App\Models\Admin\Data\SuratKeteranganAktifCatatan;
+use App\Models\Admin\Data\WisudaHarga;
 use App\Models\Admin\Data\WisudaKategoriPembayaran;
-use App\Models\Admin\Data\WisudaSetHarga;
 use App\Models\Admin\MasterData\Pegawai;
 use Illuminate\Database\Seeder;
 
@@ -53,7 +52,7 @@ class DatabaseSeeder extends Seeder
             'kontak_admin' => 'Ibu Irul/ +62 878-2765-0024',
         ]);
 
-        WisudaSetHarga::create([
+        WisudaHarga::create([
             'harga' => 400000
         ]);
     }

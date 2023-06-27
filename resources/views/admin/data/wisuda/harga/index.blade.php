@@ -1,7 +1,7 @@
 @extends('layouts.admin.main')
 
 @section('container')
-  <h1 class="h3 mb-3">Surat Keterangan Aktif</h1>
+  <h1 class="h3 mb-3">Wisuda</h1>
 
   @include('layouts.utils.notif')
 
@@ -9,12 +9,12 @@
     <div class="col-lg-7">
       <div class="card shadow m-0 mb-4">
         <div class="card-header justify-content-between d-flex align-items-center">
-          <h6 class="m-0 font-weight-bold text-primary text-uppercase">Catatan</h6>
+          <h6 class="m-0 font-weight-bold text-primary text-uppercase">Harga Wisuda</h6>
         </div>
         <div class="card-body">
           <dl>
-            <dt>Kontak Admin</dt>
-            <dd>{{ $catatan->kontak_admin }}</dd>
+            <dt>Harga Wisuda</dt>
+            <dd>@rupiah($harga_wisuda->harga)</dd>
           </dl>
         </div>
       </div>
@@ -23,19 +23,19 @@
     <div class="col-lg-5">
       <div class="card shadow m-0 mb-4">
         <div class="card-header justify-content-between d-flex align-items-center">
-          <h6 class="m-0 font-weight-bold text-primary text-uppercase">Edit Catatan</h6>
+          <h6 class="m-0 font-weight-bold text-primary text-uppercase">Edit Harga Wisuda</h6>
         </div>
         <div class="card-body">
           <div class="row mb-2">
             <div class="col-lg-12">
-              <form action="{{ url('admin/suratketeranganaktif/catatan') }}" method="post">
+              <form action="{{ url('admin/wisuda/harga') }}" method="post">
                 @csrf
                 @method('put')
                 <div class="form-group">
-                  <label for="kontak_admin" class="form-label">Kontak Admin</label>
-                  <input type="text" name="kontak_admin" id="kontak_admin"
-                    class="form-control @error('kontak_admin') is-invalid @enderror" value="{{ $catatan->kontak_admin }}">
-                  @error('kontak_admin')
+                  <label for="harga" class="form-label">Harga Wisuda</label>
+                  <input type="number" name="harga" id="harga"
+                    class="form-control @error('harga') is-invalid @enderror" value="{{ $harga_wisuda->harga }}">
+                  @error('harga')
                     <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
                 </div>

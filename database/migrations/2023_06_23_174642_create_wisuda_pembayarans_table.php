@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('admin__wisuda__pembayarans', function (Blueprint $table) {
             $table->char('id', 36)->primary();
-            $table->char('id_mahasiswa', 36);
-            $table->bigInteger('total_dibayar');
-            $table->boolean('status')->default(false);
+            $table->char('id_pendaftaran', 36);
+            $table->bigInteger('harga');
+            $table->integer('status');
             $table->string('snap_token')->nullable();
-            $table->timestamp('dibayar')->nullable();
+            $table->timestamp('waktu_dibayar')->nullable();
             $table->timestamps();
         });
     }
