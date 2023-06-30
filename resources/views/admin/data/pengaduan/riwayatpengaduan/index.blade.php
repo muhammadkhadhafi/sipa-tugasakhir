@@ -19,7 +19,6 @@
             <th>NIM</th>
             <th>Nama</th>
             <th>Program Studi</th>
-            <th>Status</th>
           </thead>
           <tbody>
             @foreach ($list_pengaduan as $pengaduan)
@@ -35,15 +34,6 @@
                 <td>{{ $pengaduan->mahasiswa->nim }}</td>
                 <td>{{ $pengaduan->mahasiswa->nama }}</td>
                 <td>{{ $pengaduan->mahasiswa->prodi->nama }}</td>
-                <td>
-                  @if ($pengaduan->status == 1)
-                    <span class="badge badge-secondary p-1">Pengaduan baru</span>
-                  @elseif($pengaduan->status == 2)
-                    <span class="badge badge-success p-1">Pengaduan selesai</span>
-                  @elseif($pengaduan->status == 3)
-                    <span class="badge badge-danger p-1">Pengaduan ditolak</span>
-                  @endif
-                </td>
               </tr>
             @endforeach
           </tbody>
