@@ -10,7 +10,7 @@
       <div class="card shadow m-0 mb-4">
         <div class="card-header justify-content-between d-flex align-items-center">
           <h6 class="m-0 font-weight-bold text-primary text-uppercase">Detail Pengaduan</h6>
-          <form action="/admin/pengaduan/pengaduanselesai/prosesulang/{{ $pengaduan->id }}" method="post"
+          <form action="/admin/pengaduan/riwayatpengaduan/prosesulang/{{ $pengaduan->id }}" method="post"
             onclick="return confirm('Yakin ingin proses ulang pengaduan ini?')">
             @csrf
             @method('put')
@@ -68,7 +68,7 @@
           <h6 class="m-0 font-weight-bold text-primary text-uppercase">Tindak Lanjut</h6>
         </div>
         <div class="card-body">
-          <form action="/admin/pengaduan/pengaduanselesai/editdeskripsitindaklanjut/{{ $pengaduan->id }}" method="post">
+          <form action="/admin/pengaduan/riwayatpengaduan/editdeskripsitindaklanjut/{{ $pengaduan->id }}" method="post">
             @csrf
             @method('put')
             <div class="row">

@@ -7,7 +7,7 @@
 
   <div class="card shadow m-0 mb-4">
     <div class="card-header justify-content-between d-flex align-items-center">
-      <h6 class="m-0 font-weight-bold text-primary text-uppercase">Pengaduan Selesai</h6>
+      <h6 class="m-0 font-weight-bold text-primary text-uppercase">Riwayat Pengaduan</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -27,7 +27,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>
                   <div class="btn-group">
-                    <a href="/admin/pengaduan/pengaduanselesai/{{ $pengaduan->id }}" class="btn btn-sm btn-primary"><i
+                    <a href="/admin/pengaduan/riwayatpengaduan/{{ $pengaduan->id }}" class="btn btn-sm btn-primary"><i
                         class="fas fa-info fa-xs"></i> Detail Pengaduan</a>
                   </div>
                 </td>

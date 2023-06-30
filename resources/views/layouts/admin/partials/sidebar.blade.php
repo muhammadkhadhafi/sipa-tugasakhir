@@ -46,8 +46,8 @@
         <a class="collapse-item {{ Request::is('admin/suratketeranganaktif/pengajuanbaru*') ? 'active' : '' }}"
           href="/admin/suratketeranganaktif/pengajuanbaru">Pengajuan
           Baru</a>
-        <a class="collapse-item {{ Request::is('admin/suratketeranganaktif/pengajuanselesai*') ? 'active' : '' }}"
-          href="/admin/suratketeranganaktif/pengajuanselesai">Pengajuan Selesai</a>
+        <a class="collapse-item {{ Request::is('admin/suratketeranganaktif/riwayatpengajuan*') ? 'active' : '' }}"
+          href="/admin/suratketeranganaktif/riwayatpengajuan">Riwayat Pengajuan</a>
         <a class="collapse-item {{ Request::is('admin/suratketeranganaktif/catatan*') ? 'active' : '' }}"
           href="/admin/suratketeranganaktif/catatan">Catatan</a>
       </div>
@@ -87,8 +87,8 @@
         <a class="collapse-item {{ Request::is('admin/pengaduan/pengaduanbaru*') ? 'active' : '' }}"
           href="/admin/pengaduan/pengaduanbaru">Pengaduan
           Baru</a>
-        <a class="collapse-item {{ Request::is('admin/pengaduan/pengaduanselesai*') ? 'active' : '' }}"
-          href="/admin/pengaduan/pengaduanselesai">Pengaduan Selesai</a>
+        <a class="collapse-item {{ Request::is('admin/pengaduan/riwayatpengaduan*') ? 'active' : '' }}"
+          href="/admin/pengaduan/riwayatpengaduan">Riwayat Pengaduan</a>
       </div>
     </div>
   </li>
