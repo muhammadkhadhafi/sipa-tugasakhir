@@ -92,7 +92,8 @@
       @if (!$pendaftaran || ($pendaftaran && $pendaftaran->status == 1) || ($pendaftaran && $pendaftaran->status == 3))
         <div class="row mt-3">
           <div class="col-lg-12">
-            <form action="{{ url('mahasiswa/pendaftaranwisuda') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('mahasiswa/pendaftaranwisuda') }}" method="post" enctype="multipart/form-data"
+              onsubmit="return confirm('Yakin ingin mendaftar wisuda?')">
               @csrf
               <div class="row">
                 <div class="col-lg-6">
@@ -164,7 +165,7 @@
                         @endif
                       </td>
                       <td>@rupiah($pembayaran->harga)</td>
-                      <td>{{ $pembayaran->statusPembayaranString }}</td>
+                      <td>{!! $pembayaran->statusPembayaranString !!}</td>
                     </tr>
                   @else
                     <td>-</td>

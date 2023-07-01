@@ -21,8 +21,7 @@
   <link href="/template/css/sb-admin-2.min.css" rel="stylesheet">
   <style>
     .bg-login-khadafi {
-      /* background: url("https://source.unsplash.com/4rDCa5hBlCs/600x800"); */
-      background: url("https://unsplash.com/photos/jFCViYFYcus/600x800");
+      background: url("https://source.unsplash.com/4rDCa5hBlCs/600x800");
       background-position: center;
       background-size: cover;
     }

@@ -7,8 +7,10 @@ use App\Http\Controllers\Admin\Data\Pengaduan\RiwayatPengaduanController;
 use App\Http\Controllers\Admin\Data\SuratKeteranganAktif\CatatanController;
 use App\Http\Controllers\Admin\Data\SuratKeteranganAktif\PengajuanBaruController;
 use App\Http\Controllers\Admin\Data\SuratKeteranganAktif\RiwayatPengajuanController;
+use App\Http\Controllers\Admin\Data\Wisuda\DaftarWisudaController;
 use App\Http\Controllers\Admin\Data\Wisuda\HargaController;
 use App\Http\Controllers\Admin\Data\Wisuda\PendaftaranController;
+use App\Http\Controllers\Admin\Data\Wisuda\TahunController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\MasterData\PegawaiController;
@@ -63,11 +65,16 @@ Route::get('/pembayaran/pembayaranmasuk/{pembayaran}', [PembayaranMasukControlle
 // End
 
 // Wisuda
-Route::get('wisuda/pendaftaran', [PendaftaranController::class, 'index']);
-Route::get('wisuda/pendaftaran/{pendaftaran}', [PendaftaranController::class, 'show']);
-Route::put('wisuda/pendaftaran/verifikasi/{pendaftaran}', [PendaftaranController::class, 'verifikasi']);
-Route::put('wisuda/pendaftaran/tolak/{pendaftaran}', [PendaftaranController::class, 'tolak']);
+Route::get('/wisuda/pendaftaran', [PendaftaranController::class, 'index']);
+Route::get('/wisuda/pendaftaran/{pendaftaran}', [PendaftaranController::class, 'show']);
+Route::put('/wisuda/pendaftaran/verifikasi/{pendaftaran}', [PendaftaranController::class, 'verifikasi']);
+Route::put('/wisuda/pendaftaran/tolak/{pendaftaran}', [PendaftaranController::class, 'tolak']);
 
-Route::get('wisuda/harga', [HargaController::class, 'index']);
-Route::put('wisuda/harga', [HargaController::class, 'update']);
+Route::get('/wisuda/tahunwisuda', [TahunController::class, 'index']);
+Route::get('/wisuda/tahunwisuda/{tahunwisuda}', [TahunController::class, 'show']);
+Route::get('/wisuda/tahunwisuda/peserta/{peserta}', [TahunController::class, 'detailpeserta']);
+Route::put('/wisuda/tahunwisuda/peserta/batalverifikasi/{peserta}', [TahunController::class, 'batalverifikasi']);
+
+Route::get('/wisuda/harga', [HargaController::class, 'index']);
+Route::put('/wisuda/harga', [HargaController::class, 'update']);
 // End

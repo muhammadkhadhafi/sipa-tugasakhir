@@ -31,9 +31,9 @@ class WisudaPembayaran extends Model
     public function getStatusPembayaranStringAttribute()
     {
         if ($this->attributes['status'] == 1) {
-            return 'Belum dibayar';
+            return '<span class="badge badge-primary p-1">Belum dibayar</span>';
         } elseif ($this->attributes['status'] == 2) {
-            return 'Dibayar';
+            return '<span class="badge badge-success p-1">Dibayar</span>';
         }
     }
 }

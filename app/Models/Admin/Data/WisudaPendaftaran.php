@@ -25,6 +25,11 @@ class WisudaPendaftaran extends Model
         return $this->hasOne(WisudaPembayaran::class, 'id_pendaftaran');
     }
 
+    public function tahun_wisuda()
+    {
+        return $this->belongsTo(WisudaTahun::class, 'id_wisudatahun');
+    }
+
     public function getWaktuPendaftaranStringAttribute()
     {
         return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y H:i');

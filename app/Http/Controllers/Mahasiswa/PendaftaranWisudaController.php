@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Data\WisudaHarga;
 use App\Models\Admin\Data\WisudaPembayaran;
 use App\Models\Admin\Data\WisudaPendaftaran;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -46,6 +47,7 @@ class PendaftaranWisudaController extends Controller
 
         $validatedData['id_mahasiswa'] = auth()->user()->id;
         $validatedData['status'] = 1;
+        // $validatedData['created_at'] = Carbon::createFromDate(2024, 1, 1);
 
         WisudaPendaftaran::create($validatedData);
         return redirect('mahasiswa/pendaftaranwisuda')->with('success', 'Berkas pendaftaran wisuda berhasil disimpan');

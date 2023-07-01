@@ -66,8 +66,8 @@
         <h6 class="collapse-header">Wisuda:</h6>
         <a class="collapse-item {{ Request::is('admin/wisuda/pendaftaran*') ? 'active' : '' }}"
           href="/admin/wisuda/pendaftaran">Pendaftaran</a>
-        <a class="collapse-item {{ Request::is('admin/wisuda/peserta*') ? 'active' : '' }}"
-          href="/admin/wisuda/peserta">Peserta Wisuda</a>
+        <a class="collapse-item {{ Request::is('admin/wisuda/tahunwisuda*') ? 'active' : '' }}"
+          href="/admin/wisuda/tahunwisuda">Wisuda Tahun</a>
         <a class="collapse-item {{ Request::is('admin/wisuda/harga*') ? 'active' : '' }}"
           href="/admin/wisuda/harga">Atur Harga Pendaftaran</a>
       </div>

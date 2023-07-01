@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Data\Wisuda;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Data\wisudaTahun;
 use App\Models\Admin\Data\WisudaPendaftaran;
 use Illuminate\Http\Request;
 
@@ -26,6 +27,17 @@ class PendaftaranController extends Controller
     {
         $pendaftaran['status'] = 2;
         $pendaftaran->update();
+
+        $tahun_pendaftaran = $pendaftaran->created_at->year;
+        $tahun_wisuda = wisudaTahun::whereYear('created_at', $tahun_pendaftaran)->first();
+        if ($tahun_wisuda === null) {
+            $tahun_wisuda_new = wisudaTahun::create(['tahun_wisuda' => $tahun_pendaftaran]);
+            $pendaftaran->id_wisudatahun = $tahun_wisuda_new->id;
+            $pendaftaran->update();
+        } else {
+            $pendaftaran->id_wisudatahun = $tahun_wisuda->id;
+            $pendaftaran->update();
+        }
 
         return redirect('/admin/wisuda/pendaftaran')->with('success', 'Pendaftaran berhasil diverifikasi');
     }
