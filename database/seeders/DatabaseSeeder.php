@@ -38,16 +38,6 @@ class DatabaseSeeder extends Seeder
             'is_masterdata' => true
         ]);
 
-        KategoriPembayaran::create([
-            'kategori_pembayaran' => 'Sewa Toga',
-            'harga' => 100000
-        ]);
-
-        KategoriPembayaran::create([
-            'kategori_pembayaran' => 'Foto',
-            'harga' => 50000
-        ]);
-
         SuratKeteranganAktifCatatan::create([
             'kontak_admin' => 'Ibu Irul/ +62 878-2765-0024',
         ]);

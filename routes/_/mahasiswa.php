@@ -16,8 +16,8 @@ Route::get('/profile/edit', [ProfileController::class, 'edit']);
 Route::put('/profile/{mahasiswa}', [ProfileController::class, 'update']);
 
 Route::resource('/pengajuansuratketeranganaktif', PengajuanSuratKeteranganAktifController::class);
+
 Route::resource('/pengaduan', PengaduanController::class);
-Route::resource('/pembayaran', PembayaranController::class)->except(['edit', 'update']);  // Route ini akan digantikan dengan pendaftaran wisuda
 
 Route::get('/pendaftaranwisuda', [PendaftaranWisudaController::class, 'index']);
 Route::post('/pendaftaranwisuda', [PendaftaranWisudaController::class, 'uploadBerkasPendaftaranWisuda']);
