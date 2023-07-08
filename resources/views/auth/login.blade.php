@@ -21,7 +21,9 @@
   <link href="/template/css/sb-admin-2.min.css" rel="stylesheet">
   <style>
     .bg-login-khadafi {
-      background: url("https://source.unsplash.com/4rDCa5hBlCs/600x800");
+      /* background: url("https://source.unsplash.com/4rDCa5hBlCs/600x800"); */
+      /* background: url("https://images.unsplash.com/photo-1687426158600-fe2ff990b7b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80/600x800"); */
+      background: url("https://images.unsplash.com/photo-1654538437185-3c57bb290bb5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1951&q=80/600x800");
       background-position: center;
       background-size: cover;
     }

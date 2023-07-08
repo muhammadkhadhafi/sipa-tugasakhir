@@ -5,6 +5,8 @@ use App\Http\Controllers\Mahasiswa\PendaftaranWisudaController;
 use App\Http\Controllers\Mahasiswa\PengaduanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Mahasiswa\PengajuanSuratKeteranganAktifController;
+use App\Http\Controllers\Mahasiswa\PkkmbAbsenController;
+use App\Http\Controllers\Mahasiswa\PkkmbKoorController;
 use App\Http\Controllers\Mahasiswa\ProfileController;
 
 Route::get('/dashboard', function () {
@@ -22,3 +24,7 @@ Route::resource('/pengaduan', PengaduanController::class);
 Route::get('/pendaftaranwisuda', [PendaftaranWisudaController::class, 'index']);
 Route::post('/pendaftaranwisuda', [PendaftaranWisudaController::class, 'uploadBerkasPendaftaranWisuda']);
 Route::post('/pendaftaranwisuda/pembayaran/{pendaftaran}', [PendaftaranWisudaController::class, 'pembayaran']);
+
+Route::get('/pkkmb/absen', [PkkmbAbsenController::class, 'index']);
+
+Route::resource('/pkkmb/koor', PkkmbKoorController::class)->middleware('can:is_koor_pkkmb');

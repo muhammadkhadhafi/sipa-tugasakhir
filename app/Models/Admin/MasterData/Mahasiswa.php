@@ -4,6 +4,9 @@ namespace App\Models\Admin\MasterData;
 
 use App\Models\Admin\Data\Pembayaran;
 use App\Models\Admin\Data\PengajuanSuratKeteranganAktif;
+use App\Models\Admin\Data\PkkmbAbsen;
+use App\Models\Admin\Data\PkkmbGrup;
+use App\Models\Admin\Data\PkkmbIzin;
 use App\Models\Admin\Data\WisudaPendaftaran;
 use Illuminate\Support\Carbon;
 use App\Models\ModelAuthenticate;
@@ -15,6 +18,21 @@ class Mahasiswa extends ModelAuthenticate
 
     protected $table = 'admin__ms__mahasiswa';
     protected $guarded = ['id'];
+
+    public function pkkmbGrup()
+    {
+        return $this->belongsTo(PkkmbGrup::class, 'id_pkkmb_grup');
+    }
+
+    public function pkkmbAbsen()
+    {
+        return $this->hasMany(PkkmbAbsen::class, 'id_mahasiswa');
+    }
+
+    public function pkkmbIzin()
+    {
+        return $this->hasMany(PkkmbIzin::class, 'id_mahasiswa');
+    }
 
     public function pengajuanSuratKeteranganAktif()
     {

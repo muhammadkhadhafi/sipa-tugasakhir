@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Data\Pembayaran\KategoriPembayaranController;
 use App\Http\Controllers\Admin\Data\Pembayaran\PembayaranMasukController;
 use App\Http\Controllers\Admin\Data\Pengaduan\PengaduanBaruController;
 use App\Http\Controllers\Admin\Data\Pengaduan\RiwayatPengaduanController;
+use App\Http\Controllers\Admin\Data\Pkkmb\AbsenController;
 use App\Http\Controllers\Admin\Data\SuratKeteranganAktif\CatatanController;
 use App\Http\Controllers\Admin\Data\SuratKeteranganAktif\PengajuanBaruController;
 use App\Http\Controllers\Admin\Data\SuratKeteranganAktif\RiwayatPengajuanController;
@@ -77,4 +78,12 @@ Route::put('/wisuda/tahunwisuda/peserta/batalverifikasi/{peserta}', [TahunContro
 
 Route::get('/wisuda/harga', [HargaController::class, 'index']);
 Route::put('/wisuda/harga', [HargaController::class, 'update']);
+// End
+
+// Pkkmb
+Route::get('/pkkmb/absen', [AbsenController::class, 'index']);
+Route::post('/pkkmb/absen', [AbsenController::class, 'createGrup']);
+Route::get('/pkkmb/absen/detailgrup/{detailgrup}', [AbsenController::class, 'detailGrup']);
+Route::put('/pkkmb/absen/detailgrup/setkoor1/{setkoor}', [AbsenController::class, 'setKoor1']);
+Route::put('/pkkmb/absen/detailgrup/setkoor2/{setkoor}', [AbsenController::class, 'setKoor2']);
 // End

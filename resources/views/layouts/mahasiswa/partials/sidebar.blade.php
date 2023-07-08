@@ -31,11 +31,19 @@
       <span>Surat Keterangan Aktif</span></a>
   </li>
 
-  <li class="nav-item {{ Request::is('mahasiswa/absenpkkmb*') ? 'active' : '' }}">
-    <a class="nav-link" href="/mahasiswa/absenpkkmb">
+  <li class="nav-item {{ Request::is('mahasiswa/pkkmb/absen*') ? 'active' : '' }}">
+    <a class="nav-link" href="/mahasiswa/pkkmb/absen">
       <i class="fas fa-school"></i>
-      <span>Absen PKKMB</span></a>
+      <span>PKKMB</span></a>
   </li>
+
+  @can('is_koor_pkkmb')
+    <li class="nav-item {{ Request::is('mahasiswa/pkkmb/koor*') ? 'active' : '' }}">
+      <a class="nav-link" href="/mahasiswa/pkkmb/koor">
+        <i class="fas fa-tasks"></i>
+        <span>Koordinator PKKMB</span></a>
+    </li>
+  @endcan
 
   <li class="nav-item {{ Request::is('mahasiswa/pendaftaranwisuda*') ? 'active' : '' }}">
     <a class="nav-link" href="/mahasiswa/pendaftaranwisuda">

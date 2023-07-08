@@ -54,6 +54,22 @@
     </div>
   </li>
 
+  <li class="nav-item {{ Request::is('admin/pkkmb*') ? 'active' : '' }}">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePkkmb" aria-expanded="true"
+      aria-controls="collapsePkkmb">
+      <i class="fas fa-school"></i>
+      <span>PKKMB</span>
+    </a>
+    <div id="collapsePkkmb" class="collapse {{ Request::is('admin/pkkmb*') ? 'show' : '' }}"
+      aria-labelledby="headingPages" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">PKKMB:</h6>
+        <a class="collapse-item {{ Request::is('admin/pkkmb/absen*') ? 'active' : '' }}"
+          href="/admin/pkkmb/absen">Absensi</a>
+      </div>
+    </div>
+  </li>
+
   <li class="nav-item {{ Request::is('admin/wisuda*') ? 'active' : '' }}">
     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseWisuda" aria-expanded="true"
       aria-controls="collapseWisuda">
