@@ -60,9 +60,9 @@ Route::put('/pengaduan/riwayatpengaduan/prosesulang/{riwayatpengaduan}', [Riwaya
 // End
 
 // Pembayaran
-Route::resource('/pembayaran/kategoripembayaran', KategoriPembayaranController::class);
-Route::get('/pembayaran/pembayaranmasuk', [PembayaranMasukController::class, 'index']);
-Route::get('/pembayaran/pembayaranmasuk/{pembayaran}', [PembayaranMasukController::class, 'show']);
+// Route::resource('/pembayaran/kategoripembayaran', KategoriPembayaranController::class);
+// Route::get('/pembayaran/pembayaranmasuk', [PembayaranMasukController::class, 'index']);
+// Route::get('/pembayaran/pembayaranmasuk/{pembayaran}', [PembayaranMasukController::class, 'show']);
 // End
 
 // Wisuda

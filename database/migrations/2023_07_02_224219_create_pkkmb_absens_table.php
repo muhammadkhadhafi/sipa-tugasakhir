@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('admin__pkkmb__absens', function (Blueprint $table) {
             $table->char('id', 36)->primary();
-            $table->char('id_mahasiswa', 36)->nullable();
             $table->char('id_pkkmb_pertemuan')->nullable();
+            $table->char('id_mahasiswa', 36)->nullable();
             $table->timestamps();
         });
     }

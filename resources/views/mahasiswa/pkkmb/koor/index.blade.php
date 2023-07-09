@@ -21,12 +21,14 @@
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-          <thead class="bg-gradient-primary text-light text-uppercase">
-            <th width="15px">No</th>
-            <th width="120px">Aksi</th>
-            <th width="100px">Tanggal Pertemuan</th>
-            <th>Kegiatan</th>
-            <th width="80px">Jumlah Anggota Hadir</th>
+          <thead class="bg-gradient-primary text-light text-uppercase align-middle">
+            <th class="align-middle" width="15px">No</th>
+            <th class="align-middle" width="120px">Aksi</th>
+            <th class="align-middle" width="160px">Tanggal Pertemuan</th>
+            <th class="align-middle">Kegiatan</th>
+            <th class="align-middle" width="50px">Jumlah Anggota Hadir</th>
+            <th class="align-middle" width="50px">Jumlah Anggota Izin</th>
+            <th class="align-middle" width="50px">Jumlah Anggota Sakit</th>
           </thead>
           <tbody>
             @foreach ($list_pertemuan as $pertemuan)
@@ -34,13 +36,23 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>
                   <div class="btn-group">
-                    <a href="{{ url('/mahasiswa/pkkmb/koor/detailpertemuan/' . $pertemuan->id) }}"
-                      class="btn btn-sm btn-primary"><i class="fas fa-info fa-xs"></i> Detail</a>
+                    <a href="{{ url('/mahasiswa/pkkmb/koor/' . $pertemuan->id) }}" class="btn btn-sm btn-primary"><i
+                        class="fas fa-info fa-xs"></i> Detail</a>
+                    <form action="{{ url('mahasiswa/pkkmb/koor/' . $pertemuan->id) }}" method="post"
+                      onsubmit="return confirm('Yakin ingin menghapus pertemuan ini?')">
+                      @csrf
+                      @method('delete')
+                      <button type="submit" class="btn btn-sm btn-danger" style="border-radius: 0 3px 3px 0"><i
+                          class="far fa-trash-alt fa-sm"></i>
+                        Hapus</button>
+                    </form>
                   </div>
                 </td>
                 <td>{{ $pertemuan->tanggalPertemuanString }}</td>
                 <td>{{ $pertemuan->materi_kegiatan }}</td>
                 <td>{{ $pertemuan->pkkmbAbsen->count() }}</td>
+                <td>{{ $pertemuan->pkkmbIzin->where('status', 'izin')->count() }}</td>
+                <td>{{ $pertemuan->pkkmbIzin->where('status', 'sakit')->count() }}</td>
               </tr>
             @endforeach
           </tbody>

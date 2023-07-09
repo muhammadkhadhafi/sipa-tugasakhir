@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Mahasiswa\PembayaranController;
 use App\Http\Controllers\Mahasiswa\PendaftaranWisudaController;
 use App\Http\Controllers\Mahasiswa\PengaduanController;
 use Illuminate\Support\Facades\Route;
@@ -26,5 +25,6 @@ Route::post('/pendaftaranwisuda', [PendaftaranWisudaController::class, 'uploadBe
 Route::post('/pendaftaranwisuda/pembayaran/{pendaftaran}', [PendaftaranWisudaController::class, 'pembayaran']);
 
 Route::get('/pkkmb/absen', [PkkmbAbsenController::class, 'index']);
+Route::get('/pkkmb/absen/detailpertemuan/{absen}', [PkkmbAbsenController::class, 'show']);
 
-Route::resource('/pkkmb/koor', PkkmbKoorController::class)->middleware('can:is_koor_pkkmb');
+Route::resource('/pkkmb/koor', PkkmbKoorController::class)->middleware('can:is_koor_pkkmb')->except(['edit', 'update']);

@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin\Data;
 
+use App\Models\Admin\MasterData\Mahasiswa;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Model;
 
@@ -15,7 +16,7 @@ class PkkmbIzin extends Model
         return $this->belongsTo(Mahasiswa::class, 'id_mahasiswa');
     }
 
-    public function pertemuan()
+    public function pkkmbPertemuan()
     {
         return $this->belongsTo(PkkmbPertemuan::class, 'id_pkkmb_pertemuan');
     }

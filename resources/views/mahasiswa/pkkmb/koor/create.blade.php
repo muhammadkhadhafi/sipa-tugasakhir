@@ -68,8 +68,7 @@
                           <td>{{ $anggota->nama }}</td>
                           <td>
                             <input type="radio" name="absen[{{ $anggota->id }}]" value="hadir" class="absen-radio"
-                              onchange="toggleFileInput(this)"
-                              {{ old('absen.' . $anggota->id) == 'hadir' ? 'checked' : '' }}>
+                              onchange="toggleFileInput(this)" checked>
                             <span class="status mr-2">Hadir</span>
                             <input type="radio" name="absen[{{ $anggota->id }}]" value="izin" class="absen-radio"
                               onchange="toggleFileInput(this)"
