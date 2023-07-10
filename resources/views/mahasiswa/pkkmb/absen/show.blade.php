@@ -38,18 +38,24 @@
                     <th width="120px">Bukti</th>
                   </thead>
                   <tbody>
-                    @foreach ($list_izin as $izin)
+                    @if ($list_izin->isNotEmpty())
+                      @foreach ($list_izin as $izin)
+                        <tr>
+                          <td>{{ $loop->iteration }}</td>
+                          <td>{{ $izin->mahasiswa->nim }}</td>
+                          <td>{{ $izin->mahasiswa->nama }}</td>
+                          <td>
+                            <a href="" target="popup"
+                              onclick="window.open('{{ asset('storage/' . $izin->bukti) }}','popup','width=800,height=600'); return false;"
+                              class="btn btn-sm btn-primary c-btn"><i class="far fa-file-alt fa-sm"></i> Preview</a>
+                          </td>
+                        </tr>
+                      @endforeach
+                    @else
                       <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $izin->mahasiswa->nim }}</td>
-                        <td>{{ $izin->mahasiswa->nama }}</td>
-                        <td>
-                          <a href="" target="popup"
-                            onclick="window.open('{{ asset('storage/' . $izin->bukti) }}','popup','width=800,height=600'); return false;"
-                            class="btn btn-sm btn-primary c-btn"><i class="far fa-file-alt fa-sm"></i> Preview</a>
-                        </td>
+                        <td colspan="4" class="text-center">Tidak ada izin</td>
                       </tr>
-                    @endforeach
+                    @endif
                   </tbody>
                 </table>
               </div>
@@ -73,18 +79,24 @@
                     <th width="120px">Bukti</th>
                   </thead>
                   <tbody>
-                    @foreach ($list_sakit as $sakit)
+                    @if ($list_sakit->isNotEmpty())
+                      @foreach ($list_sakit as $sakit)
+                        <tr>
+                          <td>{{ $loop->iteration }}</td>
+                          <td>{{ $sakit->mahasiswa->nim }}</td>
+                          <td>{{ $sakit->mahasiswa->nama }}</td>
+                          <td>
+                            <a href="" target="popup"
+                              onclick="window.open('{{ asset('storage/' . $sakit->bukti) }}','popup','width=800,height=600'); return false;"
+                              class="btn btn-sm btn-primary c-btn"><i class="far fa-file-alt fa-sm"></i> Preview</a>
+                          </td>
+                        </tr>
+                      @endforeach
+                    @else
                       <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $sakit->mahasiswa->nim }}</td>
-                        <td>{{ $sakit->mahasiswa->nama }}</td>
-                        <td>
-                          <a href="" target="popup"
-                            onclick="window.open('{{ asset('storage/' . $sakit->bukti) }}','popup','width=800,height=600'); return false;"
-                            class="btn btn-sm btn-primary c-btn"><i class="far fa-file-alt fa-sm"></i> Preview</a>
-                        </td>
+                        <td colspan="4" class="text-center">Tidak ada sakit</td>
                       </tr>
-                    @endforeach
+                    @endif
                   </tbody>
                 </table>
               </div>

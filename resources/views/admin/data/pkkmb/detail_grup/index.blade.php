@@ -25,7 +25,7 @@
                 @endif
               @endforeach
             @else
-              <dd>Belum ada koordinator 2</dd>
+              <dd>Belum ada koordinator 1</dd>
             @endif
             <dd>
               <form action="{{ url('/admin/pkkmb/absen/detailgrup/setkoor1/' . $grup->id) }}" method="post">
@@ -69,14 +69,20 @@
             </dd>
           </div>
         </div>
+
         <hr>
+
         <div class="row">
           <div class="col-lg-6">
             <dt>Sertifikat PKKMB</dt>
             <dd>
-              <a href="" target="popup"
-                onclick="window.open('{{ asset('storage/') }}','popup','width=800,height=600'); return false;"
-                class="btn btn-sm btn-primary d-block py-2 c-btn"><i class="fas fa-file fa-sm"></i> Sertifikat PKKMB</a>
+              @if ($grup->pkkmbSertifikat)
+                <a href="" target="popup"
+                  onclick="window.open('{{ asset('storage/' . $grup->pkkmbSertifikat->sertifikat_pkkmb) }}','popup','width=800,height=600'); return false;"
+                  class="btn btn-sm btn-primary d-block py-2 c-btn"><i class="fas fa-file fa-sm"></i> Sertifikat PKKMB</a>
+              @else
+                Belum ada sertifikat yang diunggah
+              @endif
             </dd>
           </div>
           <div class="col-lg-6"></div>
@@ -90,6 +96,7 @@
               <div class="row">
                 <div class="col-lg-6">
                   <label for="sertifikat_pkkmb" class="form-label">Upload Sertifikat PKKMB</label>
+                  <input type="hidden" name="id_pkkmb_grup" value="{{ $grup->id }}">
                   <input type="file" name="sertifikat_pkkmb" id="sertifikat_pkkmb"
                     class="form-control @error('sertifikat_pkkmb') is-invalid @enderror" accept=".pdf">
                   @error('sertifikat_pkkmb')
@@ -112,6 +119,13 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-lg-12">
+      <a href="#" class="btn btn-primary btn-sm float-right" style="padding: 2px 10px"><i
+          class="fas fa-chart-line fa-sm"></i> Rekap
+        Pertemuan</a>
+    </div>
+  </div>
   <div class="card shadow m-0 mb-4">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Data Anggota</h6>

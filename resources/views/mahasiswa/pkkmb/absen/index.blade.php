@@ -15,6 +15,11 @@
   <div class="card shadow m-0 mb-4">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Absensi PKKMB</h6>
+      @if ($grup->pkkmbSertifikat)
+        <a href="" target="popup"
+          onclick="window.open('{{ asset('storage/' . $grup->pkkmbSertifikat->sertifikat_pkkmb) }}','popup','width=800,height=600'); return false;"
+          class="btn btn-sm btn-primary"><i class="fas fa-file fa-sm"></i> Sertifikat PKKMB</a>
+      @endif
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -25,8 +30,6 @@
             <th class="align-middle" width="160px">Tanggal Pertemuan</th>
             <th class="align-middle">Kegiatan</th>
             <th class="align-middle" width="50px">Jumlah Anggota Hadir</th>
-            <th class="align-middle" width="50px">Jumlah Anggota Izin</th>
-            <th class="align-middle" width="50px">Jumlah Anggota Sakit</th>
           </thead>
           <tbody>
             @foreach ($list_pertemuan as $pertemuan)
@@ -41,8 +44,6 @@
                 <td>{{ $pertemuan->tanggalPertemuanString }}</td>
                 <td>{{ $pertemuan->materi_kegiatan }}</td>
                 <td>{{ $pertemuan->pkkmbAbsen->count() }}</td>
-                <td>{{ $pertemuan->pkkmbIzin->where('status', 'izin')->count() }}</td>
-                <td>{{ $pertemuan->pkkmbIzin->where('status', 'sakit')->count() }}</td>
               </tr>
             @endforeach
           </tbody>

@@ -73,7 +73,6 @@ class PkkmbKoorController extends Controller
 
         if ($request->absen) {
             $error = false;
-            $list_pkkmbIzin = PkkmbIzin::all();
 
             foreach ($request->absen as $id => $absen) {
                 if ($absen === 'hadir') {
@@ -90,7 +89,6 @@ class PkkmbKoorController extends Controller
                     if ($request->hasFile('bukti') && isset($request->file('bukti')[$id])) {
                         $newIzin->bukti = $request->file('bukti')[$id]->store('admin/data/pkkmb/izin');
                         $newIzin->save();
-                        $list_pkkmbIzin->push($newIzin);
                     } else {
                         $error = true;
                         PkkmbAbsen::where('id_pkkmb_pertemuan', $newPertemuan->id)->delete();
@@ -107,7 +105,7 @@ class PkkmbKoorController extends Controller
             if ($error) {
                 Storage::delete($newPertemuan->bukti_kegiatan);
                 PkkmbPertemuan::destroy('id', $newPertemuan->id);
-                return back()->with('danger', 'Salah satu izin atau sakit tidak menginputkan bukti!');
+                return back()->with('danger', 'Absensi gagal, karena salah satu izin atau sakit tidak menginputkan bukti!');
             }
         }
 

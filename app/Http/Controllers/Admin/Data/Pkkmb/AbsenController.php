@@ -8,6 +8,7 @@ use App\Models\Admin\Data\PkkmbGrup;
 use App\Models\Admin\Data\PkkmbSertifikat;
 use App\Models\Admin\MasterData\Mahasiswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AbsenController extends Controller
 {
@@ -70,7 +71,6 @@ class AbsenController extends Controller
             'grup' => $detailgrup,
             'list_kating' => $list_kating,
             'list_anggota' => $list_anggota->sortBy('nim'),
-            // 'sertifikat_pkkmb' => $detailgrup->pkkmbSertifikat
         ]);
     }
 
@@ -88,12 +88,25 @@ class AbsenController extends Controller
         return back()->with('success', 'Koordinator 2 berhasil disimpan');
     }
 
-    public function uploadSertifikat(Request $request, PkkmbSertifikat $pkkmbSertifikat)
+    public function uploadSertifikat(Request $request)
     {
         $validatedData = $request->validate([
-            'sertifikat' => ['required', 'file', 'max:5000']
+            'sertifikat_pkkmb' => ['required', 'file', 'max:7000']
         ]);
 
-        // $validatedData->id_pkkmb_grup = $request->id
+        $pkkmbGrup = PkkmbGrup::where('id', $request->id_pkkmb_grup)->first();
+
+        if ($request->file('sertifikat_pkkmb')) {
+            if ($pkkmbGrup->pkkmbSertifikat) {
+                Storage::delete($pkkmbGrup->pkkmbSertifikat->sertifikat_pkkmb);
+                PkkmbSertifikat::destroy('id_pkkmb_grup', $pkkmbGrup->pkkmbSertifikat->id);
+            }
+            $validatedData['sertifikat_pkkmb'] = $request->file('sertifikat_pkkmb')->store('admin/data/pkkmb/sertifikat');
+        }
+        $validatedData['id_pkkmb_grup'] = $request->id_pkkmb_grup;
+
+        PkkmbSertifikat::create($validatedData);
+
+        return back()->with('success', 'Sertifikat PKKMB berhasil disimpan');
     }
 }

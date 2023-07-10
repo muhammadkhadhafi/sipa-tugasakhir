@@ -14,6 +14,7 @@ class PkkmbAbsenController extends Controller
         $grup = optional(PkkmbGrup::where('id', auth()->user()->id_pkkmb_grup)->first());
 
         return view('mahasiswa.pkkmb.absen.index', [
+            'grup' => $grup,
             'list_pertemuan' => $grup->pkkmbPertemuan->sortByDesc('tanggal_pertemuan') ?? [],
         ]);
     }

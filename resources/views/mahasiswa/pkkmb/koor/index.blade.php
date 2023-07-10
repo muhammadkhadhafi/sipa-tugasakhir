@@ -27,8 +27,6 @@
             <th class="align-middle" width="160px">Tanggal Pertemuan</th>
             <th class="align-middle">Kegiatan</th>
             <th class="align-middle" width="50px">Jumlah Anggota Hadir</th>
-            <th class="align-middle" width="50px">Jumlah Anggota Izin</th>
-            <th class="align-middle" width="50px">Jumlah Anggota Sakit</th>
           </thead>
           <tbody>
             @foreach ($list_pertemuan as $pertemuan)
@@ -51,8 +49,6 @@
                 <td>{{ $pertemuan->tanggalPertemuanString }}</td>
                 <td>{{ $pertemuan->materi_kegiatan }}</td>
                 <td>{{ $pertemuan->pkkmbAbsen->count() }}</td>
-                <td>{{ $pertemuan->pkkmbIzin->where('status', 'izin')->count() }}</td>
-                <td>{{ $pertemuan->pkkmbIzin->where('status', 'sakit')->count() }}</td>
               </tr>
             @endforeach
           </tbody>
