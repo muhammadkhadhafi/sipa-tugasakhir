@@ -19,7 +19,7 @@
         @if (auth()->user()->foto)
           <img class="img-profile rounded-circle" src="{{ asset('storage/' . auth()->user()->foto) }}">
         @else
-          <img class="img-profile rounded-circle" src="/assets/img/default-person.jpg">
+          <img class="img-profile rounded-circle" src="{{ url('/assets/img/default-person.jpg') }}">
         @endif
       </a>
       <!-- Dropdown - User Information -->

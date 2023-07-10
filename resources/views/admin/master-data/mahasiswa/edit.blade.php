@@ -8,7 +8,8 @@
     @method('put')
     <div class="row">
       <div class="col-lg-3">
-        <img src="/assets/img/default-person.jpg" alt="{{ $mahasiswa->nama }}" class="img-fluid" style="width: 100%">
+        <img src="{{ url('/assets/img/default-person.jpg') }}" alt="{{ $mahasiswa->nama }}" class="img-fluid"
+          style="width: 100%">
         <input type="file" name="foto" id="foto" class="form-control" style="border-radius: 0;">
       </div>
       <div class="col-lg-9">

@@ -8,7 +8,8 @@
       @if ($pegawai->foto)
         <img src="{{ asset('storage/' . $pegawai->foto) }}" class="img-fluid" style="width: 100%" alt="{{ $pegawai->nama }}">
       @else
-        <img src="/assets/img/default-person.jpg" class="img-fluid" style="width: 100%" alt="{{ $pegawai->nama }}">
+        <img src="{{ url('/assets/img/default-person.jpg') }}" class="img-fluid" style="width: 100%"
+          alt="{{ $pegawai->nama }}">
       @endif
     </div>
     <div class="col-lg-9">

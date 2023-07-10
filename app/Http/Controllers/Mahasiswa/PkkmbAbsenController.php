@@ -14,7 +14,7 @@ class PkkmbAbsenController extends Controller
         $grup = optional(PkkmbGrup::where('id', auth()->user()->id_pkkmb_grup)->first());
 
         return view('mahasiswa.pkkmb.absen.index', [
-            'list_pertemuan' => $grup->pkkmbPertemuan ?? [],
+            'list_pertemuan' => $grup->pkkmbPertemuan->sortByDesc('tanggal_pertemuan') ?? [],
         ]);
     }
 
@@ -24,8 +24,8 @@ class PkkmbAbsenController extends Controller
         return view('mahasiswa.pkkmb.absen.show', [
             'pertemuan' => $absen,
             'list_hadir' => $absen->pkkmbAbsen->pluck('mahasiswa'),
-            'list_izin' => $absen->pkkmbIzin->where('status', 'izin')->pluck('mahasiswa'),
-            'list_sakit' => $absen->pkkmbIzin->where('status', 'sakit')->pluck('mahasiswa')
+            'list_izin' => $absen->pkkmbIzin->where('status', 'izin'),
+            'list_sakit' => $absen->pkkmbIzin->where('status', 'sakit')
         ]);
     }
 }

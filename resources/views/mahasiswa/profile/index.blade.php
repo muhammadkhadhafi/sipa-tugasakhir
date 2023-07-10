@@ -7,7 +7,7 @@
 
   <div class="row">
     <div class="col-lg-3">
-      <img src="/assets/img/default-person.jpg" class="img-fluid" style="width: 100%">
+      <img src="{{ url('/assets/img/default-person.jpg') }}" class="img-fluid" style="width: 100%">
     </div>
     <div class="col-lg-9">
       <div class="card shadow mb-4">

@@ -35,13 +35,19 @@
                     <th width="60px">No</th>
                     <th width="130px">NIM</th>
                     <th>Nama</th>
+                    <th width="120px">Bukti</th>
                   </thead>
                   <tbody>
                     @foreach ($list_izin as $izin)
                       <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $izin->nim }}</td>
-                        <td>{{ $izin->nama }}</td>
+                        <td>{{ $izin->mahasiswa->nim }}</td>
+                        <td>{{ $izin->mahasiswa->nama }}</td>
+                        <td>
+                          <a href="" target="popup"
+                            onclick="window.open('{{ asset('storage/' . $izin->bukti) }}','popup','width=800,height=600'); return false;"
+                            class="btn btn-sm btn-primary c-btn"><i class="far fa-file-alt fa-sm"></i> Preview</a>
+                        </td>
                       </tr>
                     @endforeach
                   </tbody>
@@ -64,13 +70,19 @@
                     <th width="60px">No</th>
                     <th width="130px">NIM</th>
                     <th>Nama</th>
+                    <th width="120px">Bukti</th>
                   </thead>
                   <tbody>
                     @foreach ($list_sakit as $sakit)
                       <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $sakit->nim }}</td>
-                        <td>{{ $sakit->nama }}</td>
+                        <td>{{ $sakit->mahasiswa->nim }}</td>
+                        <td>{{ $sakit->mahasiswa->nama }}</td>
+                        <td>
+                          <a href="" target="popup"
+                            onclick="window.open('{{ asset('storage/' . $izin->bukti) }}','popup','width=800,height=600'); return false;"
+                            class="btn btn-sm btn-primary c-btn"><i class="far fa-file-alt fa-sm"></i> Preview</a>
+                        </td>
                       </tr>
                     @endforeach
                   </tbody>

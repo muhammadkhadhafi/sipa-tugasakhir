@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Mahasiswa;
 
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Data\PkkmbAbsen;
 use App\Models\Admin\Data\PkkmbGrup;
@@ -34,7 +33,7 @@ class PkkmbKoorController extends Controller
 
         return view('mahasiswa.pkkmb.koor.index', [
             'grup' => $grup,
-            'list_pertemuan' => $grup->pkkmbPertemuan,
+            'list_pertemuan' => $grup->pkkmbPertemuan->sortByDesc('tanggal_pertemuan'),
         ]);
     }
 
@@ -43,8 +42,8 @@ class PkkmbKoorController extends Controller
         return view('mahasiswa.pkkmb.koor.show', [
             'pertemuan' => $koor,
             'list_hadir' => $koor->pkkmbAbsen->pluck('mahasiswa'),
-            'list_izin' => $koor->pkkmbIzin->where('status', 'izin')->pluck('mahasiswa'),
-            'list_sakit' => $koor->pkkmbIzin->where('status', 'sakit')->pluck('mahasiswa')
+            'list_izin' => $koor->pkkmbIzin->where('status', 'izin'),
+            'list_sakit' => $koor->pkkmbIzin->where('status', 'sakit'),
         ]);
     }
 
@@ -59,7 +58,6 @@ class PkkmbKoorController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
         $grup = $this->getGrup();
 
         $rulesPertemuan = [
@@ -74,6 +72,9 @@ class PkkmbKoorController extends Controller
         $newPertemuan = PkkmbPertemuan::create($validatedPertemuan);
 
         if ($request->absen) {
+            $error = false;
+            $list_pkkmbIzin = PkkmbIzin::all();
+
             foreach ($request->absen as $id => $absen) {
                 if ($absen === 'hadir') {
                     $newAbsen = new PkkmbAbsen;
@@ -85,11 +86,28 @@ class PkkmbKoorController extends Controller
                     $newIzin->id_pkkmb_pertemuan = $newPertemuan->id;
                     $newIzin->id_mahasiswa = $id;
                     $newIzin->status = $absen;
-                    if ($request->hasFile('bukti') && $request->file('bukti')[$id]) {
+
+                    if ($request->hasFile('bukti') && isset($request->file('bukti')[$id])) {
                         $newIzin->bukti = $request->file('bukti')[$id]->store('admin/data/pkkmb/izin');
+                        $newIzin->save();
+                        $list_pkkmbIzin->push($newIzin);
+                    } else {
+                        $error = true;
+                        PkkmbAbsen::where('id_pkkmb_pertemuan', $newPertemuan->id)->delete();
+                        $list_izintersimpan = PkkmbIzin::where('id_pkkmb_pertemuan', $newPertemuan->id)->get();
+                        foreach ($list_izintersimpan as $izin) {
+                            Storage::delete($izin->bukti);
+                            $izin->delete();
+                        }
+                        break;
                     }
-                    $newIzin->save();
                 }
+            }
+
+            if ($error) {
+                Storage::delete($newPertemuan->bukti_kegiatan);
+                PkkmbPertemuan::destroy('id', $newPertemuan->id);
+                return back()->with('danger', 'Salah satu izin atau sakit tidak menginputkan bukti!');
             }
         }
 
@@ -98,7 +116,6 @@ class PkkmbKoorController extends Controller
 
     public function destroy(PkkmbPertemuan $koor)
     {
-        // dd($koor->pkkmbAbsen);
         if ($koor->pkkmbAbsen) {
             foreach ($koor->pkkmbAbsen as $absen) {
                 PkkmbAbsen::destroy('id', $absen->id);

@@ -3,6 +3,8 @@
 @section('container')
   <h1 class="h3 mb-3">Koordinator Absensi PKKMB</h1>
 
+  @include('layouts.utils.notif')
+
   <div class="card shadow">
     <div class="card-header d-flex justify-content-between align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Absensi PKKMB</h6>

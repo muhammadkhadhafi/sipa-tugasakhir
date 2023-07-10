@@ -10,7 +10,7 @@
       @if (auth()->user()->foto)
         <img src="{{ asset('storage/' . auth()->user()->foto) }}" class="img-fluid" style="width: 100%">
       @else
-        <img src="/assets/img/default-person.jpg" class="img-fluid" style="width: 100%">
+        <img src="{{ url('/assets/img/default-person.jpg') }}" class="img-fluid" style="width: 100%">
       @endif
     </div>
     <div class="col-lg-9">

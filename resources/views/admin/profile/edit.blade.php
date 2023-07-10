@@ -12,7 +12,7 @@
           <img src="{{ asset('storage/' . auth()->user()->foto) }}" alt="{{ auth()->user()->nama }}" class="img-fluid"
             style="width: 100%">
         @else
-          <img src="/assets/img/default-person.jpg" alt="{{ auth()->user()->nama }}" class="img-fluid"
+          <img src="{{ url('/assets/img/default-person.jpg') }}" alt="{{ auth()->user()->nama }}" class="img-fluid"
             style="width: 100%">
         @endif
         <input type="file" accept=".jpg, .png" value="foto" name="foto" id="foto"
