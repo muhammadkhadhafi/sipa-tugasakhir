@@ -78,4 +78,5 @@ Route::get('/pkkmb/absen/detailgrup/{detailgrup}', [AbsenController::class, 'det
 Route::put('/pkkmb/absen/detailgrup/setkoor1/{setkoor}', [AbsenController::class, 'setKoor1']);
 Route::put('/pkkmb/absen/detailgrup/setkoor2/{setkoor}', [AbsenController::class, 'setKoor2']);
 Route::post('/pkkmb/absen/detailgrup/sertifikatpkkmb', [AbsenController::class, 'uploadSertifikat']);
+Route::get('/pkkmb/absen/rekap-absen/{rekap}', [AbsenController::class, 'rekapAbsen']);
 // End

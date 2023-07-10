@@ -29,4 +29,24 @@ class PkkmbAbsenController extends Controller
             'list_sakit' => $absen->pkkmbIzin->where('status', 'sakit')
         ]);
     }
+
+    public function getPersentaseKehadiran($jumlah_kehadiran, $jumlah_pertemuan)
+    {
+        return ($jumlah_pertemuan != 0) ? ($jumlah_kehadiran / $jumlah_pertemuan) * 100 : 0;
+    }
+
+    public function rekapAbsen(PkkmbGrup $rekap)
+    {
+        $list_anggota = $rekap->mahasiswa;
+
+        $list_anggota = $list_anggota->transform(function ($mahasiswa) {
+            $jumlah_pertemuan = $mahasiswa->pkkmbGrup->pkkmbPertemuan ? $mahasiswa->pkkmbGrup->pkkmbPertemuan->count() : 0;
+            $mahasiswa->persentaseKehadiran = $this->getPersentaseKehadiran($mahasiswa->pkkmbAbsen->count(), $jumlah_pertemuan);
+            return $mahasiswa;
+        });
+
+        return view('mahasiswa.pkkmb.koor.rekapabsen', [
+            'list_anggota' => $list_anggota->sortByDesc('nim')
+        ]);
+    }
 }

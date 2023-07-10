@@ -7,9 +7,9 @@
 
   <div class="row">
     <div class="col-lg-12">
-      <a href="#" class="btn btn-primary btn-sm float-right" style="padding: 2px 10px"><i
-          class="fas fa-chart-line fa-sm"></i> Rekap
-        Pertemuan</a>
+      <a href="{{ url('/mahasiswa/pkkmb/absen/rekap-absen/' . $grup->id) }}" target="_blank"
+        class="btn btn-primary btn-sm float-right" style="padding: 2px 10px"><i class="fas fa-chart-line fa-sm"></i> Rekap
+        Absen</a>
     </div>
   </div>
   <div class="card shadow m-0 mb-4">

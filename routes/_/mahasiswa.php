@@ -26,5 +26,7 @@ Route::post('/pendaftaranwisuda/pembayaran/{pendaftaran}', [PendaftaranWisudaCon
 
 Route::get('/pkkmb/absen', [PkkmbAbsenController::class, 'index']);
 Route::get('/pkkmb/absen/detailpertemuan/{absen}', [PkkmbAbsenController::class, 'show']);
+Route::get('/pkkmb/absen/rekap-absen/{rekap}', [PkkmbAbsenController::class, 'rekapAbsen']);
 
+Route::get('/pkkmb/koor/rekap-absen', [PkkmbKoorController::class, 'rekapAbsen'])->middleware('can:is_koor_pkkmb');
 Route::resource('/pkkmb/koor', PkkmbKoorController::class)->middleware('can:is_koor_pkkmb')->except(['edit', 'update']);

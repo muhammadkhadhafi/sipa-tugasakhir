@@ -62,7 +62,7 @@ class AbsenController extends Controller
         $list_anggota = $detailgrup->mahasiswa;
 
         $list_anggota = $list_anggota->transform(function ($mahasiswa) {
-            $jumlah_pertemuan = $mahasiswa->pkkmbPertemuan ? $mahasiswa->pkkmbGrup->pkkmbPertemuan->count() : 0;
+            $jumlah_pertemuan = $mahasiswa->pkkmbGrup->pkkmbPertemuan ? $mahasiswa->pkkmbGrup->pkkmbPertemuan->count() : 0;
             $mahasiswa->persentaseKehadiran = $this->getPersentaseKehadiran($mahasiswa->pkkmbAbsen->count(), $jumlah_pertemuan);
             return $mahasiswa;
         });
@@ -108,5 +108,20 @@ class AbsenController extends Controller
         PkkmbSertifikat::create($validatedData);
 
         return back()->with('success', 'Sertifikat PKKMB berhasil disimpan');
+    }
+
+    public function rekapAbsen(PkkmbGrup $rekap)
+    {
+        $list_anggota = $rekap->mahasiswa;
+
+        $list_anggota = $list_anggota->transform(function ($mahasiswa) {
+            $jumlah_pertemuan = $mahasiswa->pkkmbGrup->pkkmbPertemuan ? $mahasiswa->pkkmbGrup->pkkmbPertemuan->count() : 0;
+            $mahasiswa->persentaseKehadiran = $this->getPersentaseKehadiran($mahasiswa->pkkmbAbsen->count(), $jumlah_pertemuan);
+            return $mahasiswa;
+        });
+
+        return view('mahasiswa.pkkmb.koor.rekapabsen', [
+            'list_anggota' => $list_anggota->sortByDesc('nim'),
+        ]);
     }
 }
