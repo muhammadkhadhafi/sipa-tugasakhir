@@ -16,7 +16,7 @@
 
 <body>
   <div class="form-group">
-    <p align="center"><b>Rekap Absen</b></p>
+    <p align="center"><b>Rekap Absen PKKMB - {{ $grup->prodi }} - {{ $grup->pkkmb_tahun }}</b></p>
     <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
       <thead>
         <tr>

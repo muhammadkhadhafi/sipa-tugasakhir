@@ -129,6 +129,48 @@
   <div class="card shadow m-0 mb-4">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Data Anggota</h6>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tambahAnggota"><i
+          class="fas fa-plus fa-sm"></i>
+        Tambah Anggota
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="tambahAnggota" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Tambah Anggota</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="{{ url('/admin/pkkmb/absen/tambah-anggota/' . $grup->id) }}" method="post"
+              onsubmit="return confirm('Data absensi calon anggota ini pada kelompok sebelumnya akan terhapus, apakah anda yakin ingin menambahkannya ke grup ini?')">
+              @csrf
+              <div class="modal-body">
+                <p class="text-danger"><b>Penting</b>, pastikan bahwa calon anggota yang anda pilih tidak salah!</p>
+                <select name="calon_anggota" id="calon_anggota"
+                  class="form-control @error('calon_anggota') is-invalid @enderror">
+                  <option selected disabled>Pilih Calon Anggota</option>
+                  @foreach ($list_calon_anggota as $anggota)
+                    <option value="{{ $anggota->id }}">{{ $anggota->nim }} - {{ $anggota->nama }}</option>
+                  @endforeach
+                </select>
+                @error('calon_anggota')
+                  <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i
+                    class="far fa-window-close fa-sm"></i> Tutup</button>
+                <button type="submit" class="btn btn-sm btn-primary"><i class="far fa-save fa-sm"></i>
+                  Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="card-body">
       <div class="table-responsive">

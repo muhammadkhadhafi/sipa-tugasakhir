@@ -67,10 +67,23 @@ class AbsenController extends Controller
             return $mahasiswa;
         });
 
+        $calon_anggota_1 = Mahasiswa::where('angkatan', $detailgrup->pkkmb_tahun - 1)
+            ->whereHas('prodi', function ($query) use ($detailgrup) {
+                $query->where('nama', $detailgrup->prodi);
+            });
+
+        $calon_anggota_2 = Mahasiswa::where('angkatan', $detailgrup->pkkmb_tahun - 2)
+            ->whereHas('prodi', function ($query) use ($detailgrup) {
+                $query->where('nama', $detailgrup->prodi);
+            });
+
+        $list_calon_anggota = $calon_anggota_1->union($calon_anggota_2)->orderBy('nim')->get();
+
         return view('admin.data.pkkmb.detail_grup.index', [
             'grup' => $detailgrup,
             'list_kating' => $list_kating,
             'list_anggota' => $list_anggota->sortBy('nim'),
+            'list_calon_anggota' => $list_calon_anggota
         ]);
     }
 
@@ -91,7 +104,7 @@ class AbsenController extends Controller
     public function uploadSertifikat(Request $request)
     {
         $validatedData = $request->validate([
-            'sertifikat_pkkmb' => ['required', 'file', 'max:7000']
+            'sertifikat_pkkmb' => ['required', 'file', 'max:10000']
         ]);
 
         $pkkmbGrup = PkkmbGrup::where('id', $request->id_pkkmb_grup)->first();
@@ -121,7 +134,33 @@ class AbsenController extends Controller
         });
 
         return view('mahasiswa.pkkmb.koor.rekapabsen', [
+            'grup' => $rekap,
             'list_anggota' => $list_anggota->sortByDesc('nim'),
         ]);
+    }
+
+    public function tambahAnggota(Request $request, PkkmbGrup $grup)
+    {
+        $request->validate([
+            'calon_anggota' => 'required'
+        ]);
+
+        $calon_anggota = Mahasiswa::where('id', $request->calon_anggota)->first();
+
+        if ($calon_anggota->pkkmbAbsen) {
+            foreach ($calon_anggota->pkkmbAbsen as $absen) {
+                $absen->delete();
+            }
+        }
+
+        if ($calon_anggota->pkkmbIzin) {
+            foreach ($calon_anggota->pkkmbIzin as $izin) {
+                Storage::delete($izin->bukti);
+                $izin->delete();
+            }
+        }
+
+        $calon_anggota->update(['id_pkkmb_grup' => $grup->id]);
+        return back()->with('success', 'Calon anggota berhasil ditambahkan');
     }
 }

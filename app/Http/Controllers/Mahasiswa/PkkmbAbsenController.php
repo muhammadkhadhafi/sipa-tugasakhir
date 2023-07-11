@@ -46,6 +46,7 @@ class PkkmbAbsenController extends Controller
         });
 
         return view('mahasiswa.pkkmb.koor.rekapabsen', [
+            'grup' => $rekap,
             'list_anggota' => $list_anggota->sortByDesc('nim')
         ]);
     }
