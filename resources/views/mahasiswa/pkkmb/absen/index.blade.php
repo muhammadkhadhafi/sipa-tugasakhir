@@ -22,7 +22,7 @@
         @if ($grup->link_sertifikat)
           <dd><a href="{{ $grup->link_sertifikat }}" target="_blank">{{ $grup->link_sertifikat }}</a></dd>
         @else
-          <dd>Belum ada link sertifikat PKKMB yang diunggah</dd>
+          <dd>Belum ada link sertifikat yang diunggah</dd>
         @endif
       </dl>
       <hr>
