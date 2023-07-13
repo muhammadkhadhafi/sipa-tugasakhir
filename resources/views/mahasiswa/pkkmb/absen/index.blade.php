@@ -15,13 +15,17 @@
   <div class="card shadow m-0 mb-4">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Absensi PKKMB</h6>
-      @if ($grup->pkkmbSertifikat)
-        <a href="" target="popup"
-          onclick="window.open('{{ asset('storage/' . $grup->pkkmbSertifikat->sertifikat_pkkmb) }}','popup','width=800,height=600'); return false;"
-          class="btn btn-sm btn-primary"><i class="fas fa-file fa-sm"></i> Sertifikat PKKMB</a>
-      @endif
     </div>
     <div class="card-body">
+      <dl>
+        <dt>Link Sertifikat PKKMB</dt>
+        @if ($grup->link_sertifikat)
+          <dd><a href="{{ $grup->link_sertifikat }}" target="_blank">{{ $grup->link_sertifikat }}</a></dd>
+        @else
+          <dd>Belum ada link sertifikat PKKMB yang diunggah</dd>
+        @endif
+      </dl>
+      <hr>
       <div class="table-responsive">
         <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
           <thead class="bg-gradient-primary text-light text-uppercase">
@@ -43,7 +47,7 @@
                 </td>
                 <td>{{ $pertemuan->tanggalPertemuanString }}</td>
                 <td>{{ $pertemuan->materi_kegiatan }}</td>
-                <td>{{ $pertemuan->pkkmbAbsen->count() }}</td>
+                <td>{{ $pertemuan->pkkmbAbsen->where('status', 'hadir')->count() }}</td>
               </tr>
             @endforeach
           </tbody>

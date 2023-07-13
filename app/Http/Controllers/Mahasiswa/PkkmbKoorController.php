@@ -41,7 +41,8 @@ class PkkmbKoorController extends Controller
     {
         return view('mahasiswa.pkkmb.koor.show', [
             'pertemuan' => $koor,
-            'list_hadir' => $koor->pkkmbAbsen->pluck('mahasiswa'),
+            'list_hadir' => $koor->pkkmbAbsen->where('status', 'hadir')->pluck('mahasiswa'),
+            'list_tidak_hadir' => $koor->pkkmbAbsen->where('status', 'tidak_hadir')->pluck('mahasiswa'),
             'list_izin' => $koor->pkkmbIzin->where('status', 'izin'),
             'list_sakit' => $koor->pkkmbIzin->where('status', 'sakit'),
         ]);
@@ -58,6 +59,7 @@ class PkkmbKoorController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request);
         $grup = $this->getGrup();
 
         $rulesPertemuan = [
@@ -75,10 +77,11 @@ class PkkmbKoorController extends Controller
             $error = false;
 
             foreach ($request->absen as $id => $absen) {
-                if ($absen === 'hadir') {
+                if ($absen === 'hadir' || $absen === 'tidak_hadir') {
                     $newAbsen = new PkkmbAbsen;
                     $newAbsen->id_pkkmb_pertemuan = $newPertemuan->id;
                     $newAbsen->id_mahasiswa = $id;
+                    $newAbsen->status = $absen;
                     $newAbsen->save();
                 } elseif ($absen === 'izin' || $absen === 'sakit') {
                     $newIzin = new PkkmbIzin;
@@ -147,7 +150,7 @@ class PkkmbKoorController extends Controller
 
         $list_anggota = $list_anggota->transform(function ($mahasiswa) {
             $jumlah_pertemuan = $mahasiswa->pkkmbGrup->pkkmbPertemuan ? $mahasiswa->pkkmbGrup->pkkmbPertemuan->count() : 0;
-            $mahasiswa->persentaseKehadiran = $this->getPersentaseKehadiran($mahasiswa->pkkmbAbsen->count(), $jumlah_pertemuan);
+            $mahasiswa->persentaseKehadiran = $this->getPersentaseKehadiran($mahasiswa->pkkmbAbsen->where('status', 'hadir')->count(), $jumlah_pertemuan);
             return $mahasiswa;
         });
 

@@ -18,7 +18,7 @@
               <label for="tanggal_pertemuan" class="form-label">Tanggal Pertemuan</label>
               <input type="date" name="tanggal_pertemuan" id="tanggal_pertemuan"
                 class="form-control @error('tanggal_pertemuan') is-invalid @enderror"
-                value="{{ old('tanggal_pertemuan') }}">
+                value="{{ old('tanggal_pertemuan') ?? date('Y-m-d') }}">
               @error('tanggal_pertemuan')
                 <div class="invalid-feedback">{{ $message }}</div>
               @enderror
@@ -71,15 +71,19 @@
                           <td>
                             <input type="radio" name="absen[{{ $anggota->id }}]" value="hadir" class="absen-radio"
                               onchange="toggleFileInput(this)" checked>
-                            <span class="status mr-2">Hadir</span>
+                            <span class="status mr-3">Hadir</span>
+                            <input type="radio" name="absen[{{ $anggota->id }}]" value="tidak_hadir"
+                              class="absen-radio" onchange="toggleFileInput(this)"
+                              {{ old('absen.' . $anggota->id) == 'tidak_hadir' ? 'checked' : '' }}>
+                            <span class="status mr-3">Tidak Hadir</span>
                             <input type="radio" name="absen[{{ $anggota->id }}]" value="izin" class="absen-radio"
                               onchange="toggleFileInput(this)"
                               {{ old('absen.' . $anggota->id) == 'izin' ? 'checked' : '' }}>
-                            <span class="status mr-2">Izin</span>
+                            <span class="status mr-3">Izin</span>
                             <input type="radio" name="absen[{{ $anggota->id }}]" value="sakit" class="absen-radio"
                               onchange="toggleFileInput(this)"
                               {{ old('absen.' . $anggota->id) == 'sakit' ? 'checked' : '' }}>
-                            <span class="status mr-2">Sakit</span>
+                            <span class="status mr-3">Sakit</span>
                             <div class="row file-input-container" style="display: none;">
                               <div class="col-lg-12">
                                 <input type="file" name="bukti[{{ $anggota->id }}]" class="form-control mt-2"
@@ -108,7 +112,7 @@
     function toggleFileInput(element) {
       var fileInputContainer = element.parentElement.getElementsByClassName('file-input-container')[0];
 
-      if (element.value === 'hadir') {
+      if (element.value === 'hadir' || element.value === 'tidak_hadir') {
         fileInputContainer.style.display = 'none';
       } else {
         fileInputContainer.style.display = 'block';

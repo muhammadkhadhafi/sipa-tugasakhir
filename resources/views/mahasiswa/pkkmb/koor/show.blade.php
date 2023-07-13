@@ -108,6 +108,41 @@
         <div class="col-lg-12">
           <div class="card shadow mb-3">
             <div class="card-header d-flex justify-content-between align-items-center bg-primary">
+              <h6 class="m-0 font-weight-bold text-light text-uppercase">Anggota Tidak Hadir</h6>
+            </div>
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover mb-0" width="100%" cellspacing="0">
+                  <thead class="text-uppercase">
+                    <th width="60px">No</th>
+                    <th width="130px">NIM</th>
+                    <th>Nama</th>
+                  </thead>
+                  <tbody>
+                    @if ($list_tidak_hadir->isNotEmpty())
+                      @foreach ($list_tidak_hadir as $tidak_hadir)
+                        <tr>
+                          <td>{{ $loop->iteration }}</td>
+                          <td>{{ $tidak_hadir->nim }}</td>
+                          <td>{{ $tidak_hadir->nama }}</td>
+                        </tr>
+                      @endforeach
+                    @else
+                      <tr>
+                        <td colspan="4" class="text-center">Tidak ada tidak hadir</td>
+                      </tr>
+                    @endif
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card shadow mb-3">
+            <div class="card-header d-flex justify-content-between align-items-center bg-primary">
               <h6 class="m-0 font-weight-bold text-light text-uppercase">Anggota Hadir</h6>
             </div>
             <div class="card-body p-0">

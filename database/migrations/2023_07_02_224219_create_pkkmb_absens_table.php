@@ -15,6 +15,7 @@ return new class extends Migration
             $table->char('id', 36)->primary();
             $table->char('id_pkkmb_pertemuan')->nullable();
             $table->char('id_mahasiswa', 36)->nullable();
+            $table->enum('status', ['hadir', 'tidak_hadir'])->nullable();
             $table->timestamps();
         });
     }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('pkkmb_tahun')->nullable();
             $table->char('is_koor_1', 36)->nullable();
             $table->char('is_koor_2', 36)->nullable();
+            $table->string('link_sertifikat')->nullable();
             $table->timestamps();
         });
     }

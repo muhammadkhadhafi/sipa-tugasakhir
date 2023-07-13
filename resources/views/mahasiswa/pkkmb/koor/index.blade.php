@@ -48,7 +48,7 @@
                 </td>
                 <td>{{ $pertemuan->tanggalPertemuanString }}</td>
                 <td>{{ $pertemuan->materi_kegiatan }}</td>
-                <td>{{ $pertemuan->pkkmbAbsen->count() }}</td>
+                <td>{{ $pertemuan->pkkmbAbsen->where('status', 'hadir')->count() }}</td>
               </tr>
             @endforeach
           </tbody>

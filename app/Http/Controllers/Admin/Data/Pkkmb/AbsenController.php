@@ -63,7 +63,8 @@ class AbsenController extends Controller
 
         $list_anggota = $list_anggota->transform(function ($mahasiswa) {
             $jumlah_pertemuan = $mahasiswa->pkkmbGrup->pkkmbPertemuan ? $mahasiswa->pkkmbGrup->pkkmbPertemuan->count() : 0;
-            $mahasiswa->persentaseKehadiran = $this->getPersentaseKehadiran($mahasiswa->pkkmbAbsen->count(), $jumlah_pertemuan);
+            $jumlah_absen = $mahasiswa->pkkmbAbsen->where('status', 'hadir')->count();
+            $mahasiswa->persentaseKehadiran = $this->getPersentaseKehadiran($jumlah_absen, $jumlah_pertemuan);
             return $mahasiswa;
         });
 
@@ -101,26 +102,17 @@ class AbsenController extends Controller
         return back()->with('success', 'Koordinator 2 berhasil disimpan');
     }
 
-    public function uploadSertifikat(Request $request)
+    public function uploadLinkSertifikat(Request $request)
     {
         $validatedData = $request->validate([
-            'sertifikat_pkkmb' => ['required', 'file', 'max:10000']
+            'link_sertifikat' => ['required']
         ]);
 
         $pkkmbGrup = PkkmbGrup::where('id', $request->id_pkkmb_grup)->first();
 
-        if ($request->file('sertifikat_pkkmb')) {
-            if ($pkkmbGrup->pkkmbSertifikat) {
-                Storage::delete($pkkmbGrup->pkkmbSertifikat->sertifikat_pkkmb);
-                PkkmbSertifikat::destroy('id_pkkmb_grup', $pkkmbGrup->pkkmbSertifikat->id);
-            }
-            $validatedData['sertifikat_pkkmb'] = $request->file('sertifikat_pkkmb')->store('admin/data/pkkmb/sertifikat');
-        }
-        $validatedData['id_pkkmb_grup'] = $request->id_pkkmb_grup;
+        $pkkmbGrup->update($validatedData);
 
-        PkkmbSertifikat::create($validatedData);
-
-        return back()->with('success', 'Sertifikat PKKMB berhasil disimpan');
+        return back()->with('success', 'Link sertifikat PKKMB berhasil disimpan');
     }
 
     public function rekapAbsen(PkkmbGrup $rekap)
@@ -129,7 +121,8 @@ class AbsenController extends Controller
 
         $list_anggota = $list_anggota->transform(function ($mahasiswa) {
             $jumlah_pertemuan = $mahasiswa->pkkmbGrup->pkkmbPertemuan ? $mahasiswa->pkkmbGrup->pkkmbPertemuan->count() : 0;
-            $mahasiswa->persentaseKehadiran = $this->getPersentaseKehadiran($mahasiswa->pkkmbAbsen->count(), $jumlah_pertemuan);
+            $jumlah_absen = $mahasiswa->pkkmbAbsen->where('status', 'hadir')->count();
+            $mahasiswa->persentaseKehadiran = $this->getPersentaseKehadiran($jumlah_absen, $jumlah_pertemuan);
             return $mahasiswa;
         });
 

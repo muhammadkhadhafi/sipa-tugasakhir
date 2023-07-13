@@ -15,7 +15,7 @@ class PkkmbAbsenController extends Controller
 
         return view('mahasiswa.pkkmb.absen.index', [
             'grup' => $grup,
-            'list_pertemuan' => $grup->pkkmbPertemuan->sortByDesc('tanggal_pertemuan') ?? [],
+            'list_pertemuan' => $grup->pkkmbPertemuan ? $grup->pkkmbPertemuan->sortByDesc('tanggal_pertemuan') : [],
         ]);
     }
 
@@ -24,7 +24,8 @@ class PkkmbAbsenController extends Controller
     {
         return view('mahasiswa.pkkmb.absen.show', [
             'pertemuan' => $absen,
-            'list_hadir' => $absen->pkkmbAbsen->pluck('mahasiswa'),
+            'list_hadir' => $absen->pkkmbAbsen->where('status', 'hadir')->pluck('mahasiswa'),
+            'list_tidak_hadir' => $absen->pkkmbAbsen->where('status', 'tidak_hadir')->pluck('mahasiswa'),
             'list_izin' => $absen->pkkmbIzin->where('status', 'izin'),
             'list_sakit' => $absen->pkkmbIzin->where('status', 'sakit')
         ]);
@@ -41,7 +42,7 @@ class PkkmbAbsenController extends Controller
 
         $list_anggota = $list_anggota->transform(function ($mahasiswa) {
             $jumlah_pertemuan = $mahasiswa->pkkmbGrup->pkkmbPertemuan ? $mahasiswa->pkkmbGrup->pkkmbPertemuan->count() : 0;
-            $mahasiswa->persentaseKehadiran = $this->getPersentaseKehadiran($mahasiswa->pkkmbAbsen->count(), $jumlah_pertemuan);
+            $mahasiswa->persentaseKehadiran = $this->getPersentaseKehadiran($mahasiswa->pkkmbAbsen->where('status', 'hadir')->count(), $jumlah_pertemuan);
             return $mahasiswa;
         });
 

@@ -74,14 +74,12 @@
 
         <div class="row">
           <div class="col-lg-6">
-            <dt>Sertifikat PKKMB</dt>
+            <dt>Link Sertifikat PKKMB</dt>
             <dd>
-              @if ($grup->pkkmbSertifikat)
-                <a href="" target="popup"
-                  onclick="window.open('{{ asset('storage/' . $grup->pkkmbSertifikat->sertifikat_pkkmb) }}','popup','width=800,height=600'); return false;"
-                  class="btn btn-sm btn-primary d-block py-2 c-btn"><i class="fas fa-file fa-sm"></i> Sertifikat PKKMB</a>
+              @if ($grup->link_sertifikat)
+                <a href="{{ $grup->link_sertifikat }}" target="_blank">{{ $grup->link_sertifikat }}</a>
               @else
-                Belum ada sertifikat yang diunggah
+                Belum ada link sertifikat yang diunggah
               @endif
             </dd>
           </div>
@@ -91,15 +89,15 @@
         <div class="row mt-3">
           <div class="col-lg-12">
             <form action="{{ url('/admin/pkkmb/absen/detailgrup/sertifikatpkkmb') }}" method="post"
-              enctype="multipart/form-data" onsubmit="return confirm('Yakin ingin upload sertifikat PKKMB?')">
+              enctype="multipart/form-data" onsubmit="return confirm('Yakin ingin upload link sertifikat PKKMB?')">
               @csrf
               <div class="row">
                 <div class="col-lg-6">
-                  <label for="sertifikat_pkkmb" class="form-label">Upload Sertifikat PKKMB</label>
+                  <label for="link_sertifikat" class="form-label">Upload Link Sertifikat PKKMB</label>
                   <input type="hidden" name="id_pkkmb_grup" value="{{ $grup->id }}">
-                  <input type="file" name="sertifikat_pkkmb" id="sertifikat_pkkmb"
-                    class="form-control @error('sertifikat_pkkmb') is-invalid @enderror" accept=".pdf">
-                  @error('sertifikat_pkkmb')
+                  <input type="text" name="link_sertifikat" id="link_sertifikat"
+                    class="form-control @error('link_sertifikat') is-invalid @enderror">
+                  @error('link_sertifikat')
                     <div class="invalid-feedback">
                       {{ $message }}
                     </div>
@@ -188,7 +186,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $anggota->nim }}</td>
                 <td>{{ $anggota->nama }}</td>
-                <td>{{ $anggota->pkkmbAbsen->count() }}</td>
+                <td>{{ $anggota->pkkmbAbsen->where('status', 'hadir')->count() }}</td>
                 <td>{{ $anggota->persentaseKehadiran }}</td>
               </tr>
             @endforeach
