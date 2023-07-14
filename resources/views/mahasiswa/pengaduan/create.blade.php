@@ -40,18 +40,15 @@
               <label for="" class="form-label">File Bukti Pengaduan</label>
               <div class="row">
                 <div class="col-lg-6">
-                  <input type="text" name="nama_bukti_pengaduan" id="nama_bukti_pengaduan"
-                    class="form-control @error('nama_bukti_pengaduan') is-invalid @enderror" placeholder="Nama bukti">
-                  @error('nama_bukti_pengaduan')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
+                  <input type="text" name="nama_bukti[]" id="nama_bukti" class="form-control" placeholder="Nama bukti">
                 </div>
                 <div class="col-lg-6">
-                  <input type="file" name="file_bukti_pengaduan" id="file_bukti_pengaduan" accept=".pdf"
-                    class="form-control @error('file_bukti_pengaduan') is-invalid @enderror">
-                  @error('file_bukti_pengaduan')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                  @enderror
+                  <div class="input-group">
+                    <input type="file" name="file_bukti[]" id="file_bukti" accept=".pdf, .doc, .jpg, .jpeg, .png"
+                      class="form-control">
+                    <button type="button" class="btn btn-primary" onclick="tambahBukti()" style="border-radius: 0 0"><i
+                        class="fas fa-plus"></i></button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -65,4 +62,61 @@
       </form>
     </div>
   </div>
+  <script>
+    function tambahBukti() {
+      var container = document.createElement("div");
+      container.classList.add("row", "mb-2", "mt-2");
+
+      var inputCol = document.createElement("div");
+      inputCol.classList.add("col-lg-6");
+
+      var inputText = document.createElement("input");
+      inputText.type = "text";
+      inputText.name = "nama_bukti[]";
+      inputText.id = "nama_bukti";
+      inputText.classList.add("form-control");
+      inputText.placeholder = "Nama bukti";
+
+      inputCol.appendChild(inputText);
+      container.appendChild(inputCol);
+
+      var fileCol = document.createElement("div");
+      fileCol.classList.add("col-lg-6");
+
+      var fileGroup = document.createElement("div");
+      fileGroup.classList.add("input-group");
+
+      var inputFile = document.createElement("input");
+      inputFile.type = "file";
+      inputFile.name = "file_bukti[]";
+      inputFile.id = "file_bukti";
+      inputFile.accept = ".pdf, .doc, .jpg, .jpeg, .png";
+      inputFile.classList.add("form-control");
+
+      var deleteButton = document.createElement("button");
+      deleteButton.type = "button";
+      deleteButton.classList.add("btn", "btn-danger");
+      deleteButton.onclick = function() {
+        hapusBukti(this);
+      };
+      deleteButton.style.borderRadius = "0 0";
+
+      var deleteIcon = document.createElement("i");
+      deleteIcon.classList.add("fas", "fa-times");
+
+      deleteButton.appendChild(deleteIcon);
+      fileGroup.appendChild(inputFile);
+      fileGroup.appendChild(deleteButton);
+      fileCol.appendChild(fileGroup);
+      container.appendChild(fileCol);
+
+      var formGroup = document.querySelector(".form-group");
+      formGroup.appendChild(container);
+    }
+
+    function hapusBukti(button) {
+      var row = button.parentNode.parentNode.parentNode;
+      row.parentNode.removeChild(row);
+    }
+  </script>
 @endsection

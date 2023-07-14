@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admin__pengaduans', function (Blueprint $table) {
+        Schema::create('admin__pengaduans__bukti', function (Blueprint $table) {
             $table->char('id', 36)->primary();
-            $table->char('id_mahasiswa', 36);
-            $table->string('judul_pengaduan')->nullable();
-            $table->text('deskripsi_pengaduan')->nullable();
-            $table->integer('status');
-            $table->text('deskripsi_tindak_lanjut')->nullable();
+            $table->char('id_pengaduan', 36);
+            $table->string('nama_bukti')->nullable();
+            $table->string('file_bukti')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admin__pengaduans');
+        Schema::dropIfExists('admin__pengaduans__bukti');
     }
 };

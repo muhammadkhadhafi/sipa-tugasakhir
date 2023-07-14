@@ -19,6 +19,11 @@ class Pengaduan extends Model
         return $this->belongsTo(Mahasiswa::class, 'id_mahasiswa');
     }
 
+    public function bukti()
+    {
+        return $this->hasMany(PengaduanBukti::class, 'id_pengaduan');
+    }
+
     public function getTanggalPengaduanStringAttribute()
     {
         return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y');

@@ -18,7 +18,7 @@ Route::put('/profile/{mahasiswa}', [ProfileController::class, 'update']);
 
 Route::resource('/pengajuansuratketeranganaktif', PengajuanSuratKeteranganAktifController::class);
 
-Route::resource('/pengaduan', PengaduanController::class);
+Route::resource('/pengaduan', PengaduanController::class)->except(['edit', 'update']);
 
 Route::get('/pendaftaranwisuda', [PendaftaranWisudaController::class, 'index']);
 Route::post('/pendaftaranwisuda', [PendaftaranWisudaController::class, 'uploadBerkasPendaftaranWisuda']);

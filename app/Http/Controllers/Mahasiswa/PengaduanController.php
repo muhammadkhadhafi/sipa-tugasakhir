@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Mahasiswa;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Data\Pengaduan;
+use App\Models\Admin\Data\PengaduanBukti;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -35,17 +36,24 @@ class PengaduanController extends Controller
         $validatedData = $request->validate([
             'judul_pengaduan' => 'required|max:255',
             'deskripsi_pengaduan' => 'required',
-            'nama_bukti_pengaduan' => 'required|max:255',
-            'file_bukti_pengaduan' => 'file|max:5000'
         ]);
 
         $validatedData['status'] = 1;
         $validatedData['id_mahasiswa'] = auth()->user()->id;
-        if ($request->file('file_bukti_pengaduan')) {
-            $validatedData['file_bukti_pengaduan'] = $request->file('file_bukti_pengaduan')->store('admin/data/pengaduan');
+        $newPengaduan = Pengaduan::create($validatedData);
+
+        if ($request->nama_bukti) {
+            foreach ($request->nama_bukti as $key => $value) {
+                $bukti = new PengaduanBukti;
+                $bukti->id_pengaduan = $newPengaduan->id;
+                $bukti->nama_bukti = $value;
+                if ($request->hasFile('file_bukti') && isset($request->file('file_bukti')[$key])) {
+                    $bukti->file_bukti = $request->file('file_bukti')[$key]->store('admin/data/pengaduan/file_bukti');
+                    $bukti->save();
+                }
+            }
         }
 
-        Pengaduan::create($validatedData);
         return redirect('mahasiswa/pengaduan')->with('success', 'Pengaduan berhasil disimpan');
     }
 
@@ -59,38 +67,10 @@ class PengaduanController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Pengaduan $pengaduan)
+    public function hapusBukti($bukti)
     {
-        return view('mahasiswa.pengaduan.edit', [
-            'pengaduan' => $pengaduan
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Pengaduan $pengaduan)
-    {
-        $validatedData = $request->validate([
-            'judul_pengaduan' => 'required|max:255',
-            'deskripsi_pengaduan' => 'required',
-            'nama_bukti_pengaduan' => 'required|max:255',
-            'file_bukti_pengaduan' => 'file|max:5000'
-        ]);
-
-        if ($request->file('file_bukti_pengaduan')) {
-            if ($pengaduan->file_bukti_pengaduan) {
-                Storage::delete($pengaduan->file_bukti_pengaduan);
-            }
-            $validatedData['file_bukti_pengaduan'] = $request->file('file_bukti_pengaduan')->store('admin/data/pengaduan');
-        }
-
-        Pengaduan::where('id', $pengaduan->id)->update($validatedData);
-
-        return redirect('mahasiswa/pengaduan')->with('success', 'Pengaduan berhasil disimpan');
+        dd($bukti);
+        $pengaduanBukti = PengaduanBukti::where('id_pengaduan', $bukti)->first();
     }
 
     /**

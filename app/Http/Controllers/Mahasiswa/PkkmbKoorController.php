@@ -59,7 +59,6 @@ class PkkmbKoorController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
         $grup = $this->getGrup();
 
         $rulesPertemuan = [

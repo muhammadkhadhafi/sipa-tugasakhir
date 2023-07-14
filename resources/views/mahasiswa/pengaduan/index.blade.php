@@ -8,8 +8,7 @@
   <div class="card shadow m-0 mb-4">
     <div class="card-header justify-content-between d-flex align-items-center">
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Pengaduan</h6>
-      <a href="/mahasiswa/pengaduan/create" class="btn btn-sm btn-primary px-3"><i class="fas fa-plus fa-sm"></i> Tambah
-        Pengaduan</a>
+      <a href="/mahasiswa/pengaduan/create" class="btn btn-sm btn-primary px-3"><i class="fas fa-plus fa-sm"></i></a>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -28,18 +27,13 @@
                 <td>
                   <div class="btn-group">
                     @if ($pengaduan->status == 1)
-                      @include('layouts.utils.info', [
-                          'url' => url('mahasiswa/pengaduan'),
-                          'id' => $pengaduan->id,
-                      ])
-                      @include('layouts.utils.edit', [
-                          'url' => url('mahasiswa/pengaduan'),
-                          'id' => $pengaduan->id,
-                      ])
-                      @include('layouts.utils.delete', [
-                          'url' => url('mahasiswa/pengaduan'),
-                          'id' => $pengaduan->id,
-                      ])
+                      <a href="{{ url('/mahasiswa/pengaduan/' . $pengaduan->id) }}" class="btn btn-sm btn-primary"><i
+                          class="fas fa-info fa-xs"></i> Detail</a>
+                      <form action="{{ url('/mahasiswa/pengaduan/' . $pengaduan->id) }}" method="post"
+                        onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                        <button type="submit" class="btn btn-sm btn-danger" style="border-radius:0 3px 3px 0"><i
+                            class="far fa-trash-alt fa-xs"></i> Hapus</button>
+                      </form>
                     @else
                       <a href="{{ url('mahasiswa/pengaduan/' . $pengaduan->id) }}" class="btn btn-sm btn-primary"><i
                           class="fas fa-info fa-xs"></i> Detail Pengaduan</a>

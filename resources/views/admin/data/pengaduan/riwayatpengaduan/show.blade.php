@@ -44,12 +44,23 @@
                 </dd>
                 <dt>File Bukti Pengaduan</dt>
                 <dd>
-                  @if ($pengaduan->file_bukti_pengaduan)
-                    <a href="" target="popup"
-                      onclick="window.open('{{ asset('storage/' . $pengaduan->file_bukti_pengaduan) }}','popup','width=800,height=600'); return false;"
-                      class="btn btn-sm btn-primary c-btn"><i class="fas fa-eye fa-sm"></i> Preview</a>
+                  @if ($pengaduan->bukti->count() > 0)
+                    <ol>
+                      @foreach ($pengaduan->bukti as $bukti)
+                        <li class="mb-1">
+                          <a href="" target="popup"
+                            onclick="window.open('{{ asset('storage/' . $bukti->file_bukti) }}','popup','width=800,height=600'); return false;"
+                            class="btn btn-sm btn-primary c-btn"><i class="fas fa-eye fa-sm"></i> Preview</a>
+                          {{ $bukti->nama_bukti }}
+                        </li>
+                      @endforeach
+                    </ol>
                   @else
-                    Tidak/belum ada bukti
+                    <ol>
+                      <li>
+                        Tidak/belum ada bukti
+                      </li>
+                    </ol>
                   @endif
                 </dd>
                 <dt>Deskripsi Pengaduan</dt>
