@@ -67,19 +67,16 @@ class PengaduanController extends Controller
         ]);
     }
 
-    public function hapusBukti($bukti)
-    {
-        dd($bukti);
-        $pengaduanBukti = PengaduanBukti::where('id_pengaduan', $bukti)->first();
-    }
-
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Pengaduan $pengaduan)
     {
-        if ($pengaduan->file_bukti_pengaduan) {
-            Storage::delete($pengaduan->file_bukti_pengaduan);
+        if ($pengaduan->bukti) {
+            foreach ($pengaduan->bukti as $bukti) {
+                Storage::delete($bukti->file_bukti);
+                $bukti->delete();
+            }
         }
 
         Pengaduan::destroy('id', $pengaduan->id);

@@ -31,6 +31,8 @@
                           class="fas fa-info fa-xs"></i> Detail</a>
                       <form action="{{ url('/mahasiswa/pengaduan/' . $pengaduan->id) }}" method="post"
                         onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                        @csrf
+                        @method('delete')
                         <button type="submit" class="btn btn-sm btn-danger" style="border-radius:0 3px 3px 0"><i
                             class="far fa-trash-alt fa-xs"></i> Hapus</button>
                       </form>
