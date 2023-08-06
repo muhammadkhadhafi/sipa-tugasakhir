@@ -8,7 +8,7 @@
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Edit Pengajuan</h6>
     </div>
     <div class="card-body">
-      <form action="/mahasiswa/pengajuansuratketeranganaktif/{{ $pengajuan->id }}" method="post">
+      <form action="{{ url('mahasiswa/pengajuansuratketeranganaktif', $pengajuan->id) }}" method="post">
         @csrf
         @method('put')
         <div class="row">

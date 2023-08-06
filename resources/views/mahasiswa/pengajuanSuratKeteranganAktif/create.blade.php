@@ -8,7 +8,7 @@
       <h6 class="m-0 font-weight-bold text-primary text-uppercase">Tambah Pengajuan</h6>
     </div>
     <div class="card-body">
-      <form action="/mahasiswa/pengajuansuratketeranganaktif" method="post">
+      <form action="{{ url('mahasiswa/pengajuansuratketeranganaktif') }}" method="post">
         @csrf
         <div class="row">
           <div class="col-lg-6">

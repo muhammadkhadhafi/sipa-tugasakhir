@@ -76,14 +76,14 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function gantiPassword()
-    {
-        $list_mahasiswa = Mahasiswa::all();
-        foreach ($list_mahasiswa as $mahasiswa) {
-            $passwordBaru = $mahasiswa->nim;
-            $passwordReplace = str_replace(' ', '', $passwordBaru);
-            $passwordHash = Hash::make($passwordReplace);
-            $mahasiswa->where('id', $mahasiswa->id)->update(['password' => $passwordHash]);
-        }
-    }
+    // public function gantiPasswordMassal()
+    // {
+    //     $list_mahasiswa = Mahasiswa::all();
+    //     foreach ($list_mahasiswa as $mahasiswa) {
+    //         $passwordBaru = $mahasiswa->nim;
+    //         $passwordReplace = str_replace(' ', '', $passwordBaru);
+    //         $passwordHash = Hash::make($passwordReplace);
+    //         $mahasiswa->where('id', $mahasiswa->id)->update(['password' => $passwordHash]);
+    //     }
+    // }
 }

@@ -3,7 +3,7 @@
 @section('container')
   <h1 class="h3 mb-3">Mahasiswa</h1>
 
-  <form action="/admin/master-data/mahasiswa/{{ $mahasiswa->id }}" method="post">
+  <form action="{{ url('admin/master-data/mahasiswa', $mahasiswa->id) }}}" method="post">
     @csrf
     @method('put')
     <div class="row">

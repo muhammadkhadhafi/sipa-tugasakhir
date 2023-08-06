@@ -29,7 +29,7 @@ Route::get('/', function () {
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'loginProcess']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-// Route::post('/gantipassword', [AuthController::class, 'gantiPassword']);
+// Route::post('/gantipassword', [AuthController::class, 'gantiPasswordMassal']);
 
 Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
